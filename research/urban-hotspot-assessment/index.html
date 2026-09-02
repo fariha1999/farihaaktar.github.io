@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Urban Hotspot Assessment in Bangladesh | Fariha Aktar</title>
+<meta name="description" content="Ongoing research on urban surface heat hotspots across Bangladesh using multi-source Earth observation and district-level spatial analysis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;--soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;--shadow:0 14px 38px rgba(27,49,36,.07);--max:1180px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}.nav-actions{display:flex;align-items:center;gap:10px}.nav-link{font-size:.82rem;font-weight:700;color:#536058}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700}
+.hero{padding:46px 0 38px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(330px,.8fr);gap:34px;align-items:start}h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}h1{font-size:30px;line-height:1.15;margin:10px 0 16px}h2{font-size:24px;line-height:1.2;margin:5px 0 0}h3{font-size:1rem;margin:0}.hero-copy{margin:0;color:var(--muted);font-size:.94rem;max-width:760px}.status{display:inline-flex;align-items:center;gap:7px;margin-top:20px;padding:7px 11px;border:1px solid #bcd3c4;border-radius:999px;background:#f3f8f4;color:var(--green-dark);font-size:.75rem;font-weight:700}.status:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.context{border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.context-head{padding:17px 19px;background:var(--soft);border-bottom:1px solid var(--line)}.context-head strong{display:block;font-family:"Source Serif 4",serif;font-size:1.2rem;margin-top:3px}.context-row{padding:13px 19px;border-bottom:1px solid var(--line)}.context-row:last-child{border:0}.context-row small{display:block;color:var(--green);font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}.context-row strong{display:block;font-size:.85rem;margin-top:2px}.context-row span{display:block;color:var(--muted);font-size:.76rem;margin-top:2px}
+.section{padding:45px 0 5px}.section-head{margin-bottom:18px}.description-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}.description-grid article{padding:20px 24px 20px 0}.description-grid article+article{padding-left:24px;border-left:1px solid var(--line)}.description-grid p{margin:7px 0 0;color:var(--muted);font-size:.86rem}
+.framework{border:1px solid var(--line);border-radius:18px;padding:24px;background:#fff}.flow{display:grid;grid-template-columns:1fr 42px 1fr 42px 1fr;align-items:stretch;gap:10px}.flow-box{border:1px solid var(--line);border-radius:14px;padding:17px;background:var(--soft)}.flow-box strong{display:block;font-family:"Source Serif 4",serif;font-size:1rem;margin-bottom:8px}.flow-box span{display:block;color:var(--muted);font-size:.76rem;line-height:1.55}.arrow{display:grid;place-items:center;color:var(--green);font-size:1.5rem;font-weight:700}.framework-note{margin:16px 0 0;color:var(--muted);font-size:.78rem}
+.map-section{width:100vw;margin-left:calc(50% - 50vw);padding:50px 34px 20px}.map-inner{max-width:1800px;margin:auto}.carousel{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;gap:14px;align-items:center}.viewport{overflow:hidden}.track{display:flex;gap:18px;transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform}.map-card{flex:0 0 calc((100% - 36px)/3);width:calc((100% - 36px)/3);min-width:0;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;text-align:left;cursor:zoom-in;transition:.16s}.map-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.map-card img{width:100%;height:480px;object-fit:contain;padding:7px;background:#fff;border-bottom:1px solid var(--line)}.map-card span{display:block;padding:13px 15px 15px}.map-card strong{display:block;font-family:"Source Serif 4",serif;font-size:1rem}.map-card small{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}.slide{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);font:2rem Georgia,serif;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(27,49,36,.08)}.slide:hover{background:var(--green);color:#fff}.slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}.indicator{text-align:center;margin-top:12px;color:var(--muted);font-size:.75rem;font-weight:600}
+.progress{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.progress-card{border:1px solid var(--line);border-radius:15px;padding:18px}.progress-card strong{display:block;font-family:"Source Serif 4",serif;margin:5px 0}.progress-card p{margin:0;color:var(--muted);font-size:.78rem}
+.back{margin:58px auto 28px;padding-top:28px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center}footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between}
+.image-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}.image-modal.open{display:flex}.image-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}.image-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.image-title{font-size:.84rem;font-weight:700}.image-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+@media(max-width:950px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.progress{grid-template-columns:1fr 1fr}.map-card img{height:390px}}
+@media(max-width:760px){.wrap{width:calc(100% - 24px)}.nav-link{display:none}.description-grid{grid-template-columns:1fr}.description-grid article+article{padding-left:0;border-left:0;border-top:1px solid var(--line)}.carousel{grid-template-columns:38px minmax(0,1fr) 38px;gap:7px}.slide{width:36px;height:36px;font-size:1.55rem}.track{gap:0}.map-card{flex:0 0 100%;width:100%}.map-card img{height:auto;max-height:620px}.progress{grid-template-columns:1fr}.back,footer{flex-direction:column;align-items:flex-start;gap:14px}}
+
+/* Concise research direction */
+.compact-direction{
+  padding-top:30px !important;
+}
+.direction-line{
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  display:grid;
+  grid-template-columns:105px 1fr;
+  gap:22px;
+  align-items:start;
+  padding:16px 0;
+}
+.direction-line strong{
+  color:var(--green);
+  font-size:.69rem;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+}
+.direction-line span{
+  color:var(--muted);
+  font-size:.86rem;
+  line-height:1.55;
+}
+
+/* Visual methodological framework */
+.method-diagram{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr) 58px minmax(0,1fr) 58px minmax(0,1fr);
+  align-items:center;
+  gap:0;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#fff;
+}
+.method-stage{
+  position:relative;
+  min-height:220px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--soft);
+  padding:20px 18px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.stage-number{
+  position:absolute;
+  top:14px;
+  right:15px;
+  color:#9aa69e;
+  font-size:.66rem;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+.stage-icon{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #b9cec0;
+  background:#fff;
+  display:grid;
+  place-items:center;
+  color:var(--green-dark);
+  font-weight:800;
+  font-size:.73rem;
+  letter-spacing:.04em;
+  margin-bottom:15px;
+}
+.method-stage strong{
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.02rem;
+  line-height:1.25;
+  margin-bottom:14px;
+}
+.stage-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.stage-tags span{
+  border:1px solid #d2ddd5;
+  background:#fff;
+  border-radius:999px;
+  padding:4px 8px;
+  color:#59665e;
+  font-size:.65rem;
+  line-height:1.2;
+}
+.method-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--green);
+}
+.method-link span{
+  width:20px;
+  height:1px;
+  background:#b9cec0;
+}
+.method-link b{
+  font-size:1.3rem;
+  font-weight:500;
+  margin-left:3px;
+}
+.ongoing-note{
+  margin-top:12px;
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+  color:var(--muted);
+  font-size:.76rem;
+  line-height:1.5;
+}
+.ongoing-note strong{color:var(--ink)}
+.ongoing-dot{
+  flex:0 0 auto;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  margin-top:6px;
+}
+@media(max-width:1050px){
+  .method-diagram{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .method-stage{min-height:0}
+  .method-link{
+    height:26px;
+    transform:rotate(90deg);
+  }
+}
+@media(max-width:650px){
+  .direction-line{grid-template-columns:1fr;gap:5px}
+  .method-diagram{padding:12px}
+}
+
+
+/* Compact top layout */
+.hero{
+  padding:30px 0 20px !important;
+  grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr) !important;
+  gap:24px !important;
+}
+.hero-copy{
+  max-width:700px !important;
+  font-size:.9rem !important;
+  line-height:1.55 !important;
+}
+.status{
+  margin-top:14px !important;
+}
+.hero-focus-line{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:12px;
+  align-items:start;
+}
+.hero-focus-line strong{
+  color:var(--green);
+  text-transform:uppercase;
+  letter-spacing:.11em;
+  font-size:.66rem;
+}
+.hero-focus-line span{
+  color:var(--muted);
+  font-size:.78rem;
+  line-height:1.45;
+}
+.context-head{padding:14px 17px !important}
+.context-row{padding:10px 17px !important}
+.context-row span{font-size:.72rem !important}
+.section{padding-top:32px !important}
+
+/* Short structural methodology */
+.method-section{
+  padding-top:28px !important;
+}
+.method-compact{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  display:grid;
+  grid-template-columns:1fr 36px 1fr 36px 1fr;
+  gap:8px;
+  align-items:stretch;
+}
+.method-step{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--soft);
+  padding:16px 16px 14px;
+  min-height:118px;
+}
+.step-no{
+  position:absolute;
+  top:11px;
+  right:12px;
+  color:#99a49d;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.1em;
+}
+.method-step strong{
+  display:block;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:.98rem;
+  margin-bottom:8px;
+}
+.method-step small{
+  display:block;
+  color:var(--muted);
+  font-size:.7rem;
+  line-height:1.5;
+}
+.method-arrow{
+  display:grid;
+  place-items:center;
+  color:var(--green);
+  font-size:1.3rem;
+}
+.method-status{
+  margin-top:9px;
+  color:var(--muted);
+  font-size:.7rem;
+  line-height:1.45;
+  display:flex;
+  gap:7px;
+  align-items:flex-start;
+}
+.method-status span{
+  flex:0 0 auto;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  margin-top:5px;
+}
+@media(max-width:950px){
+  .hero{grid-template-columns:1fr !important}
+  .method-compact{
+    grid-template-columns:1fr;
+  }
+  .method-arrow{
+    height:20px;
+    transform:rotate(90deg);
+  }
+}
+@media(max-width:650px){
+  .hero-focus-line{grid-template-columns:1fr;gap:4px}
+}
+
+
+/* ===== Standard research-page hero: compact left + large 2-image slider ===== */
+:root{
+  --max:1400px !important;
+}
+
+.hero{
+  width:min(1400px,calc(100% - 36px)) !important;
+  padding:24px 0 14px !important;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr) !important;
+  gap:22px !important;
+  align-items:start !important;
+}
+
+.hero > div:first-child{
+  min-width:0;
+  padding-top:2px;
+}
+
+h1{
+  font-size:29px !important;
+  line-height:1.14 !important;
+  margin:8px 0 12px !important;
+}
+
+.hero-copy{
+  max-width:620px !important;
+  font-size:.88rem !important;
+  line-height:1.52 !important;
+}
+
+.status{
+  margin-top:12px !important;
+}
+
+.hero-focus-line{
+  margin-top:12px !important;
+  padding-top:11px !important;
+  grid-template-columns:64px 1fr !important;
+  gap:10px !important;
+}
+
+.hero-focus-line span{
+  font-size:.74rem !important;
+  line-height:1.45 !important;
+}
+
+/* Top-right map slider */
+.hero-map-panel{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.hero-map-head{
+  min-height:52px;
+  padding:9px 14px;
+  border-bottom:1px solid var(--line);
+  background:var(--soft);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.hero-map-head strong{
+  display:block;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.04rem;
+  margin-top:2px;
+}
+
+.hero-map-count{
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:700;
+}
+
+.hero-map-slider{
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) 34px;
+  gap:8px;
+  align-items:center;
+  padding:10px 10px 11px;
+}
+
+.hero-map-viewport{
+  width:100%;
+  overflow:hidden;
+}
+
+.hero-map-track{
+  display:flex;
+  gap:14px;
+  width:100%;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+
+.hero-map-card{
+  flex:0 0 calc((100% - 14px)/2) !important;
+  width:calc((100% - 14px)/2) !important;
+  min-width:0 !important;
+  appearance:none;
+  border:1px solid var(--line) !important;
+  border-radius:13px !important;
+  padding:0 !important;
+  overflow:hidden;
+  background:#fff !important;
+  text-align:left;
+  cursor:zoom-in;
+  box-shadow:none !important;
+  transform:none !important;
+}
+
+.hero-map-card:hover{
+  box-shadow:0 10px 26px rgba(27,49,36,.07) !important;
+}
+
+.hero-map-card img{
+  width:100% !important;
+  height:365px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:#fff !important;
+  padding:4px !important;
+  border-bottom:1px solid var(--line) !important;
+}
+
+.hero-map-card > span{
+  display:block !important;
+  padding:10px 12px 12px !important;
+  min-height:74px !important;
+}
+
+.hero-map-card > span strong{
+  display:block !important;
+  font-family:"Source Serif 4",Georgia,serif !important;
+  font-size:.91rem !important;
+  line-height:1.22 !important;
+  margin-bottom:3px !important;
+}
+
+.hero-map-card > span small{
+  display:block !important;
+  color:var(--muted) !important;
+  font-size:.63rem !important;
+  line-height:1.35 !important;
+  margin-top:0 !important;
+}
+
+.hero-slide{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  border:1px solid var(--line-dark);
+  background:#fff;
+  color:var(--green-dark);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font:1.45rem Georgia,serif;
+  transition:.16s ease;
+}
+
+.hero-slide:hover{
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
+
+.hero-slide:disabled{
+  opacity:.28;
+  cursor:default;
+  background:#fff;
+  color:var(--muted);
+}
+
+/* Compact research context strip */
+.hero-summary-strip{
+  width:min(1400px,calc(100% - 36px)) !important;
+  margin-top:0 !important;
+  display:grid;
+  grid-template-columns:.7fr 1.45fr 1.15fr;
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+}
+
+.hero-summary-strip > div{
+  padding:11px 14px 11px 0;
+  min-width:0;
+}
+
+.hero-summary-strip > div + div{
+  padding-left:14px;
+  border-left:1px solid var(--line);
+}
+
+.hero-summary-strip small{
+  display:block;
+  color:var(--green);
+  font-size:.57rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  margin-bottom:3px;
+}
+
+.hero-summary-strip strong{
+  display:block;
+  font-size:.69rem;
+  line-height:1.35;
+}
+
+/* Pull remaining sections upward */
+.section{
+  padding-top:28px !important;
+}
+
+.method-section{
+  padding-top:26px !important;
+}
+
+.back{
+  margin-top:46px !important;
+}
+
+@media(max-width:1180px){
+  .hero{
+    grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr) !important;
+  }
+
+  .hero-map-card img{
+    height:330px !important;
+  }
+}
+
+@media(max-width:980px){
+  .hero{
+    grid-template-columns:1fr !important;
+    width:min(100% - 24px,900px) !important;
+  }
+
+  .hero-map-card img{
+    height:390px !important;
+  }
+
+  .hero-summary-strip{
+    width:min(100% - 24px,900px) !important;
+  }
+}
+
+@media(max-width:720px){
+  .hero{
+    width:calc(100% - 24px) !important;
+  }
+
+  .hero-map-slider{
+    grid-template-columns:32px minmax(0,1fr) 32px;
+    gap:5px;
+    padding:7px;
+  }
+
+  .hero-slide{
+    width:30px;
+    height:30px;
+    font-size:1.3rem;
+  }
+
+  /* One image per slide on mobile */
+  .hero-map-track{
+    gap:0;
+  }
+
+  .hero-map-card{
+    flex:0 0 100% !important;
+    width:100% !important;
+  }
+
+  .hero-map-card img{
+    height:auto !important;
+    max-height:480px !important;
+  }
+
+  .hero-summary-strip{
+    width:calc(100% - 24px) !important;
+    grid-template-columns:1fr;
+  }
+
+  .hero-summary-strip > div{
+    padding:10px 0 !important;
+  }
+
+  .hero-summary-strip > div + div{
+    padding-left:0 !important;
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+}
+
+
+/* ===== Move research metadata into the left-side blank hero space ===== */
+.hero-left-summary{
+  margin-top:16px;
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+}
+
+.hero-left-summary-item{
+  padding:12px 12px 12px 0;
+  min-width:0;
+}
+
+.hero-left-summary-item:nth-child(2){
+  border-left:1px solid var(--line);
+  padding-left:12px;
+}
+
+.hero-left-summary-item:nth-child(3){
+  grid-column:1 / -1;
+  border-top:1px solid var(--line);
+  padding:12px 0;
+}
+
+.hero-left-summary-item small{
+  display:block;
+  color:var(--green);
+  font-size:.57rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  margin-bottom:3px;
+}
+
+.hero-left-summary-item strong{
+  display:block;
+  font-size:.69rem;
+  line-height:1.38;
+}
+
+/* Old full-width summary is no longer used */
+.hero-summary-strip{
+  display:none !important;
+}
+
+@media(max-width:720px){
+  .hero-left-summary{
+    grid-template-columns:1fr;
+  }
+
+  .hero-left-summary-item,
+  .hero-left-summary-item:nth-child(2),
+  .hero-left-summary-item:nth-child(3){
+    grid-column:auto;
+    padding:10px 0;
+    border-left:0;
+  }
+
+  .hero-left-summary-item + .hero-left-summary-item{
+    border-top:1px solid var(--line);
+  }
+}
+
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner"><a class="brand" href="../../index.html">Fariha Aktar</a><div class="nav-actions"><a class="nav-link" href="../../index.html#research">Research</a><a class="nav-link" href="../../index.html#projects">Projects</a><a class="nav-link" href="../../index.html#publication">Publication</a><a class="btn" href="../../index.html">← Portfolio</a></div></div></nav>
+
+<main>
+<header class="wrap hero">
+  <div>
+    <div class="eyebrow">Ongoing Research · Urban Heat · Remote Sensing</div>
+    <h1>Urban Hotspot Assessment in Bangladesh Using Multi-Source Remote Sensing</h1>
+    <p class="hero-copy">An ongoing national-scale study mapping urban surface-heat patterns across Bangladesh using multi-source Earth-observation and settlement data.</p>
+    <div class="status">Research in progress</div>
+<div class="hero-focus-line">
+  <strong>Focus</strong>
+  <span>District-level comparison of surface heat, vegetation, built-up intensity, nighttime activity and population across Bangladesh.</span>
+</div>
+
+<div class="hero-left-summary">
+  <div class="hero-left-summary-item">
+    <small>Analytical units</small>
+    <strong>64 districts</strong>
+  </div>
+  <div class="hero-left-summary-item">
+    <small>Current indicators</small>
+    <strong>LST · UHI · NDVI · LULC · NTL · Population · Building Density</strong>
+  </div>
+  <div class="hero-left-summary-item">
+    <small>Methods</small>
+    <strong>Remote Sensing · GIS · Zonal Statistics · Spatial Analysis</strong>
+  </div>
+</div>
+
+
+  </div>
+
+  
+<aside class="hero-map-panel">
+  <div class="hero-map-head">
+    <div>
+      <div class="eyebrow">Current spatial outputs</div>
+      <strong>Urban Heat Indicators</strong>
+    </div>
+    <div class="hero-map-count" id="heroMapCount">1 / 4</div>
+  </div>
+
+  <div class="hero-map-slider">
+    <button class="hero-slide prev" id="heroPrev" type="button" aria-label="Previous maps">‹</button>
+
+    <div class="hero-map-viewport">
+      <div class="hero-map-track" id="heroMapTrack">
+        <button class="hero-map-card image-expand" data-image="images/lst-bangladesh.png" data-title="Land Surface Temperature"><img src="images/lst-bangladesh.png" alt="Land Surface Temperature map of Bangladesh"><span><strong>Land Surface Temperature</strong><small>National surface-temperature pattern used to characterize thermal conditions.</small></span></button><button class="hero-map-card image-expand" data-image="images/uhi-bangladesh.png" data-title="Urban Heat Island"><img src="images/uhi-bangladesh.png" alt="Urban Heat Island map of Bangladesh"><span><strong>Urban Heat Island</strong><small>Spatial classification of surface urban heat intensity.</small></span></button><button class="hero-map-card image-expand" data-image="images/ndvi-bangladesh.png" data-title="NDVI"><img src="images/ndvi-bangladesh.png" alt="NDVI map of Bangladesh"><span><strong>Vegetation · NDVI</strong><small>Vegetation condition used as an environmental cooling indicator.</small></span></button><button class="hero-map-card image-expand" data-image="images/lulc-bangladesh.png" data-title="Land Use / Land Cover"><img src="images/lulc-bangladesh.png" alt="Land use land cover map of Bangladesh"><span><strong>Land Use / Land Cover</strong><small>Built-up, vegetation, agriculture and water patterns across the country.</small></span></button><button class="hero-map-card image-expand" data-image="images/bd-bangladesh.png" data-title="Building Density"><img src="images/bd-bangladesh.png" alt="Building density map of Bangladesh"><span><strong>Building Density</strong><small>Built-environment concentration as an indicator of urban intensity.</small></span></button><button class="hero-map-card image-expand" data-image="images/ntl-bangladesh.png" data-title="Night-Time Light"><img src="images/ntl-bangladesh.png" alt="Night-Time Light map of Bangladesh"><span><strong>Night-Time Light</strong><small>Nighttime radiance used as a proxy for concentrated settlement and anthropogenic activity.</small></span></button><button class="hero-map-card image-expand" data-image="images/pop-bangladesh.png" data-title="Population Density"><img src="images/pop-bangladesh.png" alt="Population density map of Bangladesh"><span><strong>Population Density</strong><small>Population concentration used to develop the human-exposure component of the study.</small></span></button>
+      </div>
+    </div>
+
+    <button class="hero-slide next" id="heroNext" type="button" aria-label="Next maps">›</button>
+  </div>
+</aside>
+
+</header>
+<section class="section wrap method-section">
+  <div class="section-head">
+    <div class="eyebrow">Methodological framework</div>
+    <h2>Urban hotspot assessment workflow</h2>
+  </div>
+
+  <div class="method-compact">
+    <div class="method-step">
+      <span class="step-no">01</span>
+      <strong>Spatial indicators</strong>
+      <small>LST · UHI · NDVI · LULC · NTL · Population · Building Density</small>
+    </div>
+
+    <div class="method-arrow">→</div>
+
+    <div class="method-step">
+      <span class="step-no">02</span>
+      <strong>District analysis</strong>
+      <small>Pre-processing · Harmonization · 64-district zonal statistics</small>
+    </div>
+
+    <div class="method-arrow">→</div>
+
+    <div class="method-step">
+      <span class="step-no">03</span>
+      <strong>Hotspot assessment</strong>
+      <small>Association · Spatial clustering · Exposure · Priority areas</small>
+    </div>
+  </div>
+
+  <div class="method-status">
+    <span></span>
+    Ongoing: temporal analysis, spatial statistics and validation are being completed before final conclusions.
+  </div>
+</section>
+<section class="section wrap">
+  <div class="section-head"><div class="eyebrow">Research status</div><h2>What is being developed next</h2></div>
+  <div class="progress">
+    <article class="progress-card"><div class="eyebrow">Analysis</div><strong>Temporal + statistical assessment</strong><p>Extend the study beyond descriptive mapping through comparable temporal heat metrics, correlation/regression and spatial cluster analysis.</p></article>
+    <article class="progress-card"><div class="eyebrow">Exposure</div><strong>Population inside high-heat areas</strong><p>Overlay population with high-temperature pixels to distinguish population exposure from population density alone.</p></article>
+    <article class="progress-card"><div class="eyebrow">Validation</div><strong>Reproducibility and robustness</strong><p>Audit district-level values, reconcile maps and tables, document processing decisions and test sensitivity before finalizing conclusions.</p></article>
+  </div>
+</section>
+
+<section class="wrap back"><div><div class="eyebrow">Continue exploring</div><h2>Return to the research portfolio</h2></div><a class="btn" href="../../index.html#research">← Back to Research</a></section>
+<footer class="wrap"><span>Fariha Aktar · Ongoing Research</span><span>Urban Heat · GIS · Remote Sensing · Spatial Analysis</span></footer>
+</main>
+
+<div class="image-modal" id="imageModal"><div class="image-dialog"><div class="image-bar"><div class="image-title" id="imageTitle">Spatial output</div><button class="image-close" id="imageClose">×</button></div><div class="image-stage"><img id="imageView" src="" alt=""></div></div></div>
+
+<script>
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title || "Spatial output";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closeModal(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+
+imageClose.addEventListener("click",closeModal);
+imageModal.addEventListener("click",e=>{
+  if(e.target===imageModal) closeModal();
+});
+
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){
+  return window.innerWidth<=720 ? 1 : 2;
+}
+
+function updateHeroMapSlider(){
+  if(!heroMapTrack) return;
+
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    const shift=heroMapPage*2*(cardWidth+gap);
+    heroMapTrack.style.transform=`translateX(-${shift}px)`;
+  }
+
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+
+heroPrev.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(heroMapPage>0){
+    heroMapPage--;
+    updateHeroMapSlider();
+  }
+});
+
+heroNext.addEventListener("click",e=>{
+  e.stopPropagation();
+  const totalPages=Math.ceil(
+    heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView()
+  );
+  if(heroMapPage<totalPages-1){
+    heroMapPage++;
+    updateHeroMapSlider();
+  }
+});
+
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && imageModal.classList.contains("open")) closeModal();
+});
+</script>
+</body>
+</html>
