@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Undergraduate Thesis | Fariha Aktar</title>
+  <meta name="description" content="Undergraduate thesis by Fariha Aktar on land-cover change and protected-area management in Bhawal National Park, Bangladesh.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f8f4;
+      --paper:#ffffff;
+      --ink:#17211b;
+      --muted:#667068;
+      --green:#2b654b;
+      --green-dark:#1d4935;
+      --green-soft:#e9f0eb;
+      --navy:#243747;
+      --line:#dce3dd;
+      --line-dark:#c6d0c8;
+      --shadow:0 16px 44px rgba(27,49,36,.07);
+      --max:1160px;
+      --radius:18px;
+      --radius-lg:26px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;background:var(--bg);color:var(--ink);
+      font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.68;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+    .eyebrow{
+      color:var(--green);font-size:.69rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.16em;
+    }
+
+    /* Navigation */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(247,248,244,.95);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      min-height:66px;display:flex;align-items:center;
+      justify-content:space-between;gap:24px;
+    }
+    .brand{
+      font-family:"Source Serif 4",serif;
+      font-size:1.08rem;font-weight:700;letter-spacing:-.02em;
+    }
+    .nav-actions{display:flex;align-items:center;gap:9px}
+    .nav-link{
+      font-size:.82rem;font-weight:700;color:#536058;
+    }
+    .nav-link:hover{color:var(--green)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:42px;padding:0 16px;border-radius:999px;
+      border:1px solid var(--line-dark);background:#fff;
+      color:var(--ink);font-size:.82rem;font-weight:700;
+      cursor:pointer;transition:.18s ease;
+    }
+    .btn:hover{transform:translateY(-1px);border-color:#aebdb1}
+    .btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 50px;
+      display:grid;grid-template-columns:minmax(0,1.2fr) minmax(310px,.8fr);
+      gap:62px;align-items:start;
+    }
+    h1,h2,h3{
+      font-family:"Source Serif 4",Georgia,serif;
+      color:var(--ink);letter-spacing:-.03em;
+    }
+    h1{
+      font-size:clamp(3.15rem,6.2vw,5.9rem);
+      line-height:.96;margin:10px 0 24px;
+      letter-spacing:-.055em;
+    }
+    .hero-lead{
+      color:#4f5d54;font-size:1.08rem;max-width:760px;margin:0 0 15px;
+    }
+    .hero-copy{
+      color:var(--muted);font-size:.95rem;max-width:760px;margin:0;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+
+    .meta-panel{
+      background:#fff;border:1px solid var(--line);
+      border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);
+    }
+    .meta-head{
+      padding:20px 22px;border-bottom:1px solid var(--line);
+      background:linear-gradient(135deg,#fff,#eef3ef);
+    }
+    .meta-head strong{
+      display:block;font-family:"Source Serif 4",serif;font-size:1.35rem;margin-top:5px;
+    }
+    .meta-row{padding:15px 22px;border-bottom:1px solid var(--line)}
+    .meta-row:last-child{border-bottom:0}
+    .meta-row small{
+      display:block;color:var(--green);font-size:.66rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.11em;margin-bottom:3px;
+    }
+    .meta-row strong{display:block;font-size:.87rem}
+    .meta-row span{display:block;color:var(--muted);font-size:.78rem;margin-top:2px}
+
+    /* Quick evidence */
+    .evidence{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      border-top:1px solid var(--line-dark);
+      border-bottom:1px solid var(--line-dark);
+      margin-bottom:6px;
+    }
+    .evidence-item{padding:18px 18px 17px 0}
+    .evidence-item+.evidence-item{border-left:1px solid var(--line);padding-left:18px}
+    .evidence-item strong{
+      display:block;font-family:"Source Serif 4",serif;
+      font-size:1.45rem;color:var(--navy);line-height:1.1;
+    }
+    .evidence-item span{font-size:.75rem;color:var(--muted)}
+
+    /* Sections */
+    .section{padding:70px 0 4px}
+    .section-head{
+      display:grid;grid-template-columns:minmax(0,.9fr) minmax(280px,.5fr);
+      gap:48px;align-items:end;margin-bottom:27px;
+    }
+    h2{
+      font-size:clamp(2.15rem,4vw,3.45rem);
+      line-height:1.03;margin:5px 0 0;
+    }
+    .section-head p{margin:0;color:var(--muted);font-size:.92rem}
+    .rule{height:1px;background:var(--line)}
+
+    /* Research question */
+    .question-box{
+      padding:28px 30px;background:var(--green-dark);color:white;
+      border-radius:var(--radius-lg);
+      display:grid;grid-template-columns:160px 1fr;gap:26px;
+      align-items:start;
+    }
+    .question-box .eyebrow{color:#bad6c6}
+    .question-box p{
+      margin:0;font-family:"Source Serif 4",serif;
+      font-size:clamp(1.35rem,2.7vw,2rem);line-height:1.3;
+    }
+
+    /* Objectives */
+    .objective-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .objective{
+      background:#fff;border:1px solid var(--line);border-radius:16px;
+      padding:23px;display:grid;grid-template-columns:42px 1fr;gap:13px;
+    }
+    .objective-num{
+      width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+      background:var(--green-soft);color:var(--green-dark);font-weight:700;font-size:.8rem;
+    }
+    .objective p{margin:0;font-size:.93rem}
+
+    /* Methods */
+    .methods-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      border-top:1px solid var(--line-dark);
+    }
+    .method{
+      padding:20px 20px 3px 0;border-right:1px solid var(--line);
+      margin-right:20px;
+    }
+    .method:last-child{border-right:0;margin-right:0}
+    .method h3{font-size:1.02rem;margin:0 0 7px}
+    .method p{margin:0;color:var(--muted);font-size:.82rem}
+    .method .metric{
+      display:block;font-family:"Source Serif 4",serif;
+      font-size:1.45rem;color:var(--green-dark);font-weight:700;margin-bottom:4px;
+    }
+
+    /* Findings */
+    .finding-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .finding{
+      border:1px solid var(--line);border-radius:17px;background:#fff;
+      padding:22px;min-height:205px;
+    }
+    .finding strong{
+      display:block;font-family:"Source Serif 4",serif;
+      font-size:1.55rem;color:var(--navy);margin:7px 0 9px;
+    }
+    .finding h3{font-size:1.08rem;margin:0 0 7px}
+    .finding p{margin:0;color:var(--muted);font-size:.83rem}
+
+    /* Management score */
+    .management{
+      display:grid;grid-template-columns:.72fr 1.28fr;gap:18px;
+      align-items:stretch;
+    }
+    .score-card{
+      border-radius:var(--radius-lg);background:var(--green-dark);color:#fff;
+      padding:27px;display:flex;flex-direction:column;justify-content:space-between;
+    }
+    .score-card .eyebrow{color:#b9d7c6}
+    .big-score{
+      font-family:"Source Serif 4",serif;font-size:5rem;line-height:.9;
+      letter-spacing:-.05em;margin:22px 0 12px;
+    }
+    .score-card p{margin:0;color:#dce9e1;font-size:.85rem}
+    .management-list{
+      border:1px solid var(--line);border-radius:var(--radius-lg);background:#fff;
+      overflow:hidden;
+    }
+    .management-row{
+      padding:17px 20px;border-bottom:1px solid var(--line);
+      display:grid;grid-template-columns:150px 1fr;gap:20px;
+    }
+    .management-row:last-child{border-bottom:0}
+    .management-row strong{font-size:.85rem}
+    .management-row span{color:var(--muted);font-size:.82rem}
+
+    /* Recommendations */
+    .recommendations{border-top:1px solid var(--line-dark)}
+    .recommendation{
+      padding:17px 0;border-bottom:1px solid var(--line);
+      display:grid;grid-template-columns:44px 1fr;gap:15px;
+    }
+    .recommendation .n{
+      color:var(--green);font-weight:700;font-size:.76rem;
+    }
+    .recommendation h3{font-size:1.03rem;margin:0 0 5px}
+    .recommendation p{margin:0;color:var(--muted);font-size:.83rem}
+
+    /* Poster */
+    .poster-card{
+      border:1px solid var(--line);border-radius:var(--radius-lg);
+      background:#fff;padding:18px;box-shadow:var(--shadow);
+    }
+    .poster-card img{width:100%;border-radius:12px}
+    .poster-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+
+    /* Documents */
+    .documents{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .document{
+      border:1px solid var(--line);border-radius:16px;background:#fff;
+      padding:20px;min-height:145px;display:flex;
+      flex-direction:column;justify-content:space-between;
+    }
+    .document h3{font-size:1.06rem;margin:8px 0 18px}
+    .doc-type{color:var(--green);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+
+    /* Limitations */
+    .limitations{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    }
+    .limitation{
+      padding:18px 19px;border-left:2px solid var(--line-dark);
+      background:rgba(255,255,255,.6);
+    }
+    .limitation p{margin:0;color:var(--muted);font-size:.82rem}
+
+
+    .presentation-embed{
+      width:100%;
+      height:78vh;
+      min-height:680px;
+      border:1px solid var(--line);
+      border-radius:var(--radius-lg);
+      background:#fff;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .presentation-embed iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      background:#fff;
+    }
+
+    /* Footer */
+    .back{
+      margin:72px auto 30px;padding-top:30px;border-top:1px solid var(--line-dark);
+      display:flex;justify-content:space-between;gap:20px;align-items:center;
+    }
+    .back h2{font-size:2rem}
+    footer{
+      border-top:1px solid var(--line);padding:18px 0 34px;
+      display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:.76rem;
+    }
+
+    /* PDF modal */
+    .modal{
+      position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.75);
+      backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:22px;
+    }
+    .modal.open{display:flex}
+    .modal-dialog{
+      width:min(1180px,100%);height:min(89vh,850px);
+      background:white;border-radius:18px;overflow:hidden;
+      display:grid;grid-template-rows:auto 1fr;box-shadow:0 28px 90px rgba(0,0,0,.3);
+    }
+    .modal-bar{
+      padding:10px 12px 10px 18px;border-bottom:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+    }
+    .modal-title{font-size:.84rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .modal-controls{display:flex;gap:8px}
+    .modal-close{
+      width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+      background:#fff;cursor:pointer;font-size:1.2rem;
+    }
+    .modal iframe{width:100%;height:100%;border:0}
+
+
+    /* Research visuals */
+    .visual-feature{
+      border:1px solid var(--line);border-radius:var(--radius-lg);
+      background:#fff;overflow:hidden;box-shadow:var(--shadow);
+    }
+    .visual-feature img{
+      width:100%;height:auto;background:#f1f4f1;
+    }
+    .visual-caption{
+      padding:16px 19px;border-top:1px solid var(--line);
+      display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:start;
+    }
+    .visual-caption strong{font-size:.84rem}
+    .visual-caption p{margin:0;color:var(--muted);font-size:.81rem}
+    .visual-pair{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;
+    }
+    .visual-pair .visual-feature{box-shadow:none}
+    .visual-gallery{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:14px;
+    }
+    .visual-gallery .visual-feature{box-shadow:none}
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:35px}
+      .evidence{grid-template-columns:1fr 1fr}
+      .evidence-item:nth-child(3){border-left:0}
+      .evidence-item:nth-child(n+3){border-top:1px solid var(--line)}
+      .methods-grid{grid-template-columns:1fr 1fr}
+      .method:nth-child(2){border-right:0}
+      .finding-grid,.documents,.limitations{grid-template-columns:1fr 1fr}
+      .management{grid-template-columns:1fr}
+      .visual-gallery{grid-template-columns:1fr}
+    }
+    @media(max-width:650px){
+      .wrap{width:min(var(--max),calc(100% - 24px))}
+      .nav-actions .nav-link{display:none}
+      .hero{padding-top:48px}
+      h1{font-size:clamp(3rem,14vw,4.7rem)}
+      .section{padding-top:54px}
+      .section-head{grid-template-columns:1fr;gap:12px}
+      .question-box{grid-template-columns:1fr;gap:10px;padding:23px}
+      .objective-grid,.finding-grid,.documents,.limitations,.visual-pair{grid-template-columns:1fr}
+      .methods-grid{grid-template-columns:1fr}
+      .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:15px 0}
+      .management-row{grid-template-columns:1fr;gap:4px}
+      .back{flex-direction:column;align-items:flex-start}
+      footer{flex-direction:column}
+      .modal{padding:7px}
+      .modal-dialog{height:94vh;border-radius:12px}
+    }
+  
+    /* Full white background */
+    html, body, main, section, .hero, .section, .card, .objective, .finding,
+    .management, .management-card, .visual-feature, .poster-card,
+    .presentation-embed, .document, footer {
+      background-color: #ffffff !important;
+    }
+
+  
+    /* Thesis title size */
+    .hero h1 {
+      font-size: 24px !important;
+    }
+
+  
+    /* Compact hero research summary */
+    .hero-research{
+      margin-top:30px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      display:grid;
+      gap:22px;
+      max-width:760px;
+    }
+    .hero-research-block{display:grid;gap:8px}
+    .compact-question{
+      margin:0;
+      font-family:"Source Serif 4",Georgia,serif;
+      font-size:1.12rem;
+      line-height:1.45;
+      color:var(--ink);
+      max-width:720px;
+    }
+    .compact-objectives{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+    .compact-objective{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px 14px;
+      display:grid;
+      grid-template-columns:28px 1fr;
+      gap:9px;
+      align-items:start;
+      background:#fff;
+    }
+    .compact-objective span{
+      width:26px;height:26px;border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--green-soft);
+      color:var(--green-dark);
+      font-size:.68rem;font-weight:700;
+    }
+    .compact-objective p{
+      margin:1px 0 0;
+      font-size:.80rem;
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    /* Section title size requested */
+    h2{
+      font-size:24px !important;
+      line-height:1.18 !important;
+    }
+
+    /* Slightly tighter sections for a more concise page */
+    .section{padding-top:48px}
+    .section-head{margin-bottom:20px}
+
+    @media(max-width:650px){
+      .compact-objectives{grid-template-columns:1fr}
+      .hero-research{margin-top:24px;padding-top:20px}
+    }
+
+  
+    /* Compact map gallery */
+    .map-section-head{margin-bottom:16px}
+    .map-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .map-tile{
+      appearance:none;border:1px solid var(--line);background:#fff;border-radius:14px;
+      padding:0;overflow:hidden;cursor:zoom-in;text-align:left;min-width:0;
+      transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+    }
+    .map-tile:hover{transform:translateY(-2px);border-color:#b8c5ba;box-shadow:0 10px 26px rgba(27,49,36,.08)}
+    .map-tile img{width:100%;height:150px;object-fit:contain;background:#fff;border-bottom:1px solid var(--line)}
+    .map-tile>span{display:block;padding:10px 11px 11px}
+    .map-tile strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:.92rem;line-height:1.2;color:var(--ink);margin-bottom:4px}
+    .map-tile small{display:block;color:var(--muted);font-size:.68rem;line-height:1.35}
+
+    .image-modal{
+      position:fixed;inset:0;z-index:140;background:rgba(12,20,15,.90);display:none;
+      align-items:center;justify-content:center;padding:28px;backdrop-filter:blur(5px)
+    }
+    .image-modal.open{display:flex}
+    .image-modal-inner{
+      width:min(1400px,96vw);height:min(92vh,1000px);display:grid;grid-template-rows:auto 1fr;
+      background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.35)
+    }
+    .image-modal-bar{
+      min-height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:8px 12px 8px 18px;border-bottom:1px solid var(--line)
+    }
+    .image-modal-title{font-size:.84rem;font-weight:700}
+    .image-modal-close{
+      width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;
+      cursor:pointer;font-size:1.25rem;line-height:1
+    }
+    .image-modal-stage{
+      min-height:0;display:flex;align-items:center;justify-content:center;padding:16px;
+      overflow:auto;background:#f7f8f7
+    }
+    .image-modal-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+    @media(max-width:900px){.map-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:650px){
+      .map-grid{grid-template-columns:1fr 1fr;gap:9px}
+      .map-tile img{height:120px}
+      .map-tile small{display:none}
+      .image-modal{padding:8px}
+      .image-modal-inner{width:100%;height:96vh;border-radius:10px}
+    }
+
+  
+    /* Larger three-column map gallery */
+    .map-grid{
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:16px !important;
+    }
+    .map-tile img{
+      height:220px !important;
+    }
+    .map-tile > span{
+      padding:13px 14px 14px !important;
+    }
+    .map-tile strong{
+      font-size:1rem !important;
+    }
+    .map-tile small{
+      font-size:.72rem !important;
+      line-height:1.4 !important;
+    }
+    @media(max-width:900px){
+      .map-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+      .map-tile img{height:190px !important;}
+    }
+    @media(max-width:700px){
+      .map-grid{grid-template-columns:1fr !important;}
+      .map-tile img{height:240px !important;}
+      .map-tile small{display:block !important;}
+    }
+
+  
+    /* Clean section headings: title only */
+    .section-head{
+      grid-template-columns:1fr !important;
+      gap:0 !important;
+      align-items:start !important;
+      margin-bottom:18px !important;
+    }
+    .section-head > p{
+      display:none !important;
+    }
+
+    /* Larger three-column spatial gallery */
+    .map-grid{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:16px !important;
+      width:100% !important;
+    }
+    .map-tile{
+      min-width:0 !important;
+      border-radius:14px !important;
+    }
+    .map-tile img{
+      width:100% !important;
+      height:250px !important;
+      object-fit:contain !important;
+      background:#ffffff !important;
+    }
+    .map-tile > span{
+      padding:13px 15px 15px !important;
+    }
+    .map-tile strong{
+      font-size:1rem !important;
+    }
+    .map-tile small{
+      font-size:.73rem !important;
+      line-height:1.4 !important;
+    }
+
+    @media(max-width:900px){
+      .map-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      }
+      .map-tile img{
+        height:210px !important;
+      }
+    }
+    @media(max-width:700px){
+      .map-grid{
+        grid-template-columns:1fr !important;
+      }
+      .map-tile img{
+        height:auto !important;
+        max-height:360px !important;
+      }
+    }
+
+  
+    /* Map gallery sized like the reference screenshot */
+    #maps{
+      width:min(1340px,calc(100% - 42px)) !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+    }
+    #maps .section-head{
+      margin-bottom:14px !important;
+    }
+    #maps .map-grid{
+      display:grid !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:16px !important;
+      width:100% !important;
+    }
+    #maps .map-tile{
+      display:flex !important;
+      flex-direction:column !important;
+      min-height:350px !important;
+      border:1px solid var(--line) !important;
+      border-radius:14px !important;
+      overflow:hidden !important;
+      background:#fff !important;
+    }
+    #maps .map-tile img{
+      width:100% !important;
+      height:265px !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      background:#fff !important;
+      padding:6px !important;
+      border-bottom:1px solid var(--line) !important;
+    }
+    #maps .map-tile > span{
+      display:block !important;
+      padding:13px 15px 15px !important;
+      min-height:84px !important;
+    }
+    #maps .map-tile strong{
+      font-size:1rem !important;
+      line-height:1.2 !important;
+      margin-bottom:5px !important;
+    }
+    #maps .map-tile small{
+      display:block !important;
+      font-size:.73rem !important;
+      line-height:1.4 !important;
+    }
+
+    @media(max-width:1100px){
+      #maps{
+        width:min(100% - 32px,1050px) !important;
+      }
+      #maps .map-tile img{
+        height:225px !important;
+      }
+      #maps .map-tile{
+        min-height:320px !important;
+      }
+    }
+    @media(max-width:760px){
+      #maps .map-grid{
+        grid-template-columns:1fr !important;
+      }
+      #maps .map-tile img{
+        height:auto !important;
+        max-height:380px !important;
+      }
+      #maps .map-tile{
+        min-height:0 !important;
+      }
+    }
+
+  
+    /* Full-window map section */
+    #maps{
+      width:100vw !important;
+      max-width:none !important;
+      margin-left:calc(50% - 50vw) !important;
+      margin-right:calc(50% - 50vw) !important;
+      padding-left:32px !important;
+      padding-right:32px !important;
+      min-height:calc(100vh - 66px) !important;
+      display:flex !important;
+      flex-direction:column !important;
+      justify-content:flex-start !important;
+    }
+
+    #maps .section-head{
+      width:100% !important;
+      margin-bottom:16px !important;
+    }
+
+    #maps .map-grid{
+      width:100% !important;
+      grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+      gap:18px !important;
+      flex:1 !important;
+      align-items:stretch !important;
+    }
+
+    #maps .map-tile{
+      width:100% !important;
+      min-height:0 !important;
+      height:calc(100vh - 190px) !important;
+      display:flex !important;
+      flex-direction:column !important;
+    }
+
+    #maps .map-tile img{
+      width:100% !important;
+      height:calc(100vh - 300px) !important;
+      min-height:300px !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      padding:8px !important;
+      background:#fff !important;
+    }
+
+    #maps .map-tile > span{
+      padding:14px 16px 16px !important;
+      min-height:92px !important;
+    }
+
+    @media(max-width:900px){
+      #maps{
+        padding-left:20px !important;
+        padding-right:20px !important;
+        min-height:auto !important;
+      }
+      #maps .map-grid{
+        grid-template-columns:1fr !important;
+      }
+      #maps .map-tile{
+        height:auto !important;
+      }
+      #maps .map-tile img{
+        height:auto !important;
+        min-height:0 !important;
+        max-height:420px !important;
+      }
+    }
+
+  
+/* ===== Top-right thesis map slider ===== */
+.hero{
+  padding:34px 0 24px !important;
+  grid-template-columns:minmax(0,1fr) minmax(500px,.95fr) !important;
+  gap:30px !important;
+  align-items:start !important;
+}
+
+.hero-map-panel{
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+
+.hero-map-head{
+  min-height:56px;
+  padding:10px 14px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(135deg,#fff,#eef3ef);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.hero-map-head strong{
+  display:block;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.05rem;
+  margin-top:2px;
+}
+
+.hero-map-count{
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:700;
+}
+
+.hero-map-slider{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr) 38px;
+  gap:7px;
+  align-items:center;
+  padding:9px;
+}
+
+.hero-map-viewport{
+  width:100%;
+  overflow:hidden;
+}
+
+.hero-map-track{
+  display:flex;
+  width:100%;
+  gap:0;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+
+.hero-map-card{
+  flex:0 0 100%;
+  width:100%;
+  min-width:100%;
+  appearance:none;
+  border:0;
+  padding:0;
+  background:#fff;
+  text-align:left;
+  cursor:zoom-in;
+}
+
+.hero-map-card img{
+  width:100%;
+  height:410px;
+  object-fit:contain;
+  object-position:center;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:6px;
+}
+
+.hero-map-card > span{
+  display:block;
+  padding:10px 3px 3px;
+}
+
+.hero-map-card > span strong{
+  display:block;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:.95rem;
+  margin-bottom:3px;
+}
+
+.hero-map-card > span small{
+  display:block;
+  color:var(--muted);
+  font-size:.68rem;
+  line-height:1.4;
+}
+
+.hero-slide{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1px solid var(--line-dark);
+  background:#fff;
+  color:var(--green-dark);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  font:1.55rem Georgia,serif;
+  transition:.16s ease;
+}
+
+.hero-slide:hover{
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
+
+.hero-slide:disabled{
+  opacity:.28;
+  cursor:default;
+  background:#fff;
+  color:var(--muted);
+}
+
+/* Thesis profile moved into a compact strip below the hero */
+.thesis-profile-strip{
+  margin-top:2px;
+  display:grid;
+  grid-template-columns:1.25fr 1.2fr .9fr .8fr;
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+}
+
+.thesis-profile-strip > div{
+  padding:12px 15px 12px 0;
+  min-width:0;
+}
+
+.thesis-profile-strip > div + div{
+  border-left:1px solid var(--line);
+  padding-left:15px;
+}
+
+.thesis-profile-strip small{
+  display:block;
+  color:var(--green);
+  font-size:.59rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin-bottom:3px;
+}
+
+.thesis-profile-strip strong{
+  display:block;
+  font-size:.72rem;
+  line-height:1.35;
+}
+
+@media(max-width:1050px){
+  .hero{
+    grid-template-columns:1fr !important;
+  }
+
+  .hero-map-card img{
+    height:500px;
+  }
+
+  .thesis-profile-strip{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .thesis-profile-strip > div:nth-child(3){
+    border-left:0;
+    border-top:1px solid var(--line);
+    padding-left:0;
+  }
+
+  .thesis-profile-strip > div:nth-child(4){
+    border-top:1px solid var(--line);
+  }
+}
+
+@media(max-width:700px){
+  .hero-map-slider{
+    grid-template-columns:34px minmax(0,1fr) 34px;
+    gap:5px;
+    padding:7px;
+  }
+
+  .hero-slide{
+    width:32px;
+    height:32px;
+    font-size:1.35rem;
+  }
+
+  .hero-map-card img{
+    height:auto;
+    max-height:500px;
+  }
+
+  .thesis-profile-strip{
+    grid-template-columns:1fr;
+  }
+
+  .thesis-profile-strip > div{
+    padding:10px 0;
+  }
+
+  .thesis-profile-strip > div + div,
+  .thesis-profile-strip > div:nth-child(3),
+  .thesis-profile-strip > div:nth-child(4){
+    border-left:0;
+    border-top:1px solid var(--line);
+    padding-left:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="../../index.html">Fariha Aktar</a>
+      <div class="nav-actions">
+        <a class="nav-link" href="../../index.html#research">Research</a>
+        <a class="nav-link" href="../../index.html#projects">Projects</a>
+        <a class="nav-link" href="../../index.html#publication">Publication</a>
+        <a class="btn" href="../../index.html">← Portfolio</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="wrap hero">
+      <div>
+        <div class="eyebrow">Undergraduate Thesis · BUET · 2024</div>
+        <h1>Exploring the Reasons Behind Land Cover Change and Evaluating the Management Strategies of a Selected Protected Area of Bangladesh</h1>
+
+        <p class="hero-copy">
+          A qualitative case study of Bhawal National Park examining why forest cover is
+          being lost, how current management performs, and what institutional and planning
+          changes could strengthen conservation.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn primary preview-trigger" data-src="presentation.pdf" data-title="Final Thesis Presentation">View presentation</button>
+          <button class="btn primary preview-trigger" data-src="poster.pdf" data-title="Thesis Poster">View poster</button>
+        </div>
+        <div class="hero-research">
+          <div class="hero-research-block">
+            <div class="eyebrow">Research question</div>
+            <p class="compact-question">
+              What is driving land-cover change in a highly pressured protected area, and how effective
+              is the existing management system in responding to those pressures?
+            </p>
+          </div>
+
+          <div class="hero-research-block">
+            <div class="eyebrow">Research objectives</div>
+            <div class="compact-objectives">
+              <div class="compact-objective">
+                <span>01</span>
+                <p>Explore the reasons behind land-cover change of a protected area in Bangladesh.</p>
+              </div>
+              <div class="compact-objective">
+                <span>02</span>
+                <p>Evaluate management strategies for the selected protected area.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      
+<aside class="hero-map-panel">
+  <div class="hero-map-head">
+    <div>
+      <div class="eyebrow">Spatial evidence</div>
+      <strong>Thesis Maps</strong>
+    </div>
+    <div class="hero-map-count" id="heroMapCount">1 / 3</div>
+  </div>
+
+  <div class="hero-map-slider">
+    <button class="hero-slide prev" id="heroPrev" type="button" aria-label="Previous map">‹</button>
+
+    <div class="hero-map-viewport">
+      <div class="hero-map-track" id="heroMapTrack">
+
+<button class="hero-map-card image-expand" type="button"
+                data-image="images/lulc_bhawal.gif"
+                data-title="Temporal LULC Change">
+          <img src="images/lulc_bhawal.gif" alt="Animated land-use and land-cover change map of Bhawal National Park">
+          <span>
+            <strong>Temporal LULC Change</strong>
+            <small>Animated land-use and land-cover change across the study period.</small>
+          </span>
+        </button>
+
+<button class="hero-map-card image-expand" type="button"
+                data-image="images/study-area-map.png"
+                data-title="Study Area Map">
+          <img src="images/study-area-map.png" alt="Map of Bhawal National Park study area">
+          <span>
+            <strong>Study Area Map</strong>
+            <small>Bhawal National Park was selected to establish the spatial context of the research.</small>
+          </span>
+        </button>
+
+<button class="hero-map-card image-expand" type="button"
+                data-image="images/social-resource-map.jpg"
+                data-title="Social & Resource Map">
+          <img src="images/social-resource-map.jpg" alt="Social and resource map of Bhawal National Park">
+          <span>
+            <strong>Social & Resource Map</strong>
+            <small>Participatory mapping of social, physical, and natural-resource features.</small>
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <button class="hero-slide next" id="heroNext" type="button" aria-label="Next map">›</button>
+  </div>
+</aside>
+
+    </header>
+
+<section class="wrap thesis-profile-strip">
+  <div>
+    <small>Study area</small>
+    <strong>Bhawal National Park · Gazipur, Bangladesh</strong>
+  </div>
+  <div>
+    <small>Department</small>
+    <strong>Urban & Regional Planning · BUET</strong>
+  </div>
+  <div>
+    <small>Supervisor</small>
+    <strong>Dr. Dipita Hossain</strong>
+  </div>
+  <div>
+    <small>Methods</small>
+    <strong>KII · FGD · PRA · METT</strong>
+  </div>
+</section>
+<section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Study design</div>
+          <h2>Field-based qualitative methodology</h2>
+        </div></div>
+
+      <div class="methods-grid">
+        <div class="method">
+          <span class="metric">19 KII</span>
+          <h3>Key informant interviews</h3>
+          <p>Forest officials, protected-area managers, and representatives of relevant conservation organizations.</p>
+        </div>
+        <div class="method">
+          <span class="metric">5 FGD</span>
+          <h3>Focus groups</h3>
+          <p>Local residents and indigenous community members discussing temporal change, livelihoods, and forest pressures.</p>
+        </div>
+        <div class="method">
+          <span class="metric">6 PRA</span>
+          <h3>Participatory tools</h3>
+          <p>Social/resource mapping, transect walk, historical timeline, trend analysis, pairwise ranking, and Venn diagram.</p>
+        </div>
+        <div class="method">
+          <span class="metric">METT</span>
+          <h3>Management assessment</h3>
+          <p>IUCN-WCPA framework used to assess planning, inputs, process, outputs, and outcomes of protected-area management.</p>
+        </div>
+      </div>
+    </section>
+<section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Key findings</div>
+          <h2>Land pressure is institutional as well as spatial</h2>
+        </div></div>
+
+      <div class="finding-grid">
+        <article class="finding">
+          <div class="eyebrow">Ranked driver</div>
+          <strong>#1</strong>
+          <h3>Land ownership disputes</h3>
+          <p>Pairwise ranking identified land-ownership disputes as the highest-ranked cause behind land-cover change.</p>
+        </article>
+
+        <article class="finding">
+          <div class="eyebrow">Encroachment</div>
+          <strong>989.36 acre</strong>
+          <h3>Forestland under encroachment</h3>
+          <p>The Forest Department data used in the study reported substantial occupation of protected forestland by multiple land uses.</p>
+        </article>
+
+        <article class="finding">
+          <div class="eyebrow">Industrial pressure</div>
+          <strong>#3</strong>
+          <h3>Industrialization</h3>
+          <p>Industrial growth emerged as a major driver, alongside land encroachment and agricultural expansion.</p>
+        </article>
+
+        <article class="finding">
+          <div class="eyebrow">Recovery</div>
+          <strong>≈30%</strong>
+          <h3>Encroached land recovered</h3>
+          <p>Approximately 326 acres were reported recovered, representing only about 30% of the encroached land.</p>
+        </article>
+
+        <article class="finding">
+          <div class="eyebrow">Governance</div>
+          <strong>Weak</strong>
+          <h3>Institutional enforcement</h3>
+          <p>Forest authorities were found to have limited institutional capacity to enforce regulations and address forest crime.</p>
+        </article>
+
+        <article class="finding">
+          <div class="eyebrow">Participation</div>
+          <strong>Limited</strong>
+          <h3>Community involvement</h3>
+          <p>Local and indigenous communities were found to be insufficiently included in management decisions and activities.</p>
+        </article>
+      </div>
+    </section>
+<section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Management effectiveness</div>
+          <h2>A substantial implementation gap</h2>
+        </div></div>
+
+      <div class="management">
+        <div class="score-card">
+          <div>
+            <div class="eyebrow">Overall score</div>
+            <div class="big-score">30.13%</div>
+          </div>
+          <p>
+            Overall management effectiveness for Bhawal National Park, compared in the thesis
+            with a reported global protected-area average of 54%.
+          </p>
+        </div>
+
+        <div class="management-list">
+          <div class="management-row">
+            <strong>Planning</strong>
+            <span>Formal legal status exists, but management planning and implementation remain incomplete.</span>
+          </div>
+          <div class="management-row">
+            <strong>Inputs</strong>
+            <span>Staffing, equipment, and available budget were identified as inadequate for basic management needs.</span>
+          </div>
+          <div class="management-row">
+            <strong>Process</strong>
+            <span>Enforcement capacity, coordination, stakeholder participation, and boundary management were weak.</span>
+          </div>
+          <div class="management-row">
+            <strong>Outcomes</strong>
+            <span>Habitat and key species conditions were reported to have worsened, indicating weak conservation outcomes.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Governance evidence</div>
+          <h2>Stakeholders & management performance</h2>
+        </div></div>
+
+      <div class="visual-pair">
+        <div class="visual-feature">
+          <img src="images/stakeholder-network.png" alt="Stakeholders associated with management of Bhawal National Park">
+          <div class="visual-caption">
+            <strong>Stakeholder network</strong>
+            <p>Actors associated with the management of Bhawal National Park, identified through interviews and focus groups.</p>
+          </div>
+        </div>
+        <div class="visual-feature">
+          <img src="images/management-effectiveness.png" alt="Management effectiveness assessment chart for Bhawal National Park">
+          <div class="visual-caption">
+            <strong>METT assessment</strong>
+            <p>Performance across planning, inputs, process, outputs and outcomes, including comparison with the global average reported in the thesis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Recommendations</div>
+          <h2>From diagnosis to adaptive management</h2>
+        </div>
+      </div>
+
+      <div class="recommendations">
+        <div class="recommendation">
+          <div class="n">01</div>
+          <div>
+            <h3>Align land-use and forest-conservation policies</h3>
+            <p>Address inconsistencies between forest-protection goals and planning documents affecting Gazipur and the protected area.</p>
+          </div>
+        </div>
+        <div class="recommendation">
+          <div class="n">02</div>
+          <div>
+            <h3>Strengthen direct enforcement capacity</h3>
+            <p>Improve the ability of forest officials to respond to illegal encroachment and other forest crimes.</p>
+          </div>
+        </div>
+        <div class="recommendation">
+          <div class="n">03</div>
+          <div>
+            <h3>Create stronger monitoring and implementation coordination</h3>
+            <p>Establish a central mechanism to monitor management-plan implementation and coordinate responsible agencies.</p>
+          </div>
+        </div>
+        <div class="recommendation">
+          <div class="n">04</div>
+          <div>
+            <h3>Use co-management and support alternative livelihoods</h3>
+            <p>Increase meaningful participation of local and indigenous communities while reducing livelihood pressures on forest resources.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Research poster</div>
+          <h2>One-page visual synthesis</h2>
+        </div></div>
+
+      <div class="poster-card">
+        <img src="poster.jpg" alt="Undergraduate thesis poster on Bhawal National Park">
+      </div>
+    </section>
+<section class="section wrap" id="presentation">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Final thesis presentation</div>
+          <h2>Scroll through the presentation</h2>
+        </div></div>
+
+      <div class="presentation-embed">
+        <iframe
+          src="presentation.pdf#view=FitH&toolbar=0&navpanes=0"
+          title="Final Thesis Presentation"
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="section wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Research limitations</div>
+          <h2>Boundaries of the study</h2>
+        </div>
+      </div>
+
+      <div class="limitations">
+        <div class="limitation"><p>Some confidential Forest Department information, including detailed land-ownership data, was not available.</p></div>
+        <div class="limitation"><p>Availability of forest managers and key officials constrained some interviews and the depth of engagement.</p></div>
+        <div class="limitation"><p>Industrialists and some encroachers could not be interviewed because access to industrial sites raised safety and accessibility concerns.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap back">
+      <div>
+        <div class="eyebrow">Continue exploring</div>
+        <h2>Return to the research portfolio</h2>
+      </div>
+      <a class="btn primary" href="../../index.html#research">← Back to Research</a>
+    </section>
+
+    <footer class="wrap">
+      <span>Fariha Aktar · Undergraduate Thesis · BUET</span>
+      <span>Urban & Regional Planning · Environmental & Geospatial Research</span>
+    </footer>
+  </main>
+
+
+  <div class="image-modal" id="imageModal" aria-hidden="true">
+    <div class="image-modal-inner">
+      <div class="image-modal-bar">
+        <div class="image-modal-title" id="imageModalTitle">Map</div>
+        <button class="image-modal-close" id="imageModalClose" aria-label="Close image">×</button>
+      </div>
+      <div class="image-modal-stage">
+        <img id="imageModalImage" src="" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="pdfModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-bar">
+        <div class="modal-title" id="modalTitle">Document</div>
+        <div class="modal-controls">
+          <a class="btn" id="openDocument" href="#" target="_blank" rel="noopener">Open full document ↗</a>
+          <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+        </div>
+      </div>
+      <iframe id="modalFrame" src="about:blank" title="Document preview"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("pdfModal");
+    const frame = document.getElementById("modalFrame");
+    const title = document.getElementById("modalTitle");
+    const openDocument = document.getElementById("openDocument");
+    const closeBtn = document.getElementById("modalClose");
+
+    function openPreview(src, label){
+      frame.src = src;
+      title.textContent = label || "Document";
+      openDocument.href = src;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePreview(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+      setTimeout(()=>frame.src="about:blank",150);
+    }
+
+    document.querySelectorAll(".preview-trigger").forEach(button=>{
+      button.addEventListener("click",()=>openPreview(button.dataset.src,button.dataset.title));
+    });
+
+    closeBtn.addEventListener("click",closePreview);
+    modal.addEventListener("click",e=>{if(e.target===modal)closePreview()});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closePreview()});
+
+    const imageModal = document.getElementById("imageModal");
+    const imageModalImage = document.getElementById("imageModalImage");
+    const imageModalTitle = document.getElementById("imageModalTitle");
+    const imageModalClose = document.getElementById("imageModalClose");
+
+    function openImageModal(src,label){
+      imageModalImage.src=src;
+      imageModalImage.alt=label||"Research map";
+      imageModalTitle.textContent=label||"Research map";
+      imageModal.classList.add("open");
+      imageModal.setAttribute("aria-hidden","false");
+      document.body.style.overflow="hidden";
+    }
+    function closeImageModal(){
+      imageModal.classList.remove("open");
+      imageModal.setAttribute("aria-hidden","true");
+      imageModalImage.src="";
+      document.body.style.overflow="";
+    }
+    document.querySelectorAll(".image-expand").forEach(tile=>{
+      tile.addEventListener("click",()=>openImageModal(tile.dataset.image,tile.dataset.title));
+    });
+    imageModalClose.addEventListener("click",closeImageModal);
+    imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImageModal()});
+    document.addEventListener("keydown",e=>{
+      if(e.key==="Escape"&&imageModal.classList.contains("open"))closeImageModal();
+    });
+
+  
+    const heroMapTrack = document.getElementById("heroMapTrack");
+    const heroPrev = document.getElementById("heroPrev");
+    const heroNext = document.getElementById("heroNext");
+    const heroMapCount = document.getElementById("heroMapCount");
+    let heroMapIndex = 0;
+
+    function updateHeroMapSlider(){
+      if(!heroMapTrack) return;
+      const cards = heroMapTrack.querySelectorAll(".hero-map-card");
+      const total = cards.length;
+      heroMapIndex = Math.max(0,Math.min(heroMapIndex,total-1));
+      heroMapTrack.style.transform = `translateX(-${heroMapIndex*100}%)`;
+      heroPrev.disabled = heroMapIndex === 0;
+      heroNext.disabled = heroMapIndex === total - 1;
+      heroMapCount.textContent = `${heroMapIndex+1} / ${total}`;
+    }
+
+    heroPrev.addEventListener("click",e=>{
+      e.stopPropagation();
+      if(heroMapIndex>0){
+        heroMapIndex--;
+        updateHeroMapSlider();
+      }
+    });
+
+    heroNext.addEventListener("click",e=>{
+      e.stopPropagation();
+      const total = heroMapTrack.querySelectorAll(".hero-map-card").length;
+      if(heroMapIndex<total-1){
+        heroMapIndex++;
+        updateHeroMapSlider();
+      }
+    });
+
+    updateHeroMapSlider();
+
+  </script>
+</body>
+</html>
