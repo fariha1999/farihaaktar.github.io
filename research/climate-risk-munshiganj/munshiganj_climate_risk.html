@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Satellite-Based Climate Risk Assessment | Fariha Aktar</title>
+<meta name="description" content="Completed research component on satellite-based climate risk assessment of Munshiganj Municipality, Bangladesh.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;--green-soft:#e9f0eb;--line:#dce3dd;--line-dark:#c6d0c8;--shadow:0 14px 38px rgba(27,49,36,.07);--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font:inherit}.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}.nav-actions{display:flex;align-items:center;gap:10px}.nav-link{font-size:.82rem;font-weight:700;color:#536058}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;color:var(--ink);font-size:.82rem;font-weight:700;cursor:pointer}.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+.hero{padding:58px 0 34px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:50px;align-items:start}h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}h1{font-size:30px;line-height:1.15;margin:10px 0 18px}h2{font-size:24px;line-height:1.18;margin:5px 0 0}h3{font-size:1rem;margin:0 0 5px}.hero-copy{margin:0;color:var(--muted);font-size:.94rem;max-width:760px}.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:23px}
+.meta-panel{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}.meta-head{padding:18px 20px;background:#f6f8f6;border-bottom:1px solid var(--line)}.meta-head strong{display:block;font-family:"Source Serif 4",serif;font-size:1.25rem;margin-top:4px}.meta-row{padding:13px 20px;border-bottom:1px solid var(--line)}.meta-row:last-child{border-bottom:0}.meta-row small{display:block;color:var(--green);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}.meta-row strong{display:block;font-size:.86rem}.meta-row span{display:block;font-size:.77rem;color:var(--muted);margin-top:2px}
+.section{padding:48px 0 4px}.section-head{margin-bottom:18px}.research-focus{border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:1fr 1fr}.focus-block{padding:20px 24px 20px 0}.focus-block+.focus-block{padding-left:24px;border-left:1px solid var(--line)}.focus-block p{margin:7px 0 0;color:var(--muted);font-size:.88rem}
+.methods{display:block}.method-image{border:1px solid var(--line);border-radius:18px;background:#fff;padding:12px;display:flex;align-items:center;justify-content:center;cursor:zoom-in}.method-image img{max-height:460px;object-fit:contain}.method-list{border:1px solid var(--line);border-radius:18px;overflow:hidden;width:100%}.method-row{padding:16px 18px;border-bottom:1px solid var(--line)}.method-row:last-child{border-bottom:0}.method-row strong{display:block;font-size:.85rem;margin-bottom:3px}.method-row span{font-size:.79rem;color:var(--muted)}
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.finding{border:1px solid var(--line);border-radius:15px;padding:18px;background:#fff}.finding .metric{font-family:"Source Serif 4",serif;color:var(--green-dark);font-size:1.6rem;font-weight:700;display:block;margin:7px 0 8px}.finding p{margin:0;color:var(--muted);font-size:.79rem}
+.map-section{width:100vw;max-width:none;margin-left:calc(50% - 50vw);padding:50px 28px 10px;background:#fff}.map-section-inner{width:100%;max-width:1600px;margin:auto}.map-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.map-tile{appearance:none;border:1px solid var(--line);background:#fff;border-radius:14px;overflow:hidden;padding:0;text-align:left;cursor:zoom-in;min-width:0;transition:.16s ease}.map-tile:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.map-tile img{width:100%;height:290px;object-fit:contain;background:#fff;padding:5px;border-bottom:1px solid var(--line)}.map-tile span{display:block;padding:12px 14px 14px}.map-tile strong{display:block;font-family:"Source Serif 4",serif;font-size:1rem;margin-bottom:4px}.map-tile small{display:block;color:var(--muted);font-size:.71rem;line-height:1.4}
+.document-card{border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;justify-content:space-between;align-items:center;gap:20px}.document-card p{margin:4px 0 0;color:var(--muted);font-size:.8rem}.back{margin:64px auto 28px;padding-top:28px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:16px}
+.image-modal,.modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}.modal{z-index:110;background:rgba(12,20,15,.78)}.image-modal.open,.modal.open{display:flex}.image-dialog,.modal-dialog{width:min(1450px,97vw);height:min(94vh,1000px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}.modal-dialog{width:min(1200px,96vw);height:90vh}.image-bar,.modal-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.image-title,.modal-title{font-size:.84rem;font-weight:700}.image-close,.modal-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}.image-stage img{max-width:100%;max-height:100%;object-fit:contain}.modal iframe{width:100%;height:100%;border:0}
+@media(max-width:900px){.hero,.methods{grid-template-columns:1fr}.findings{grid-template-columns:1fr 1fr}.map-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav-link{display:none}.hero{padding-top:42px}h1{font-size:26px}.research-focus,.findings,.map-grid{grid-template-columns:1fr}.focus-block+.focus-block{border-left:0;border-top:1px solid var(--line);padding-left:0}.map-section{padding-left:12px;padding-right:12px}.map-tile img{height:auto;max-height:380px}.document-card,.back,footer{flex-direction:column;align-items:flex-start}}
+
+
+/* Sliding spatial map gallery — three maps per view */
+.map-section{
+  padding:50px 34px 18px !important;
+}
+.map-section-inner{
+  max-width:1800px !important;
+}
+.map-carousel{
+  position:relative;
+  width:100%;
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) 52px;
+  gap:14px;
+  align-items:center;
+}
+.map-viewport{
+  width:100%;
+  overflow:hidden;
+}
+.map-grid{
+  display:flex !important;
+  gap:18px !important;
+  width:100% !important;
+  transition:transform .45s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+.map-tile{
+  flex:0 0 calc((100% - 36px)/3) !important;
+  width:calc((100% - 36px)/3) !important;
+  min-width:0 !important;
+  border-radius:16px !important;
+  cursor:zoom-in;
+}
+.map-tile img{
+  width:100% !important;
+  height:430px !important;
+  object-fit:contain !important;
+  background:#fff !important;
+  padding:8px !important;
+}
+.map-tile span{
+  min-height:88px;
+  padding:14px 16px 16px !important;
+}
+.map-tile strong{
+  font-size:1.05rem !important;
+}
+.map-tile small{
+  font-size:.74rem !important;
+  line-height:1.45 !important;
+}
+.map-slide-btn{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid var(--line-dark);
+  background:#fff;
+  color:var(--green-dark);
+  font-family:Georgia,serif;
+  font-size:2rem;
+  line-height:1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(27,49,36,.08);
+  transition:.18s ease;
+}
+.map-slide-btn:hover{
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green);
+}
+.map-slide-btn:disabled{
+  opacity:.28;
+  cursor:default;
+  background:#fff;
+  color:var(--muted);
+  border-color:var(--line);
+}
+.map-page-indicator{
+  margin-top:13px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.76rem;
+  font-weight:600;
+}
+@media(max-width:1050px){
+  .map-carousel{
+    grid-template-columns:44px minmax(0,1fr) 44px;
+    gap:10px;
+  }
+  .map-slide-btn{width:40px;height:40px;font-size:1.7rem}
+  .map-tile img{height:340px !important}
+}
+@media(max-width:760px){
+  .map-section{padding-left:12px !important;padding-right:12px !important}
+  .map-carousel{
+    grid-template-columns:38px minmax(0,1fr) 38px;
+    gap:7px;
+  }
+  .map-slide-btn{width:36px;height:36px;font-size:1.55rem}
+  .map-grid{gap:0 !important}
+  .map-tile{
+    flex:0 0 100% !important;
+    width:100% !important;
+  }
+  .map-tile img{
+    height:auto !important;
+    max-height:500px !important;
+  }
+}
+
+
+/* Research context + key findings stacked in hero */
+.hero-side-stack{
+  display:grid;
+  gap:16px;
+}
+.hero-findings{
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+.hero-finding-row{
+  padding:14px 18px;
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:16px;
+  align-items:start;
+}
+.hero-finding-row:last-child{border-bottom:0}
+.hero-finding-row small{
+  display:block;
+  color:var(--green);
+  font-size:.64rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  margin-bottom:3px;
+}
+.hero-finding-row strong{
+  display:block;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.15rem;
+  color:var(--green-dark);
+}
+.hero-finding-row p{
+  margin:0;
+  color:var(--muted);
+  font-size:.76rem;
+  line-height:1.45;
+}
+.hero-finding-row p b{
+  color:var(--ink);
+  font-weight:700;
+}
+@media(max-width:900px){
+  .hero-side-stack{grid-column:1}
+}
+@media(max-width:650px){
+  .hero-finding-row{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+}
+
+
+/* Denser, balanced hero layout */
+.hero{
+  padding:42px 0 26px !important;
+  grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr) !important;
+  gap:28px !important;
+  align-items:start !important;
+}
+.hero > div:first-child{
+  min-width:0;
+}
+.hero-copy{
+  max-width:720px !important;
+  margin-bottom:0 !important;
+}
+.hero-actions{
+  margin-top:18px !important;
+}
+.hero-focus{
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+}
+.hero-focus-head{
+  margin-bottom:12px;
+}
+.hero-focus-head h2{
+  margin-top:4px !important;
+}
+.hero-focus .research-focus{
+  grid-template-columns:1fr !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+  gap:10px;
+}
+.hero-focus .focus-block{
+  padding:13px 0 0 !important;
+  border-left:0 !important;
+}
+.hero-focus .focus-block + .focus-block{
+  padding-left:0 !important;
+  border-left:0 !important;
+  border-top:1px solid var(--line);
+  padding-top:13px !important;
+}
+.hero-focus .focus-block p{
+  font-size:.82rem !important;
+  line-height:1.5 !important;
+}
+.hero-side-stack{
+  gap:12px !important;
+}
+.meta-head{
+  padding:15px 18px !important;
+}
+.meta-row{
+  padding:11px 18px !important;
+}
+.hero-finding-row{
+  padding:11px 16px !important;
+  grid-template-columns:105px 1fr !important;
+  gap:12px !important;
+}
+.hero-finding-row p{
+  font-size:.72rem !important;
+  line-height:1.4 !important;
+}
+.section{
+  padding-top:38px !important;
+}
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr !important;
+    gap:18px !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner"><a class="brand" href="../../index.html">Fariha Aktar</a><div class="nav-actions"><a class="nav-link" href="../../index.html#research">Research</a><a class="nav-link" href="../../index.html#projects">Projects</a><a class="nav-link" href="../../index.html#publication">Publication</a><a class="btn" href="../../index.html">← Portfolio</a></div></div></nav>
+<main>
+<header class="wrap hero">
+<div>
+<div class="eyebrow">Completed Research · Climate Risk · 2026</div>
+<h1>Satellite-Based Climate Risk Assessment of Munshiganj Municipality</h1>
+<p class="hero-copy">This assessment was conducted as part of the preparation of a Climate Action Plan for a small town in Bangladesh. It uses GIS and Earth-observation data to assess land-cover change, surface heat, rainfall variation, flood vulnerability, and integrated climate risk at the municipal scale.</p>
+<div class="hero-actions"><button class="btn primary preview-trigger" data-src="climate-risk-assessment-extract.pdf" data-title="Climate Risk Assessment Research File">View full research file</button></div>
+<div class="hero-focus">
+  <div class="hero-focus-head">
+    <div class="eyebrow">Research focus</div>
+    <h2>Assessing climate risk from Earth observation</h2>
+  </div>
+  <div class="research-focus">
+    <div class="focus-block">
+      <div class="eyebrow">Research objective</div>
+      <p>Identify spatial patterns of climate exposure across Munshiganj Municipality by integrating land use/land cover, land surface temperature, rainfall and flood vulnerability.</p>
+    </div>
+    <div class="focus-block">
+      <div class="eyebrow">Analytical question</div>
+      <p>Which wards experience overlapping environmental and climate stresses, and where should climate adaptation interventions be prioritized?</p>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="hero-side-stack">
+<aside class="meta-panel">
+<div class="meta-head"><div class="eyebrow">Research context</div><strong>Municipal Climate Action Plan</strong></div>
+<div class="meta-row"><small>Location</small><strong>Munshiganj Municipality</strong><span>Munshiganj, Bangladesh</span></div>
+
+
+<div class="meta-row"><small>Core methods</small><strong>GEE · GIS · Remote Sensing · Overlay Analysis</strong><span>Satellite and environmental datasets integrated for municipal vulnerability assessment.</span></div>
+</aside>
+
+<div class="hero-findings">
+  <div class="meta-head">
+    <div class="eyebrow">Key findings</div>
+</div>
+  </div>
+
+  <div class="hero-finding-row">
+    <div>
+      <small>Urban expansion</small>
+      <strong>+63.6%</strong>
+    </div>
+    <p><b>Built-up land increased.</b> Built-up land rose from 5.41% in 1995 to 8.82% in 2025, with the strongest concentration in Wards 1-4.</p>
+  </div>
+
+  <div class="hero-finding-row">
+    <div>
+      <small>Surface heat</small>
+      <strong>≈3°C</strong>
+    </div>
+    <p><b>Higher peak LST range.</b> The highest surface-temperature class increased from about 35-36.5°C in 1995 to 36-39°C in 2025.</p>
+  </div>
+
+  <div class="hero-finding-row">
+    <div>
+      <small>Priority area</small>
+      <strong>Wards 7-9</strong>
+    </div>
+    <p><b>Highest combined vulnerability.</b> Eastern and southeastern wards form the main high-vulnerability zone, particularly along the Meghna River corridor.</p>
+  </div>
+</div>
+
+</header>
+<section class="map-section" id="maps"><div class="map-section-inner">
+<div class="section-head"><div class="eyebrow">Spatial outputs</div><h2>Climate-risk evidence at municipal scale</h2></div>
+
+<div class="map-carousel">
+  <button class="map-slide-btn prev" id="mapPrev" type="button" aria-label="Previous maps">‹</button>
+  <div class="map-viewport">
+    <div class="map-grid" id="mapTrack">
+
+
+<button class="map-tile image-expand" type="button" data-image="images/study-area-map.jpg" data-title="Study Area Map">
+  <img src="images/study-area-map.jpg" alt="Study area map of Munshiganj Municipality">
+  <span><strong>Study Area Map</strong><small>Munshiganj Municipality and its nine wards within Munshiganj District, Bangladesh.</small></span>
+</button>
+
+<button class="map-tile image-expand" type="button" data-image="images/lulc-change-1995-2025.jpg" data-title="Land Use / Land Cover Change, 1995-2025"><img src="images/lulc-change-1995-2025.jpg" alt="Land use and land cover change maps"><span><strong>LULC Change · 1995-2025</strong><small>Built-up expansion and changes in vegetation, water bodies and bare land.</small></span></button>
+<button class="map-tile image-expand" type="button" data-image="images/lst-change-1995-2025.jpg" data-title="Land Surface Temperature, 1995-2025"><img src="images/lst-change-1995-2025.jpg" alt="Land surface temperature comparison"><span><strong>Land Surface Temperature</strong><small>Satellite-derived surface temperature comparison between 1995 and 2025.</small></span></button>
+<button class="map-tile image-expand" type="button" data-image="images/rainfall-variation-map.jpg" data-title="Rainfall Variation, 2015-2025"><img src="images/rainfall-variation-map.jpg" alt="Rainfall variation map"><span><strong>Rainfall Variation</strong><small>Spatial rainfall gradient derived from CHIRPS data.</small></span></button>
+
+<button class="map-tile image-expand" type="button" data-image="images/dem-map.jpg" data-title="DEM / Elevation">
+  <img src="images/dem-map.jpg" alt="DEM and elevation map of Munshiganj Municipality">
+  <span><strong>DEM / Elevation</strong><small>Elevation surface used as an input to the flood-vulnerability assessment.</small></span>
+</button>
+
+<button class="map-tile image-expand" type="button" data-image="images/slope-map.jpg" data-title="Slope">
+  <img src="images/slope-map.jpg" alt="Slope map of Munshiganj Municipality">
+  <span><strong>Slope</strong><small>Slope derived from elevation data and used in the weighted flood-risk assessment.</small></span>
+</button>
+
+<button class="map-tile image-expand" type="button" data-image="images/soil-map.jpg" data-title="Soil Type">
+  <img src="images/soil-map.jpg" alt="Soil type map of Munshiganj Municipality">
+  <span><strong>Soil Type</strong><small>Soil-condition layer incorporated as a flood-vulnerability factor.</small></span>
+</button>
+
+<button class="map-tile image-expand" type="button"
+        data-image="images/distance-to-river-map.jpg"
+        data-title="Distance to River">
+  <img src="images/distance-to-river-map.jpg"
+       alt="Distance to river map of Munshiganj Municipality">
+  <span>
+    <strong>Distance to River</strong>
+    <small>River-proximity layer used as an input to the flood-risk assessment.</small>
+  </span>
+</button>
+
+
+<button class="map-tile image-expand" type="button" data-image="images/flood-vulnerability-map.jpg" data-title="Flood Vulnerability"><img src="images/flood-vulnerability-map.jpg" alt="Flood vulnerability map"><span><strong>Flood Vulnerability</strong><small>Weighted assessment of topographic, hydrological, climatic and land-surface conditions.</small></span></button>
+<button class="map-tile image-expand" type="button" data-image="images/climate-vulnerability-map.jpg" data-title="Integrated Climate Risk"><img src="images/climate-vulnerability-map.jpg" alt="Integrated climate risk map"><span><strong>Integrated Climate Risk</strong><small>Combined overlay of LULC, LST, rainfall and flood vulnerability.</small></span></button>
+
+    </div>
+  </div>
+  <button class="map-slide-btn next" id="mapNext" type="button" aria-label="Next maps">›</button>
+</div>
+<div class="map-page-indicator" id="mapPageIndicator" aria-live="polite"></div>
+</div></section>
+
+<section class="section wrap">
+<div class="section-head"><div class="eyebrow">Methodology</div><h2>Satellite data + GIS-based overlay assessment</h2></div>
+<div class="methods">
+<div class="method-list">
+<div class="method-row"><strong>Land Use / Land Cover</strong><span>1995 Landsat 5 TM Surface Reflectance (30 m) and 2025 Sentinel-2 MSI Surface Reflectance (10 m).</span></div>
+<div class="method-row"><strong>Land Surface Temperature</strong><span>Thermal satellite data from Landsat 5 (1995) and Landsat 8 (2025).</span></div>
+<div class="method-row"><strong>Rainfall</strong><span>CHIRPS daily rainfall data used to assess spatial rainfall variation.</span></div>
+<div class="method-row"><strong>Flood vulnerability</strong><span>Weighted overlay integrating DEM, river proximity, rainfall, slope, LULC and soil conditions.</span></div>
+<div class="method-row"><strong>Integrated climate risk</strong><span>LULC, LST, rainfall and flood vulnerability were overlaid to identify areas experiencing multiple climate stresses.</span></div>
+</div>
+</div>
+</section>
+<section class="wrap back"><div><div class="eyebrow">Continue exploring</div><h2>Return to the research portfolio</h2></div><a class="btn primary" href="../../index.html#research">← Back to Research</a></section>
+<footer class="wrap"><span>Fariha Aktar · Completed Research</span><span>Climate Risk · GIS · Remote Sensing · Municipal Planning</span></footer>
+</main>
+
+<div class="image-modal" id="imageModal"><div class="image-dialog"><div class="image-bar"><div class="image-title" id="imageTitle">Spatial output</div><button class="image-close" id="imageClose">×</button></div><div class="image-stage"><img id="imageView" src="" alt=""></div></div></div>
+<div class="modal" id="pdfModal"><div class="modal-dialog"><div class="modal-bar"><div class="modal-title" id="pdfTitle">Research extract</div><button class="modal-close" id="pdfClose">×</button></div><iframe id="pdfFrame" src="about:blank" title="Research PDF preview"></iframe></div></div>
+
+<script>
+const imageModal=document.getElementById("imageModal"),imageView=document.getElementById("imageView"),imageTitle=document.getElementById("imageTitle"),imageClose=document.getElementById("imageClose");
+document.querySelectorAll(".image-expand").forEach(el=>el.addEventListener("click",()=>{imageView.src=el.dataset.image;imageTitle.textContent=el.dataset.title||"Spatial output";imageModal.classList.add("open");document.body.style.overflow="hidden"}));
+function closeImage(){imageModal.classList.remove("open");imageView.src="";document.body.style.overflow=""} imageClose.addEventListener("click",closeImage);imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+const pdfModal=document.getElementById("pdfModal"),pdfFrame=document.getElementById("pdfFrame"),pdfTitle=document.getElementById("pdfTitle"),pdfClose=document.getElementById("pdfClose");
+document.querySelectorAll(".preview-trigger").forEach(el=>el.addEventListener("click",()=>{pdfFrame.src=el.dataset.src+"#view=FitH";pdfTitle.textContent=el.dataset.title||"Research extract";pdfModal.classList.add("open");document.body.style.overflow="hidden"}));
+function closePdf(){pdfModal.classList.remove("open");pdfFrame.src="about:blank";document.body.style.overflow=""}pdfClose.addEventListener("click",closePdf);pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(imageModal.classList.contains("open"))closeImage();if(pdfModal.classList.contains("open"))closePdf()}});
+
+const mapTrack=document.getElementById("mapTrack");
+const mapPrev=document.getElementById("mapPrev");
+const mapNext=document.getElementById("mapNext");
+const mapIndicator=document.getElementById("mapPageIndicator");
+let mapPage=0;
+
+function mapsPerView(){
+  return window.innerWidth<=760 ? 1 : 3;
+}
+
+function updateMapCarousel(){
+  if(!mapTrack) return;
+  const cards=[...mapTrack.querySelectorAll(".map-tile")];
+  const perView=mapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  mapPage=Math.min(mapPage,Math.max(0,totalPages-1));
+
+  if(perView===1){
+    mapTrack.style.transform=`translateX(-${mapPage*100}%)`;
+  }else{
+    const viewport=mapTrack.parentElement.clientWidth;
+    const gap=18;
+    const cardWidth=(viewport-(gap*(perView-1)))/perView;
+    const shift=mapPage*perView*(cardWidth+gap);
+    mapTrack.style.transform=`translateX(-${shift}px)`;
+  }
+
+  mapPrev.disabled=mapPage===0;
+  mapNext.disabled=mapPage>=totalPages-1;
+  mapIndicator.textContent=`${mapPage+1} / ${totalPages}`;
+}
+
+mapPrev.addEventListener("click",()=>{
+  if(mapPage>0){mapPage--;updateMapCarousel();}
+});
+mapNext.addEventListener("click",()=>{
+  const total=Math.ceil(mapTrack.querySelectorAll(".map-tile").length/mapsPerView());
+  if(mapPage<total-1){mapPage++;updateMapCarousel();}
+});
+window.addEventListener("resize",updateMapCarousel);
+window.addEventListener("load",updateMapCarousel);
+updateMapCarousel();
+
+</script>
+</body>
+</html>
