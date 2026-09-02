@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapping Climate Exposure Using Geospatial and Earth Observation Data | Fariha Aktar</title>
+<meta name="description" content="Ongoing research on mapping climate exposure using geospatial and Earth observation data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1180px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+.hero{padding:34px 0 24px;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:26px;align-items:start}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:30px;line-height:1.15;margin:10px 0 14px}
+h2{font-size:24px;line-height:1.2;margin:4px 0 0}
+h3{font-size:1rem;margin:0}
+.hero-copy{margin:0;color:var(--muted);font-size:.9rem;max-width:720px}
+.status{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:7px 11px;border:1px solid #bcd3c4;border-radius:999px;background:#f3f8f4;color:var(--green-dark);font-size:.75rem;font-weight:700}
+.status:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.hero-focus{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:grid;grid-template-columns:70px 1fr;gap:12px}
+.hero-focus strong{color:var(--green);font-size:.66rem;text-transform:uppercase;letter-spacing:.12em}
+.hero-focus span{color:var(--muted);font-size:.78rem;line-height:1.45}
+
+.context{border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.context-head{padding:14px 17px;background:var(--soft);border-bottom:1px solid var(--line)}
+.context-head strong{display:block;font-family:"Source Serif 4",serif;font-size:1.15rem;margin-top:3px}
+.context-row{padding:10px 17px;border-bottom:1px solid var(--line)}
+.context-row:last-child{border:0}
+.context-row small{display:block;color:var(--green);font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.context-row strong{display:block;font-size:.84rem;margin-top:2px}
+.context-row span{display:block;color:var(--muted);font-size:.72rem;margin-top:2px}
+
+.section{padding:32px 0 4px}
+.section-head{margin-bottom:16px}
+
+/* Method */
+.method{border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;gap:8px;align-items:stretch}
+.method-step{position:relative;border:1px solid var(--line);border-radius:14px;background:var(--soft);padding:16px}
+.step-no{position:absolute;top:10px;right:12px;color:#98a29b;font-size:.62rem;font-weight:700;letter-spacing:.1em}
+.method-step strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:.98rem;margin-bottom:7px}
+.method-step small{display:block;color:var(--muted);font-size:.71rem;line-height:1.5}
+.method-arrow{display:grid;place-items:center;color:var(--green);font-size:1.3rem}
+.method-note{margin:9px 0 0;color:var(--muted);font-size:.7rem}
+
+/* Maps slider */
+.map-section{width:100vw;margin-left:calc(50% - 50vw);padding:42px 34px 18px}
+.map-inner{max-width:1800px;margin:auto}
+.carousel{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;gap:14px;align-items:center}
+.viewport{overflow:hidden}
+.track{display:flex;gap:18px;transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.map-card{flex:0 0 calc((100% - 36px)/3);width:calc((100% - 36px)/3);min-width:0;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;text-align:left;cursor:zoom-in}
+.map-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.map-visual{height:430px;background:var(--soft);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden}
+.map-visual img{width:100%;height:100%;object-fit:contain;background:#fff}
+.placeholder{padding:20px;text-align:center;color:#839087}
+.placeholder strong{display:block;font-family:"Source Serif 4",serif;color:var(--green-dark);font-size:1rem;margin-bottom:5px}
+.map-card span{display:block;padding:13px 15px 15px}
+.map-card span strong{display:block;font-family:"Source Serif 4",serif;font-size:1rem}
+.map-card small{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}
+.slide{width:46px;height:46px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);font:2rem Georgia,serif;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 24px rgba(27,49,36,.08)}
+.slide:hover{background:var(--green);color:#fff}
+.slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+.indicator{text-align:center;margin-top:12px;color:var(--muted);font-size:.75rem;font-weight:600}
+
+/* Status */
+.progress{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.progress-card{border:1px solid var(--line);border-radius:15px;padding:18px}
+.progress-card strong{display:block;font-family:"Source Serif 4",serif;margin:5px 0}
+.progress-card p{margin:0;color:var(--muted);font-size:.78rem}
+
+.back{margin:52px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:16px}
+
+.image-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.image-modal.open{display:flex}
+.image-dialog{width:min(1450px,97vw);height:min(94vh,1000px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.image-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title{font-size:.84rem;font-weight:700}
+.image-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+
+@media(max-width:950px){
+  .hero{grid-template-columns:1fr}
+  .method{grid-template-columns:1fr}
+  .method-arrow{height:20px;transform:rotate(90deg)}
+  .progress{grid-template-columns:1fr 1fr}
+  .map-visual{height:360px}
+}
+@media(max-width:760px){
+  .wrap{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-focus{grid-template-columns:1fr;gap:4px}
+  .carousel{grid-template-columns:38px minmax(0,1fr) 38px;gap:7px}
+  .slide{width:36px;height:36px;font-size:1.55rem}
+  .track{gap:0}
+  .map-card{flex:0 0 100%;width:100%}
+  .map-visual{height:auto;min-height:300px}
+  .map-visual img{height:auto;max-height:620px}
+  .progress{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+
+/* Top-right research image slider */
+.hero{
+  grid-template-columns:minmax(0,.92fr) minmax(520px,1.08fr) !important;
+  gap:30px !important;
+  align-items:start !important;
+  padding-bottom:18px !important;
+}
+.hero-map-panel{
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+.hero-map-head{
+  min-height:62px;
+  padding:12px 15px;
+  border-bottom:1px solid var(--line);
+  background:var(--soft);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.hero-map-head strong{
+  display:block;
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.05rem;
+  margin-top:2px;
+}
+.hero-map-count{
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:700;
+}
+.hero-map-slider{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) 42px;
+  gap:8px;
+  align-items:center;
+  padding:10px;
+}
+.hero-map-viewport{
+  overflow:hidden;
+  width:100%;
+}
+.hero-map-track{
+  display:flex;
+  width:100%;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+.hero-map-track .map-card{
+  flex:0 0 100% !important;
+  width:100% !important;
+  border:0 !important;
+  border-radius:12px !important;
+  box-shadow:none !important;
+  transform:none !important;
+}
+.hero-map-track .map-visual{
+  height:410px !important;
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+.hero-map-track .map-card > span{
+  padding:10px 3px 2px !important;
+}
+.hero-map-track .map-card > span strong{
+  font-size:.95rem !important;
+}
+.hero-map-track .map-card > span small{
+  font-size:.69rem !important;
+}
+.hero-slide{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid var(--line-dark);
+  background:#fff;
+  color:var(--green-dark);
+  display:grid;
+  place-items:center;
+  font:1.6rem Georgia,serif;
+  cursor:pointer;
+}
+.hero-slide:hover{
+  background:var(--green);
+  border-color:var(--green);
+  color:#fff;
+}
+.hero-slide:disabled{
+  opacity:.28;
+  cursor:default;
+  background:#fff;
+  color:var(--muted);
+}
+.context-strip{
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  display:grid;
+  grid-template-columns:.7fr 1.45fr 1fr;
+  margin-top:4px;
+}
+.context-strip > div{
+  padding:13px 18px 13px 0;
+}
+.context-strip > div + div{
+  border-left:1px solid var(--line);
+  padding-left:18px;
+}
+.context-strip small{
+  display:block;
+  color:var(--green);
+  font-size:.62rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+}
+.context-strip strong{
+  display:block;
+  font-size:.76rem;
+  margin-top:3px;
+}
+@media(max-width:1000px){
+  .hero{
+    grid-template-columns:1fr !important;
+  }
+  .hero-map-track .map-visual{
+    height:480px !important;
+  }
+}
+@media(max-width:700px){
+  .hero-map-slider{
+    grid-template-columns:36px minmax(0,1fr) 36px;
+    gap:5px;
+    padding:8px;
+  }
+  .hero-slide{
+    width:34px;
+    height:34px;
+    font-size:1.45rem;
+  }
+  .hero-map-track .map-visual{
+    height:auto !important;
+    min-height:280px;
+  }
+  .context-strip{
+    grid-template-columns:1fr;
+  }
+  .context-strip > div{
+    padding:11px 0;
+  }
+  .context-strip > div + div{
+    border-left:0;
+    border-top:1px solid var(--line);
+    padding-left:0;
+  }
+}
+
+
+/* Compact visual structure */
+.hero{
+  padding:22px 0 14px !important;
+  grid-template-columns:minmax(0,.9fr) minmax(520px,1.1fr) !important;
+  gap:24px !important;
+  align-items:start !important;
+}
+h1{font-size:28px !important;margin:7px 0 10px !important}
+.hero-copy{font-size:.84rem !important;line-height:1.48 !important;max-width:650px !important}
+.status{margin-top:10px !important}
+.hero-focus{margin-top:10px !important;padding-top:10px !important;grid-template-columns:62px 1fr !important}
+.hero-focus span{font-size:.73rem !important}
+
+.hero-meta-grid{
+  margin-top:11px;
+  display:grid;
+  grid-template-columns:.72fr 1.15fr 1fr;
+  border:1px solid var(--line);
+  border-radius:13px;
+  overflow:hidden;
+}
+.hero-meta-item{padding:9px 10px}
+.hero-meta-item + .hero-meta-item{border-left:1px solid var(--line)}
+.hero-meta-item small{
+  display:block;color:var(--green);font-size:.56rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;margin-bottom:2px
+}
+.hero-meta-item strong{display:block;font-size:.67rem;line-height:1.3}
+
+.hero-workflow{
+  margin-top:8px;
+  padding:9px 10px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:var(--soft);
+  display:grid;
+  grid-template-columns:84px 1fr;
+  gap:8px;
+  align-items:center;
+}
+.workflow-label{
+  color:var(--green);font-size:.56rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em
+}
+.workflow-flow{display:flex;align-items:center;gap:5px}
+.workflow-flow span{
+  flex:1 1 0;padding:5px 6px;border:1px solid #d3ddd6;border-radius:999px;
+  background:#fff;text-align:center;font-size:.58rem;font-weight:600;white-space:nowrap
+}
+.workflow-flow b{color:var(--green);font-size:.7rem}
+
+.hero-map-head{min-height:50px !important;padding:8px 12px !important}
+.hero-map-slider{
+  grid-template-columns:34px minmax(0,1fr) 34px !important;
+  gap:6px !important;padding:7px 8px 5px !important
+}
+.hero-slide{width:32px !important;height:32px !important;font-size:1.35rem !important}
+.hero-map-track .map-visual{height:300px !important}
+.hero-map-track .map-card > span{padding:7px 2px 4px !important}
+.hero-map-track .map-card > span strong{font-size:.88rem !important}
+.hero-map-track .map-card > span small{font-size:.64rem !important;line-height:1.3 !important}
+
+.output-method-note{
+  margin:0 10px 10px;
+  padding:9px 11px;
+  border-top:1px solid var(--line);
+  background:#fbfcfb;
+}
+.output-method-note .eyebrow{font-size:.56rem}
+.output-method-note p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:.64rem;
+  line-height:1.4;
+}
+
+.context-strip{display:none !important}
+
+.section{padding-top:20px !important}
+.method-section{padding-top:14px !important}
+.method-bar{
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  display:grid;
+  grid-template-columns:1.15fr 1fr 24px 1fr 24px 1fr;
+  align-items:center;
+  min-height:82px;
+}
+.method-bar-title{padding:11px 16px 11px 0}
+.method-bar-title h2{font-size:19px !important;margin-top:2px !important}
+.method-bar-step{
+  min-height:58px;padding:8px 11px;border-left:1px solid var(--line);
+  display:grid;grid-template-columns:22px 1fr;gap:6px;align-items:start
+}
+.method-bar-step>span{color:#98a39b;font-size:.58rem;font-weight:700;letter-spacing:.08em;padding-top:2px}
+.method-bar-step strong{display:block;font-size:.72rem;margin-bottom:1px}
+.method-bar-step small{display:block;color:var(--muted);font-size:.61rem;line-height:1.3}
+.method-bar-arrow{text-align:center;color:var(--green);font-size:.9rem}
+
+@media(max-width:1050px){
+  .hero{grid-template-columns:1fr !important}
+  .hero-map-track .map-visual{height:430px !important}
+  .method-bar{grid-template-columns:1fr}
+  .method-bar-title{padding:11px 0}
+  .method-bar-step{border-left:0;border-top:1px solid var(--line)}
+  .method-bar-arrow{display:none}
+}
+@media(max-width:700px){
+  .hero-meta-grid{grid-template-columns:1fr}
+  .hero-meta-item + .hero-meta-item{border-left:0;border-top:1px solid var(--line)}
+  .hero-workflow{grid-template-columns:1fr}
+  .workflow-flow{flex-wrap:wrap}
+  .workflow-flow span{flex:1 1 100%}
+  .workflow-flow b{width:100%;text-align:center;transform:rotate(90deg)}
+}
+
+
+/* Two-image SAM slider fix */
+.hero-map-viewport{
+  overflow:hidden !important;
+}
+.hero-map-track{
+  display:flex !important;
+  gap:0 !important;
+  width:100% !important;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1) !important;
+}
+.hero-map-track .map-card{
+  flex:0 0 100% !important;
+  width:100% !important;
+  max-width:100% !important;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="wrap hero">
+  <div>
+    <div class="eyebrow">Ongoing Research · GeoAI · Remote Sensing · SAM</div>
+    <h1>Mapping Climate Exposure Using Geospatial and Earth Observation Data</h1>
+    <p class="hero-copy">
+      An ongoing GeoAI research project using the Segment Anything Model (SAM) to automatically delineate land parcel boundaries from high-resolution satellite imagery.
+    </p>
+    <div class="status">Research in progress</div>
+    <div class="hero-focus">
+      <strong>Focus</strong>
+      <span>Develop an automated workflow for extracting precise land parcel boundaries from satellite imagery for later GIS-based analysis and climate-adaptation applications.</span>
+    </div>
+<div class="hero-meta-grid">
+  <div class="hero-meta-item">
+    <small>Stage</small>
+    <strong>Ongoing Research</strong>
+  </div>
+  <div class="hero-meta-item">
+    <small>Current data</small>
+    <strong>High-resolution Google Earth imagery</strong>
+  </div>
+  <div class="hero-meta-item">
+    <small>Processing</small>
+    <strong>Python · SAM · GIS</strong>
+  </div>
+</div>
+
+<div class="hero-workflow">
+  <div class="workflow-label">Current workflow</div>
+  <div class="workflow-flow">
+    <span>Satellite image</span><b>→</b>
+    <span>SAM segmentation</span><b>→</b>
+    <span>Boundary extraction</span>
+  </div>
+</div>
+
+  </div>
+
+  
+<aside class="hero-map-panel">
+  <div class="hero-map-head">
+    <div>
+      <div class="eyebrow">Current research outputs</div>
+      <strong>Input → SAM Output</strong>
+    </div>
+    <div class="hero-map-count" id="heroMapCount">1 / 2</div>
+  </div>
+
+  <div class="hero-map-slider">
+    <button class="hero-slide prev" id="heroPrev" type="button" aria-label="Previous image">‹</button>
+
+    <div class="hero-map-viewport">
+      <div class="hero-map-track" id="heroMapTrack">
+        <button class="map-card image-expand" type="button"
+                data-image="images/img14.jpg"
+                data-title="Original Satellite Image">
+          <div class="map-visual">
+            <img src="images/img14.jpg" alt="Original high-resolution satellite image used for land parcel segmentation">
+          </div>
+          <span>
+            <strong>Original Satellite Image</strong>
+            <small>High-resolution satellite imagery used as the input for parcel-boundary segmentation.</small>
+          </span>
+        </button>
+
+        <button class="map-card image-expand" type="button"
+                data-image="images/sam_v1.jpg"
+                data-title="SAM Parcel Boundary Segmentation">
+          <div class="map-visual">
+            <img src="images/sam_v1.jpg" alt="Land parcel boundaries extracted using the Segment Anything Model">
+          </div>
+          <span>
+            <strong>SAM Parcel Boundary Segmentation</strong>
+            <small>Current automated boundary result generated with the Segment Anything Model (SAM).</small>
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <button class="hero-slide next" id="heroNext" type="button" aria-label="Next image">›</button>
+  </div>
+</aside>
+
+</header>
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Research status</div>
+    <h2>Current development</h2>
+  </div>
+
+  <div class="progress">
+    <article class="progress-card">
+      <div class="eyebrow">Indicators</div>
+      <strong>Exposure layers</strong>
+      <p>Developing and harmonizing the Earth-observation and geospatial indicators used in the assessment.</p>
+    </article>
+    <article class="progress-card">
+      <div class="eyebrow">Analysis</div>
+      <strong>Spatial integration</strong>
+      <p>Testing how exposure indicators can be combined and compared spatially without overstating uncertainty.</p>
+    </article>
+    <article class="progress-card">
+      <div class="eyebrow">Next step</div>
+      <strong>Validation and interpretation</strong>
+      <p>Refining the analytical framework and validating the final spatial exposure patterns before reporting conclusions.</p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the research portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#research">← Back to Research</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Ongoing Research</span>
+  <span>Climate Exposure · GIS · Remote Sensing · Earth Observation</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Spatial output</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<script>
+const heroTrack = document.getElementById("heroMapTrack");
+const heroPrev = document.getElementById("heroPrev");
+const heroNext = document.getElementById("heroNext");
+const heroCount = document.getElementById("heroMapCount");
+let heroIndex = 0;
+
+function updateHeroSlider() {
+  if (!heroTrack) return;
+  const cards = heroTrack.querySelectorAll(".map-card");
+  const total = cards.length;
+
+  heroIndex = Math.max(0, Math.min(heroIndex, total - 1));
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+
+  if (heroPrev) heroPrev.disabled = heroIndex === 0;
+  if (heroNext) heroNext.disabled = heroIndex === total - 1;
+  if (heroCount) heroCount.textContent = `${heroIndex + 1} / ${total}`;
+}
+
+if (heroPrev) {
+  heroPrev.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (heroIndex > 0) {
+      heroIndex--;
+      updateHeroSlider();
+    }
+  });
+}
+
+if (heroNext) {
+  heroNext.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const total = heroTrack.querySelectorAll(".map-card").length;
+    if (heroIndex < total - 1) {
+      heroIndex++;
+      updateHeroSlider();
+    }
+  });
+}
+
+updateHeroSlider();
+
+const modal = document.getElementById("imageModal");
+const view = document.getElementById("imageView");
+const modalTitle = document.getElementById("imageTitle");
+const closeButton = document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach((card) => {
+  card.addEventListener("click", (event) => {
+    if (event.target.closest(".hero-slide")) return;
+
+    const img = card.querySelector("img");
+    if (!img) return;
+
+    view.src = card.dataset.image;
+    modalTitle.textContent = card.dataset.title || "Spatial output";
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeModal() {
+  modal.classList.remove("open");
+  view.src = "";
+  document.body.style.overflow = "";
+}
+
+if (closeButton) closeButton.addEventListener("click", closeModal);
+if (modal) {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && modal.classList.contains("open")) closeModal();
+  if (event.key === "ArrowRight" && heroNext && !heroNext.disabled) heroNext.click();
+  if (event.key === "ArrowLeft" && heroPrev && !heroPrev.disabled) heroPrev.click();
+});
+</script>
+</body>
+</html>
