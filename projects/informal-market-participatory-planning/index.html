@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informal Market and Stakeholder Analysis | Fariha Aktar</title>
+<meta name="description" content="Participatory planning project examining the spatial and temporal characteristics, problems, stakeholders and planning needs of an informal market at Iraqi Playground, Azimpur, Dhaka.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+/* Standard portfolio hero */
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin-left:auto;margin-right:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr);
+  gap:22px;
+  align-items:start;
+}
+.hero>div:first-child{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:29px;line-height:1.14;margin:8px 0 12px}
+h2{font-size:24px;line-height:1.2;margin:5px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:620px;font-size:.88rem;line-height:1.52}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.hero-focus-line{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:72px 1fr;gap:10px;
+}
+.hero-focus-line strong{color:var(--green);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem}
+.hero-focus-line span{color:var(--muted);font-size:.74rem;line-height:1.45}
+
+.hero-left-summary{
+  margin-top:16px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+  display:grid;grid-template-columns:.84fr 1.16fr;
+}
+.hero-left-summary-item{padding:12px 12px 12px 0;min-width:0}
+.hero-left-summary-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.hero-left-summary-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0}
+.hero-left-summary-item small{display:block;color:var(--green);font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.hero-left-summary-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+/* Large top-right slider, 2 images per slide */
+.hero-map-panel{width:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.hero-map-head{min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hero-map-head strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;margin-top:2px}
+.hero-map-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.hero-map-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px 10px 11px}
+.hero-map-viewport{width:100%;overflow:hidden}
+.hero-map-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hero-map-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;
+  background:#fff;text-align:left;cursor:zoom-in;
+}
+.hero-map-card img{width:100%;height:365px;object-fit:contain;object-position:center;background:#fff;padding:5px;border-bottom:1px solid var(--line)}
+.hero-map-card>span{display:block;padding:10px 12px 12px;min-height:76px}
+.hero-map-card>span strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:.9rem;line-height:1.22;margin-bottom:3px}
+.hero-map-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hero-slide{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);display:grid;place-items:center;cursor:pointer;font:1.45rem Georgia,serif}
+.hero-slide:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hero-slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:30px 0 5px}
+.section-head{margin-bottom:17px}
+
+.project-context{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+}
+.context-block{padding:18px 22px 18px 0}
+.context-block+.context-block{border-left:1px solid var(--line);padding-left:22px}
+.context-block p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.method{padding:18px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.method:last-child{border-right:0;margin-right:0}
+.method .n{display:block;color:var(--green);font-size:.63rem;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.method strong{display:block;font-family:"Source Serif 4",serif;font-size:.97rem;margin-bottom:5px}
+.method p{margin:0;color:var(--muted);font-size:.74rem}
+
+.findings{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.finding{border:1px solid var(--line);border-radius:15px;padding:16px}
+.finding strong{display:block;font-family:"Source Serif 4",serif;font-size:.96rem;margin:5px 0}
+.finding p{margin:0;color:var(--muted);font-size:.73rem}
+
+.recommendations{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.recommendation{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.recommendation span{display:block;color:var(--green);font-size:.59rem;font-weight:700;letter-spacing:.08em;margin-bottom:5px}
+.recommendation strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;margin-bottom:4px}
+.recommendation p{margin:0;color:var(--muted);font-size:.69rem;line-height:1.42}
+
+.limitations{
+  margin-top:13px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--soft);
+  display:grid;grid-template-columns:140px 1fr;gap:17px;
+}
+.limitations strong{font-family:"Source Serif 4",serif}
+.limitations p{margin:0;color:var(--muted);font-size:.75rem}
+
+.outcome{
+  border:1px solid var(--line);border-radius:17px;padding:19px;background:var(--soft);
+  display:grid;grid-template-columns:180px 1fr;gap:22px;
+}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.04rem}
+.outcome p{margin:0;color:var(--muted);font-size:.81rem}
+
+.back{margin:48px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:16px}
+
+/* Image / PDF modals */
+.image-modal,.pdf-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.pdf-modal{z-index:110;background:rgba(12,20,15,.78)}
+.image-modal.open,.pdf-modal.open{display:flex}
+.image-dialog,.pdf-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.pdf-dialog{width:min(1200px,96vw);height:90vh}
+.image-bar,.pdf-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title,.pdf-title{font-size:.84rem;font-weight:700}
+.image-close,.pdf-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.pdf-dialog iframe{width:100%;height:100%;border:0}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr)}
+  .hero-map-card img{height:330px}
+  .recommendations{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .hero-map-card img{height:390px}
+  .method-grid,.findings{grid-template-columns:1fr 1fr}
+  .method:nth-child(2){border-right:0}
+  .method:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-map-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .hero-slide{width:30px;height:30px;font-size:1.3rem}
+  .hero-map-track{gap:0}
+  .hero-map-card{flex:0 0 100%;width:100%}
+  .hero-map-card img{height:auto;max-height:480px}
+  .hero-left-summary{grid-template-columns:1fr}
+  .hero-left-summary-item,.hero-left-summary-item:nth-child(2),.hero-left-summary-item:nth-child(3){grid-column:auto;padding:10px 0;border-left:0}
+  .hero-left-summary-item+.hero-left-summary-item{border-top:1px solid var(--line)}
+  .project-context,.method-grid,.findings,.recommendations{grid-template-columns:1fr}
+  .context-block+.context-block{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .limitations,.outcome{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div>
+    <div class="eyebrow">Academic Project · Participatory Planning · 2024</div>
+
+    <h1>A Study on Informal Market at the Local Level and the Role of Stakeholders</h1>
+
+    <p class="hero-copy">
+      A participatory planning study of the informal market beside Iraqi Playground in Azimpur, Dhaka,
+      examining its spatial and temporal characteristics, vendor and customer problems, stakeholder relationships,
+      and locally grounded planning interventions.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary pdf-trigger" data-src="presentation.pdf" data-title="Project Presentation">View presentation</button>
+      <button class="btn pdf-trigger" data-src="report.pdf" data-title="Project Report">View report</button>
+    </div>
+
+    <div class="hero-focus-line">
+      <strong>Objective</strong>
+      <span>
+        Understand the market's spatial and temporal extent, identify problems experienced by vendors and users,
+        and explore the roles, interactions and influence of stakeholders at the local level.
+      </span>
+    </div>
+
+    <div class="hero-left-summary">
+      <div class="hero-left-summary-item">
+        <small>Study area</small>
+        <strong>Iraqi Playground · New Paltan Lane · Azimpur, Dhaka</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Market profile</small>
+        <strong>22 vendors · Regular morning market · Approx. 7:30 AM-1:00 PM</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Methods</small>
+        <strong>PRA · FGD · In-depth Interviews · Social/Resource Mapping · Transect Walk · Seasonal Analysis · Pairwise Ranking · Venn Diagram · SWOT</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-map-panel">
+    <div class="hero-map-head">
+      <div>
+        <div class="eyebrow">Participatory outputs</div>
+        <strong>Spatial, Temporal & Stakeholder Evidence</strong>
+      </div>
+      <div class="hero-map-count" id="heroMapCount">1 / 3</div>
+    </div>
+
+    <div class="hero-map-slider">
+      <button class="hero-slide" id="heroPrev" type="button" aria-label="Previous outputs">‹</button>
+
+      <div class="hero-map-viewport">
+        <div class="hero-map-track" id="heroMapTrack">
+
+          <button class="hero-map-card image-expand" data-image="images/study-area-profile.jpg" data-title="Study Area Profile">
+            <img src="images/study-area-profile.jpg" alt="Study area profile of the informal market at Iraqi Playground">
+            <span>
+              <strong>Study Area Profile</strong>
+              <small>Location, operating pattern, vendor count, products and physical extent of the informal market.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/social-resource-map.jpg" data-title="Social and Resource Map">
+            <img src="images/social-resource-map.jpg" alt="Participatory social and resource map of the study area">
+            <span>
+              <strong>Social & Resource Map</strong>
+              <small>Participatory mapping of social infrastructure, local resources and service deficiencies.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/seasonal-trends.jpg" data-title="Seasonal Trends">
+            <img src="images/seasonal-trends.jpg" alt="Seasonal variation of informal market activities">
+            <span>
+              <strong>Seasonal Trends</strong>
+              <small>Comparison of sales, supply, income, food security and satisfaction across vendor groups.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/stakeholder-network.jpg" data-title="Stakeholder Network">
+            <img src="images/stakeholder-network.jpg" alt="Venn diagram of stakeholder influence and interaction">
+            <span>
+              <strong>Stakeholder Network</strong>
+              <small>Venn diagram showing influence and interaction among vendors, authorities and local actors.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/dream-map.jpg" data-title="Vendor Dream Map">
+            <img src="images/dream-map.jpg" alt="Problem map and dream map prepared with informal vendors">
+            <span>
+              <strong>Problem & Dream Map</strong>
+              <small>Participatory representation of existing problems and vendors' preferred future market condition.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/vending-zone.jpg" data-title="Proposed Vending Zone">
+            <img src="images/vending-zone.jpg" alt="Recommended vending zone allocation based on participatory planning">
+            <span>
+              <strong>Proposed Vending Zone</strong>
+              <small>Spatial recommendation separating wet and semi-wet vending activities while preserving access and drainage.</small>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <button class="hero-slide" id="heroNext" type="button" aria-label="Next outputs">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Project context</div>
+    <h2>Understanding an informal market through local knowledge</h2>
+  </div>
+
+  <div class="project-context">
+    <div class="context-block">
+      <div class="eyebrow">Market setting</div>
+      <p>
+        The market operates beside Iraqi Playground in Azimpur and includes vegetable, fruit, fish,
+        chicken, spice, clothing and utensil vendors using carts, vans and temporary ground-based structures.
+      </p>
+    </div>
+
+    <div class="context-block">
+      <div class="eyebrow">Planning perspective</div>
+      <p>
+        Instead of treating informal vending only as a spatial encroachment issue, the project examined
+        everyday routines, infrastructure deficiencies, vendor rights, customer concerns and stakeholder influence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Participatory methodology</div>
+    <h2>Combining space, time and relationship-based PRA tools</h2>
+  </div>
+
+  <div class="method-grid">
+    <div class="method">
+      <span class="n">01</span>
+      <strong>Spatial understanding</strong>
+      <p>Social/resource mapping, natural-resource mapping and transect walks documented physical conditions, facilities and spatial problems.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">02</span>
+      <strong>Temporal analysis</strong>
+      <p>Historical timeline, seasonal diagrams, weekly/occasional variation and daily schedules captured changes in market activity over time.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">03</span>
+      <strong>Problem prioritization</strong>
+      <p>Pairwise ranking and cause-effect diagrams were used with vendors and residents to identify and explain priority problems.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">04</span>
+      <strong>Stakeholder analysis</strong>
+      <p>Venn diagrams, process maps, interviews and SWOT analysis explored influence, responsibilities, conflicts and implementation opportunities.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Key findings</div>
+    <h2>What the participatory assessment revealed</h2>
+  </div>
+
+  <div class="findings">
+    <article class="finding">
+      <div class="eyebrow">Space & infrastructure</div>
+      <strong>Good local access, weak basic facilities</strong>
+      <p>The market benefits from nearby residential customers and WASA water access, but lacks sanitation, drainage, storage and formal waste facilities.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Vendor security</div>
+      <strong>Informal tenure shapes everyday risk</strong>
+      <p>Without formal rights to the space, vendors reported concerns including eviction, extortion, space conflict and restricted business hours.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Temporal pattern</div>
+      <strong>Livelihood conditions vary by season</strong>
+      <p>Vegetable, fruit and fish vendors experience different seasonal sales patterns, while rainfall, waterlogging and heat disrupt operations.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Stakeholders</div>
+      <strong>Local institutions strongly influence operations</strong>
+      <p>Ward-level actors, DSCC, the wholesale market and other local stakeholders shape management, water, waste, trading and market continuity.</p>
+    </article>
+  </div>
+
+  <div class="limitations">
+    <strong>Study limitations</strong>
+    <p>
+      Vendors had limited time for participatory sessions; sensitive information on extortion was difficult to obtain;
+      local political leaders were not directly approached on that issue; and irregular attendance limited participation
+      of the market's only female vendor in some FGD sessions.
+    </p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Planning recommendations</div>
+    <h2>From participatory evidence to local interventions</h2>
+  </div>
+
+  <div class="recommendations">
+    <article class="recommendation">
+      <span>01</span>
+      <strong>Local vending committee</strong>
+      <p>Create a ward-level body to represent vendors and improve communication with DSCC and local authorities.</p>
+    </article>
+
+    <article class="recommendation">
+      <span>02</span>
+      <strong>Registration & ID</strong>
+      <p>Introduce transparent vendor registration, identity cards and locally administered licensing arrangements.</p>
+    </article>
+
+    <article class="recommendation">
+      <span>03</span>
+      <strong>Infrastructure & utilities</strong>
+      <p>Provide waste bins, sanitation, drainage, storage, shelter, water and other essential facilities within the market layout.</p>
+    </article>
+
+    <article class="recommendation">
+      <span>04</span>
+      <strong>Participatory vending zones</strong>
+      <p>Define vending areas and internal zones for wet and semi-wet products using the vendors' dream map and site requirements.</p>
+    </article>
+
+    <article class="recommendation">
+      <span>05</span>
+      <strong>Price transparency</strong>
+      <p>Display regularly updated price charts and strengthen monitoring to address customer concerns over price hikes.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="outcome">
+    <strong>Project outcome</strong>
+    <p>
+      The project combined participatory spatial mapping, temporal analysis, problem prioritization and stakeholder analysis
+      to develop recommendations that address both the physical design of the market and its governance, vendor security and local management.
+    </p>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the project portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#projects">← Back to Projects</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Academic Project · 2024</span>
+  <span>Participatory Planning · PRA · Stakeholder Analysis · Informal Markets</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Project output</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-dialog">
+    <div class="pdf-bar">
+      <div class="pdf-title" id="pdfTitle">Project document</div>
+      <button class="pdf-close" id="pdfClose">×</button>
+    </div>
+    <iframe id="pdfFrame" src="about:blank" title="Project document"></iframe>
+  </div>
+</div>
+
+<script>
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){return window.innerWidth<=720?1:2}
+
+function updateHeroMapSlider(){
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*2*(cardWidth+gap)}px)`;
+  }
+
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+
+heroPrev.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(heroMapPage>0){heroMapPage--;updateHeroMapSlider()}
+});
+
+heroNext.addEventListener("click",e=>{
+  e.stopPropagation();
+  const totalPages=Math.ceil(heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView());
+  if(heroMapPage<totalPages-1){heroMapPage++;updateHeroMapSlider()}
+});
+
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Project output";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const pdfTitle=document.getElementById("pdfTitle");
+const pdfClose=document.getElementById("pdfClose");
+
+document.querySelectorAll(".pdf-trigger").forEach(el=>{
+  el.addEventListener("click",()=>{
+    pdfFrame.src=el.dataset.src+"#view=FitH";
+    pdfTitle.textContent=el.dataset.title||"Project document";
+    pdfModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closePdf(){
+  pdfModal.classList.remove("open");
+  pdfFrame.src="about:blank";
+  document.body.style.overflow="";
+}
+pdfClose.addEventListener("click",closePdf);
+pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(imageModal.classList.contains("open"))closeImage();
+    if(pdfModal.classList.contains("open"))closePdf();
+  }
+});
+</script>
+</body>
+</html>
