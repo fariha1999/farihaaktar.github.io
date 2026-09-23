@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GIS-Based Network Analysis for Fire Emergency Response in Dhaka | Fariha Aktar</title>
+<meta name="description" content="Academic GIS project assessing fire-station service areas, shortest routes and response times to tertiary hospitals in Dhaka City Corporation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin-left:auto;margin-right:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr);
+  gap:22px;
+  align-items:start;
+}
+.hero>div:first-child{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:29px;line-height:1.14;margin:8px 0 12px}
+h2{font-size:24px;line-height:1.2;margin:5px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:620px;font-size:.88rem;line-height:1.52}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.hero-focus-line{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:72px 1fr;gap:10px;
+}
+.hero-focus-line strong{color:var(--green);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem}
+.hero-focus-line span{color:var(--muted);font-size:.74rem;line-height:1.45}
+
+.hero-left-summary{
+  margin-top:16px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+  display:grid;grid-template-columns:.82fr 1.18fr;
+}
+.hero-left-summary-item{padding:12px 12px 12px 0;min-width:0}
+.hero-left-summary-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.hero-left-summary-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0}
+.hero-left-summary-item small{display:block;color:var(--green);font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.hero-left-summary-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+/* Top-right: 2 images per slide */
+.hero-map-panel{width:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.hero-map-head{min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hero-map-head strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;margin-top:2px}
+.hero-map-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.hero-map-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px 10px 11px}
+.hero-map-viewport{width:100%;overflow:hidden}
+.hero-map-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hero-map-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;
+  background:#fff;text-align:left;cursor:zoom-in;
+}
+.hero-map-card img{width:100%;height:365px;object-fit:contain;object-position:center;background:#fff;padding:5px;border-bottom:1px solid var(--line)}
+.hero-map-card>span{display:block;padding:10px 12px 12px;min-height:76px}
+.hero-map-card>span strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:.9rem;line-height:1.22;margin-bottom:3px}
+.hero-map-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hero-slide{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);display:grid;place-items:center;cursor:pointer;font:1.45rem Georgia,serif}
+.hero-slide:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hero-slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:30px 0 5px}
+.section-head{margin-bottom:17px}
+
+.project-context{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+}
+.context-block{padding:18px 22px 18px 0}
+.context-block+.context-block{border-left:1px solid var(--line);padding-left:22px}
+.context-block p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.method{padding:18px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.method:last-child{border-right:0;margin-right:0}
+.method .n{display:block;color:var(--green);font-size:.63rem;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.method strong{display:block;font-family:"Source Serif 4",serif;font-size:.97rem;margin-bottom:5px}
+.method p{margin:0;color:var(--muted);font-size:.74rem}
+
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.finding{border:1px solid var(--line);border-radius:15px;padding:17px}
+.finding .metric{display:block;font-family:"Source Serif 4",serif;color:var(--green-dark);font-size:1.45rem;font-weight:700;margin:6px 0}
+.finding strong{display:block;font-family:"Source Serif 4",serif;font-size:.98rem;margin-bottom:4px}
+.finding p{margin:0;color:var(--muted);font-size:.75rem}
+
+.recommendations{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.recommendation{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
+.recommendation strong{display:block;font-family:"Source Serif 4",serif;font-size:.94rem;margin-bottom:5px}
+.recommendation p{margin:0;color:var(--muted);font-size:.72rem}
+
+.limitations{
+  margin-top:12px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--soft);
+  display:grid;grid-template-columns:130px 1fr;gap:16px;
+}
+.limitations strong{font-family:"Source Serif 4",serif}
+.limitations p{margin:0;color:var(--muted);font-size:.75rem}
+
+.back{margin:48px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:16px}
+
+.image-modal,.pdf-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.pdf-modal{z-index:110;background:rgba(12,20,15,.78)}
+.image-modal.open,.pdf-modal.open{display:flex}
+.image-dialog,.pdf-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.pdf-dialog{width:min(1200px,96vw);height:90vh}
+.image-bar,.pdf-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title,.pdf-title{font-size:.84rem;font-weight:700}
+.image-close,.pdf-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.pdf-dialog iframe{width:100%;height:100%;border:0}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr)}
+  .hero-map-card img{height:330px}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .hero-map-card img{height:390px}
+  .method-grid{grid-template-columns:1fr 1fr}
+  .method:nth-child(2){border-right:0}
+  .method:nth-child(n+3){border-top:1px solid var(--line)}
+  .recommendations{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-map-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .hero-slide{width:30px;height:30px;font-size:1.3rem}
+  .hero-map-track{gap:0}
+  .hero-map-card{flex:0 0 100%;width:100%}
+  .hero-map-card img{height:auto;max-height:480px}
+  .hero-left-summary{grid-template-columns:1fr}
+  .hero-left-summary-item,.hero-left-summary-item:nth-child(2),.hero-left-summary-item:nth-child(3){grid-column:auto;padding:10px 0;border-left:0}
+  .hero-left-summary-item+.hero-left-summary-item{border-top:1px solid var(--line)}
+  .project-context,.method-grid,.findings,.recommendations{grid-template-columns:1fr}
+  .context-block+.context-block{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .limitations{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div>
+    <div class="eyebrow">Academic Project · GIS Network Analysis · 2022</div>
+    <h1>A GIS-Based Network Analysis to Determine the Shortest Route and Service Area of Fire Stations to Hospitals for Emergency Response</h1>
+
+    <p class="hero-copy">
+      An academic GIS project evaluating emergency accessibility between fire stations and tertiary hospitals
+      in Dhaka City Corporation through service-area analysis, shortest-path routing and response-time assessment.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary pdf-trigger" data-src="presentation.pdf" data-title="Project Presentation">View presentation</button>
+      <button class="btn pdf-trigger" data-src="report.pdf" data-title="Project Report">View report</button>
+    </div>
+
+    <div class="hero-focus-line">
+      <strong>Objective</strong>
+      <span>
+        Identify the service area of existing fire stations, determine shortest routes from fire stations
+        to tertiary hospitals, and assess emergency response time across the Dhaka City Corporation network.
+      </span>
+    </div>
+
+    <div class="hero-left-summary">
+      <div class="hero-left-summary-item">
+        <small>Study area</small>
+        <strong>Dhaka City Corporation</strong>
+      </div>
+      <div class="hero-left-summary-item">
+        <small>Facilities analyzed</small>
+        <strong>15 fire stations · 23 tertiary hospitals</strong>
+      </div>
+      <div class="hero-left-summary-item">
+        <small>Tools & data</small>
+        <strong>ArcGIS 10.4 · Network Analyst · R · RAJUK road/land-use data · Sheltech DCC boundary</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-map-panel">
+    <div class="hero-map-head">
+      <div>
+        <div class="eyebrow">Spatial outputs</div>
+        <strong>Emergency Response Network Analysis</strong>
+      </div>
+      <div class="hero-map-count" id="heroMapCount">1 / 2</div>
+    </div>
+
+    <div class="hero-map-slider">
+      <button class="hero-slide" id="heroPrev" type="button" aria-label="Previous maps">‹</button>
+
+      <div class="hero-map-viewport">
+        <div class="hero-map-track" id="heroMapTrack">
+
+          <button class="hero-map-card image-expand" data-image="images/study-area-map.jpg" data-title="Study Area">
+            <img src="images/study-area-map.jpg" alt="Study area maps showing Bangladesh, Dhaka District and Dhaka City Corporation">
+            <span>
+              <strong>Study Area</strong>
+              <small>Dhaka City Corporation within Dhaka District and Bangladesh.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/hospitals-fire-stations.jpg" data-title="Hospitals and Fire Stations">
+            <img src="images/hospitals-fire-stations.jpg" alt="Selected tertiary hospitals and fire stations in Dhaka City Corporation">
+            <span>
+              <strong>Hospitals & Fire Stations</strong>
+              <small>Spatial distribution of the selected emergency facilities used in the analysis.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/fire-station-service-area.jpg" data-title="Fire Station Service Areas">
+            <img src="images/fire-station-service-area.jpg" alt="Fire station service areas across Dhaka City Corporation">
+            <span>
+              <strong>Fire Station Service Areas</strong>
+              <small>Network-based coverage used to identify hospitals within and outside existing service areas.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/shortest-route-map.jpg" data-title="Shortest Routes">
+            <img src="images/shortest-route-map.jpg" alt="Shortest paths from fire stations to hospitals in Dhaka City Corporation">
+            <span>
+              <strong>Shortest Routes</strong>
+              <small>Network Analyst routes connecting fire stations with selected tertiary hospitals.</small>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <button class="hero-slide" id="heroNext" type="button" aria-label="Next maps">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Project context</div>
+    <h2>Assessing emergency accessibility through the urban road network</h2>
+  </div>
+
+  <div class="project-context">
+    <div class="context-block">
+      <div class="eyebrow">Problem</div>
+      <p>
+        Hospital fire emergencies require rapid access from nearby fire stations, but congestion,
+        road-network conditions and the spatial distribution of emergency facilities can increase response time.
+      </p>
+    </div>
+
+    <div class="context-block">
+      <div class="eyebrow">Analytical scope</div>
+      <p>
+        The project focused on 23 tertiary-level hospitals and 15 fire stations within Dhaka City Corporation,
+        using the road network to evaluate coverage and emergency routing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Methodology</div>
+    <h2>GIS-based service-area and shortest-path analysis</h2>
+  </div>
+
+  <div class="method-grid">
+    <div class="method">
+      <span class="n">01</span>
+      <strong>Prepare network data</strong>
+      <p>Road, land-use and DCC boundary shapefiles were assembled and processed in ArcGIS.</p>
+    </div>
+    <div class="method">
+      <span class="n">02</span>
+      <strong>Map emergency facilities</strong>
+      <p>Fire stations and tertiary hospitals were selected, clipped to the study area and integrated with the road network.</p>
+    </div>
+    <div class="method">
+      <span class="n">03</span>
+      <strong>Service-area analysis</strong>
+      <p>Network Analyst was used to delineate accessible service areas using the study's response-time and travel-speed assumptions.</p>
+    </div>
+    <div class="method">
+      <span class="n">04</span>
+      <strong>Route & response analysis</strong>
+      <p>Shortest paths were generated and response times were compared statistically, including distribution and spatial-pattern assessment.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Key findings</div>
+    <h2>Coverage gaps and response-time challenges</h2>
+  </div>
+
+  <div class="findings">
+    <article class="finding">
+      <div class="eyebrow">Coverage</div>
+      <span class="metric">6 of 23</span>
+      <strong>Hospitals within service areas</strong>
+      <p>Only six selected tertiary hospitals fell within the modeled service area of existing fire stations.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Mean response</div>
+      <span class="metric">23.50 min</span>
+      <strong>Above the reference standard</strong>
+      <p>The mean modeled response time for the identified routes was substantially higher than the 9 min 20 sec reference used in the study.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Spatial disparity</div>
+      <span class="metric">DNCC > DSCC</span>
+      <strong>Greater access challenge in the north</strong>
+      <p>Average response time was 22.94 minutes in DNCC and 19.36 minutes in DSCC, with particularly limited coverage in DNCC.</p>
+    </article>
+  </div>
+
+  <div class="limitations">
+    <strong>Study limitation</strong>
+    <p>
+      The project did not use field-observed real travel-time data and did not conduct least-cost analysis,
+      so the modeled routes represent network-based analytical scenarios rather than real-time emergency routing.
+    </p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Planning implications</div>
+    <h2>Improving emergency fire response</h2>
+  </div>
+
+  <div class="recommendations">
+    <article class="recommendation">
+      <strong>Improve facility coverage</strong>
+      <p>Assess new fire-station locations so that more tertiary hospitals fall within effective service areas.</p>
+    </article>
+    <article class="recommendation">
+      <strong>Maintain route information</strong>
+      <p>Fire stations should maintain shortest-route information while accounting for one-way streets, repairs and temporary blockages.</p>
+    </article>
+    <article class="recommendation">
+      <strong>Strengthen emergency access</strong>
+      <p>Dedicated communication and priority access for fire vehicles can help reduce delays during hospital emergencies.</p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the project portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#projects">← Back to Projects</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Academic Project · 2022</span>
+  <span>GIS · Network Analysis · Emergency Response · Urban Planning</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Project output</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-dialog">
+    <div class="pdf-bar">
+      <div class="pdf-title" id="pdfTitle">Project Presentation</div>
+      <button class="pdf-close" id="pdfClose">×</button>
+    </div>
+    <iframe id="pdfFrame" src="about:blank" title="Project presentation"></iframe>
+  </div>
+</div>
+
+<script>
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){return window.innerWidth<=720?1:2}
+
+function updateHeroMapSlider(){
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*2*(cardWidth+gap)}px)`;
+  }
+
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+
+heroPrev.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(heroMapPage>0){heroMapPage--;updateHeroMapSlider()}
+});
+heroNext.addEventListener("click",e=>{
+  e.stopPropagation();
+  const totalPages=Math.ceil(heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView());
+  if(heroMapPage<totalPages-1){heroMapPage++;updateHeroMapSlider()}
+});
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Project output";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const pdfTitle=document.getElementById("pdfTitle");
+const pdfClose=document.getElementById("pdfClose");
+
+document.querySelectorAll(".pdf-trigger").forEach(el=>{
+  el.addEventListener("click",()=>{
+    pdfFrame.src=el.dataset.src+"#view=FitH";
+    pdfTitle.textContent=el.dataset.title||"Project Presentation";
+    pdfModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+function closePdf(){
+  pdfModal.classList.remove("open");
+  pdfFrame.src="about:blank";
+  document.body.style.overflow="";
+}
+pdfClose.addEventListener("click",closePdf);
+pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(imageModal.classList.contains("open"))closeImage();
+    if(pdfModal.classList.contains("open"))closePdf();
+  }
+});
+</script>
+</body>
+</html>
