@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formal Regionalization Based on Human Development Index | Fariha Aktar</title>
+<meta name="description" content="Academic regional planning project analyzing district-level human development and formal regionalization across Bangladesh using HDI indicators and spatial classification methods.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{
+  color:var(--green);font-size:.69rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.15em
+}
+
+.nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)
+}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;
+  border-radius:999px;border:1px solid var(--line-dark);background:#fff;
+  font-size:.82rem;font-weight:700;cursor:pointer
+}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+/* Standard portfolio hero */
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin-left:auto;margin-right:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr);
+  gap:22px;align-items:start
+}
+.hero>div:first-child{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:29px;line-height:1.14;margin:8px 0 12px}
+h2{font-size:24px;line-height:1.2;margin:5px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:620px;font-size:.88rem;line-height:1.52}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.hero-focus-line{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:72px 1fr;gap:10px
+}
+.hero-focus-line strong{
+  color:var(--green);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem
+}
+.hero-focus-line span{color:var(--muted);font-size:.74rem;line-height:1.45}
+
+.hero-left-summary{
+  margin-top:16px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+  display:grid;grid-template-columns:.76fr 1.24fr
+}
+.hero-left-summary-item{padding:12px 12px 12px 0;min-width:0}
+.hero-left-summary-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.hero-left-summary-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0}
+.hero-left-summary-item small{
+  display:block;color:var(--green);font-size:.57rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px
+}
+.hero-left-summary-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+/* Top-right two-image slider */
+.hero-map-panel{
+  width:100%;border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;background:#fff;box-shadow:var(--shadow)
+}
+.hero-map-head{
+  min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);
+  background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px
+}
+.hero-map-head strong{
+  display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;margin-top:2px
+}
+.hero-map-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.hero-map-slider{
+  display:grid;grid-template-columns:34px minmax(0,1fr) 34px;
+  gap:8px;align-items:center;padding:10px 10px 11px
+}
+.hero-map-viewport{width:100%;overflow:hidden}
+.hero-map-track{
+  display:flex;gap:14px;width:100%;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform
+}
+.hero-map-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;
+  overflow:hidden;background:#fff;text-align:left;cursor:zoom-in
+}
+.hero-map-card img{
+  width:100%;height:390px;object-fit:contain;object-position:center;
+  background:#fff;padding:5px;border-bottom:1px solid var(--line)
+}
+.hero-map-card>span{display:block;padding:10px 12px 12px;min-height:76px}
+.hero-map-card>span strong{
+  display:block;font-family:"Source Serif 4",Georgia,serif;
+  font-size:.9rem;line-height:1.22;margin-bottom:3px
+}
+.hero-map-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hero-slide{
+  width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);
+  background:#fff;color:var(--green-dark);display:grid;place-items:center;
+  cursor:pointer;font:1.45rem Georgia,serif
+}
+.hero-slide:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hero-slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:30px 0 5px}
+.section-head{margin-bottom:17px}
+
+.project-context{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)
+}
+.context-block{padding:18px 22px 18px 0}
+.context-block+.context-block{border-left:1px solid var(--line);padding-left:22px}
+.context-block p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.method{padding:18px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.method:last-child{border-right:0;margin-right:0}
+.method .n{
+  display:block;color:var(--green);font-size:.63rem;font-weight:700;
+  letter-spacing:.1em;margin-bottom:6px
+}
+.method strong{display:block;font-family:"Source Serif 4",serif;font-size:.97rem;margin-bottom:5px}
+.method p{margin:0;color:var(--muted);font-size:.74rem}
+
+.findings{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.finding{border:1px solid var(--line);border-radius:15px;padding:16px}
+.finding .metric{
+  display:block;font-family:"Source Serif 4",serif;color:var(--green-dark);
+  font-size:1.35rem;font-weight:700;margin:5px 0
+}
+.finding strong{display:block;font-family:"Source Serif 4",serif;font-size:.95rem;margin-bottom:4px}
+.finding p{margin:0;color:var(--muted);font-size:.72rem}
+
+.policy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.policy{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.policy span{
+  display:block;color:var(--green);font-size:.59rem;font-weight:700;
+  letter-spacing:.08em;margin-bottom:5px
+}
+.policy strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;margin-bottom:4px}
+.policy p{margin:0;color:var(--muted);font-size:.69rem;line-height:1.42}
+
+.limitations{
+  margin-top:13px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;
+  background:var(--soft);display:grid;grid-template-columns:140px 1fr;gap:17px
+}
+.limitations strong{font-family:"Source Serif 4",serif}
+.limitations p{margin:0;color:var(--muted);font-size:.75rem}
+
+.outcome{
+  border:1px solid var(--line);border-radius:17px;padding:19px;background:var(--soft);
+  display:grid;grid-template-columns:180px 1fr;gap:22px
+}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.04rem}
+.outcome p{margin:0;color:var(--muted);font-size:.81rem}
+
+.back{
+  margin:48px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);
+  display:flex;justify-content:space-between;align-items:center;gap:18px
+}
+footer{
+  border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);
+  font-size:.75rem;display:flex;justify-content:space-between;gap:16px
+}
+
+/* Image / PDF modals */
+.image-modal,.pdf-modal{
+  position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);
+  display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)
+}
+.pdf-modal{z-index:110;background:rgba(12,20,15,.78)}
+.image-modal.open,.pdf-modal.open{display:flex}
+.image-dialog,.pdf-dialog{
+  width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;
+  border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr
+}
+.pdf-dialog{width:min(1200px,96vw);height:90vh}
+.image-bar,.pdf-bar{
+  min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center
+}
+.image-title,.pdf-title{font-size:.84rem;font-weight:700}
+.image-close,.pdf-close{
+  width:38px;height:38px;border-radius:50%;background:#fff;
+  border:1px solid var(--line);cursor:pointer;font-size:1.2rem
+}
+.image-stage{
+  display:flex;align-items:center;justify-content:center;padding:12px;
+  overflow:auto;background:#f7f8f7
+}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.pdf-dialog iframe{width:100%;height:100%;border:0}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr)}
+  .hero-map-card img{height:340px}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .hero-map-card img{height:390px}
+  .method-grid,.findings,.policy-grid{grid-template-columns:1fr 1fr}
+  .method:nth-child(2){border-right:0}
+  .method:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-map-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .hero-slide{width:30px;height:30px;font-size:1.3rem}
+  .hero-map-track{gap:0}
+  .hero-map-card{flex:0 0 100%;width:100%}
+  .hero-map-card img{height:auto;max-height:480px}
+  .hero-left-summary{grid-template-columns:1fr}
+  .hero-left-summary-item,.hero-left-summary-item:nth-child(2),.hero-left-summary-item:nth-child(3){
+    grid-column:auto;padding:10px 0;border-left:0
+  }
+  .hero-left-summary-item+.hero-left-summary-item{border-top:1px solid var(--line)}
+  .project-context,.method-grid,.findings,.policy-grid{grid-template-columns:1fr}
+  .context-block+.context-block{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .limitations,.outcome{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div>
+    <div class="eyebrow">Academic Project · Regional Planning · 2023</div>
+
+    <h1>Formal Regionalization Based on Human Development Index: A District-Level Analysis in Bangladesh</h1>
+
+    <p class="hero-copy">
+      A district-level regional planning project measuring human development across all 64 districts
+      of Bangladesh and delineating formal regions to identify spatial disparities between developed,
+      moderately developed and underdeveloped parts of the country.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary pdf-trigger" data-src="presentation.pdf" data-title="Project Presentation">View presentation</button>
+      <button class="btn pdf-trigger" data-src="report.pdf" data-title="Project Report">View report</button>
+    </div>
+
+    <div class="hero-focus-line">
+      <strong>Objective</strong>
+      <span>
+        Calculate district-level HDI, compare human-development levels across Bangladesh,
+        and explore the factors associated with developed and lagging regions.
+      </span>
+    </div>
+
+    <div class="hero-left-summary">
+      <div class="hero-left-summary-item">
+        <small>Study area</small>
+        <strong>64 districts of Bangladesh</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>HDI dimensions</small>
+        <strong>Health · Education · Standard of Living</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Indicators & techniques</small>
+        <strong>Crude Death Rate · Literacy Rate · Household Consumption · Normalization · Geometric Mean · Formal Regionalization</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-map-panel">
+    <div class="hero-map-head">
+      <div>
+        <div class="eyebrow">Project outputs</div>
+        <strong>HDI Analysis & Formal Regionalization</strong>
+      </div>
+      <div class="hero-map-count" id="heroMapCount">1 / 7</div>
+    </div>
+
+    <div class="hero-map-slider">
+      <button class="hero-slide" id="heroPrev" type="button" aria-label="Previous outputs">‹</button>
+
+      <div class="hero-map-viewport">
+        <div class="hero-map-track" id="heroMapTrack">
+
+          <button class="hero-map-card image-expand" data-image="images/methodology-hdi.jpg" data-title="HDI Methodology">
+            <img src="images/methodology-hdi.jpg" alt="Methodology used to calculate district-level HDI">
+            <span>
+              <strong>HDI Methodology</strong>
+              <small>Indicators, data sources, normalization equations and summary statistics for 64 districts.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/district-hdi-ranking.jpg" data-title="District HDI Ranking">
+            <img src="images/district-hdi-ranking.jpg" alt="HDI values of the districts of Bangladesh">
+            <span>
+              <strong>District HDI Ranking</strong>
+              <small>Comparison of calculated HDI values across the 64 districts.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/classification-methods.jpg" data-title="Classification Methods">
+            <img src="images/classification-methods.jpg" alt="Four formal regionalization classification methods">
+            <span>
+              <strong>Classification Methods</strong>
+              <small>Equal Interval, Mean & Standard Deviation, Arithmetic and Geometric Progression techniques.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/equal-interval-map.jpg" data-title="Equal Interval Regionalization">
+            <img src="images/equal-interval-map.jpg" alt="Formal regionalization based on HDI using equal interval classification">
+            <span>
+              <strong>Equal Interval Map</strong>
+              <small>Districts grouped into formal human-development regions using equal HDI intervals.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/mean-sd-map.jpg" data-title="Mean and Standard Deviation Regionalization">
+            <img src="images/mean-sd-map.jpg" alt="Formal regionalization based on mean and standard deviation">
+            <span>
+              <strong>Mean & Standard Deviation</strong>
+              <small>Alternative regional delineation based on the distribution of HDI around the mean.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/arithmetic-map.jpg" data-title="Arithmetic Regionalization">
+            <img src="images/arithmetic-map.jpg" alt="Formal regionalization using arithmetic classification">
+            <span>
+              <strong>Arithmetic Technique</strong>
+              <small>Spatial grouping generated using consecutively calculated arithmetic class intervals.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/geometric-progression-map.jpg" data-title="Geometric Progression Regionalization">
+            <img src="images/geometric-progression-map.jpg" alt="Formal regionalization using geometric progression classification">
+            <span>
+              <strong>Geometric Progression</strong>
+              <small>Regional delineation based on geometrically increasing HDI class intervals.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/equal-interval-categories.jpg" data-title="Equal Interval Categories">
+            <img src="images/equal-interval-categories.jpg" alt="Equal interval HDI categories and district groups">
+            <span>
+              <strong>Five Development Categories</strong>
+              <small>Very Low, Low, Medium, High and Very High district groups under the equal-interval method.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/division-hdi-ranking.jpg" data-title="Division-Level HDI Ranking">
+            <img src="images/division-hdi-ranking.jpg" alt="Division-level human development index ranking">
+            <span>
+              <strong>Division-Level Comparison</strong>
+              <small>Comparison of health, literacy, consumption and HDI values across the eight divisions.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/greater-dhaka-factors.jpg" data-title="Greater Dhaka Development Factors">
+            <img src="images/greater-dhaka-factors.jpg" alt="Factors influencing human development in Greater Dhaka">
+            <span>
+              <strong>Greater Dhaka Factors</strong>
+              <small>Urbanization, connectivity, health, education and economic factors linked with higher HDI.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/chittagong-factors.jpg" data-title="Chittagong Division Factors">
+            <img src="images/chittagong-factors.jpg" alt="Development and underdevelopment factors in Chittagong Division">
+            <span>
+              <strong>Chittagong Division</strong>
+              <small>Contrasts between developed coastal centers and lower-HDI districts of the Hill Tracts.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/rangpur-factors.jpg" data-title="Rangpur Division Factors">
+            <img src="images/rangpur-factors.jpg" alt="Factors influencing low human development in Rangpur Division">
+            <span>
+              <strong>Rangpur Division</strong>
+              <small>Poverty, limited services, low per-capita income and hazard exposure associated with lower HDI.</small>
+            </span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/recommendations.jpg" data-title="Regional Development Recommendations">
+            <img src="images/recommendations.jpg" alt="Recommendations to reduce regional disparity">
+            <span>
+              <strong>Regional Policy Recommendations</strong>
+              <small>Planning priorities for reducing human-development disparities between leading and lagging regions.</small>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+      <button class="hero-slide" id="heroNext" type="button" aria-label="Next outputs">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Project context</div>
+    <h2>Mapping human-development disparities at the district scale</h2>
+  </div>
+
+  <div class="project-context">
+    <div class="context-block">
+      <div class="eyebrow">Planning problem</div>
+      <p>
+        National averages can conceal substantial regional differences. This project used a district-level
+        approach to identify where human-development conditions are comparatively strong or weak across Bangladesh.
+      </p>
+    </div>
+
+    <div class="context-block">
+      <div class="eyebrow">Regional perspective</div>
+      <p>
+        The analysis linked HDI patterns with differences in urbanization, connectivity, economic opportunity,
+        infrastructure, health and education access, poverty and exposure to natural hazards.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Methodology</div>
+    <h2>Constructing HDI and delineating formal regions</h2>
+  </div>
+
+  <div class="method-grid">
+    <div class="method">
+      <span class="n">01</span>
+      <strong>Select HDI indicators</strong>
+      <p>Crude death rate represented health, literacy rate represented education and household consumption represented standard of living.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">02</span>
+      <strong>Normalize indicators</strong>
+      <p>Positive and negative indicators were transformed to comparable unitless indices, with a logarithmic transformation for consumption.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">03</span>
+      <strong>Calculate district HDI</strong>
+      <p>The three normalized dimensions were combined using a geometric mean to generate an HDI value for each district.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">04</span>
+      <strong>Delineate formal regions</strong>
+      <p>HDI values were tested with four classification techniques and grouped into spatial development categories for regional comparison.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Key findings</div>
+    <h2>A clear spatial pattern of human-development disparity</h2>
+  </div>
+
+  <div class="findings">
+    <article class="finding">
+      <div class="eyebrow">Overall distribution</div>
+      <span class="metric">0.44</span>
+      <strong>Mean district HDI</strong>
+      <p>The calculated district-level index had a mean and median of 0.44, with substantial variation across Bangladesh.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Highest category</div>
+      <span class="metric">Dhaka · Gazipur · Feni</span>
+      <strong>Very high HDI</strong>
+      <p>These districts formed the highest human-development category in the equal-interval classification.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Lowest category</div>
+      <span class="metric">Kurigram · Jamalpur · Joypurhat</span>
+      <strong>Very low HDI</strong>
+      <p>The lowest category highlighted concentrated human-development disadvantages in northern and northwestern Bangladesh.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Regional pattern</div>
+      <span class="metric">East > West/Northwest</span>
+      <strong>Development is spatially uneven</strong>
+      <p>Higher-HDI districts were concentrated more strongly in eastern and southeastern areas, while many western and northwestern districts lagged.</p>
+    </article>
+  </div>
+
+  <div class="limitations">
+    <strong>Study limitations</strong>
+    <p>
+      Indicator data came from different years because of data availability; urban-rural variation within individual districts
+      was not captured; the index used only three parameters; and the analysis was cross-sectional rather than temporal.
+    </p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Planning implications</div>
+    <h2>Priority directions for reducing regional disparity</h2>
+  </div>
+
+  <div class="policy-grid">
+    <article class="policy">
+      <span>01 · Services</span>
+      <strong>Decentralize health & education</strong>
+      <p>Expand tertiary health facilities and educational institutions beyond Dhaka and other leading districts.</p>
+    </article>
+
+    <article class="policy">
+      <span>02 · Regional investment</span>
+      <strong>Rebalance public resources</strong>
+      <p>Improve funding and development allocation for lagging regions to support more balanced regional growth.</p>
+    </article>
+
+    <article class="policy">
+      <span>03 · Local economy</span>
+      <strong>Invest in local industries</strong>
+      <p>Support locally appropriate industries and small and medium enterprises to create employment and reduce poverty.</p>
+    </article>
+
+    <article class="policy">
+      <span>04 · Connectivity</span>
+      <strong>Strengthen the northwest</strong>
+      <p>Improve regional connectivity to expand trade and access to education, health and other services.</p>
+    </article>
+
+    <article class="policy">
+      <span>05 · Hazard resilience</span>
+      <strong>Target hazard-prone regions</strong>
+      <p>Integrate adaptation and mitigation for coastal, flood, haor, char and drought-prone areas into regional development planning.</p>
+    </article>
+
+    <article class="policy">
+      <span>06 · Hill Tracts</span>
+      <strong>Improve basic infrastructure</strong>
+      <p>Strengthen education, health and infrastructure in the Chittagong Hill Tracts while supporting sustainable local economic opportunities.</p>
+    </article>
+
+    <article class="policy">
+      <span>07 · Health investment</span>
+      <strong>Prioritize northern districts</strong>
+      <p>Increase public health investment in districts with weak access to facilities and higher mortality-related disadvantages.</p>
+    </article>
+
+    <article class="policy">
+      <span>08 · Policy integration</span>
+      <strong>Embed human development in plans</strong>
+      <p>Use human-development and social-protection objectives explicitly within national and regional planning frameworks.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="outcome">
+    <strong>Project outcome</strong>
+    <p>
+      The project produced a district-level HDI dataset and a formal regionalization of Bangladesh,
+      showing where human-development advantages and disadvantages are spatially concentrated.
+      It translated those patterns into regional planning priorities for infrastructure, social services,
+      connectivity, economic opportunity and hazard-sensitive development.
+    </p>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the project portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#projects">← Back to Projects</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Academic Project · 2023</span>
+  <span>Regional Planning · HDI · Spatial Classification · GIS</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Project output</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-dialog">
+    <div class="pdf-bar">
+      <div class="pdf-title" id="pdfTitle">Project document</div>
+      <button class="pdf-close" id="pdfClose">×</button>
+    </div>
+    <iframe id="pdfFrame" src="about:blank" title="Project document"></iframe>
+  </div>
+</div>
+
+<script>
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){return window.innerWidth<=720?1:2}
+
+function updateHeroMapSlider(){
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*2*(cardWidth+gap)}px)`;
+  }
+
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+
+heroPrev.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(heroMapPage>0){heroMapPage--;updateHeroMapSlider()}
+});
+
+heroNext.addEventListener("click",e=>{
+  e.stopPropagation();
+  const totalPages=Math.ceil(heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView());
+  if(heroMapPage<totalPages-1){heroMapPage++;updateHeroMapSlider()}
+});
+
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Project output";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const pdfTitle=document.getElementById("pdfTitle");
+const pdfClose=document.getElementById("pdfClose");
+
+document.querySelectorAll(".pdf-trigger").forEach(el=>{
+  el.addEventListener("click",()=>{
+    pdfFrame.src=el.dataset.src+"#view=FitH";
+    pdfTitle.textContent=el.dataset.title||"Project document";
+    pdfModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closePdf(){
+  pdfModal.classList.remove("open");
+  pdfFrame.src="about:blank";
+  document.body.style.overflow="";
+}
+pdfClose.addEventListener("click",closePdf);
+pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(imageModal.classList.contains("open"))closeImage();
+    if(pdfModal.classList.contains("open"))closePdf();
+  }
+});
+</script>
+</body>
+</html>
