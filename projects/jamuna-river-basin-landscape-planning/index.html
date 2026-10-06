@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resilient River Basin: Landscape Planning of the Jamuna River Basin | Fariha Aktar</title>
+<meta name="description" content="Academic landscape planning project developing an ecology-based, phased planning framework for a selected part of the Brahmaputra-Jamuna River Basin in Jamalpur, Bangladesh.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+/* Standard compact project hero */
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin-left:auto;margin-right:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr);
+  gap:22px;align-items:start;
+}
+.hero>div:first-child{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:29px;line-height:1.14;margin:8px 0 12px}
+h2{font-size:24px;line-height:1.2;margin:5px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:620px;font-size:.88rem;line-height:1.52}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.hero-focus-line{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:72px 1fr;gap:10px;
+}
+.hero-focus-line strong{color:var(--green);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem}
+.hero-focus-line span{color:var(--muted);font-size:.74rem;line-height:1.45}
+
+.hero-left-summary{
+  margin-top:16px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+  display:grid;grid-template-columns:.82fr 1.18fr;
+}
+.hero-left-summary-item{padding:12px 12px 12px 0;min-width:0}
+.hero-left-summary-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.hero-left-summary-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0}
+.hero-left-summary-item small{display:block;color:var(--green);font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.hero-left-summary-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+/* Large top-right 2-image slider */
+.hero-map-panel{width:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.hero-map-head{min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hero-map-head strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;margin-top:2px}
+.hero-map-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.hero-map-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px 10px 11px}
+.hero-map-viewport{width:100%;overflow:hidden}
+.hero-map-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hero-map-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;
+  background:#fff;text-align:left;cursor:zoom-in;
+}
+.hero-map-card img{width:100%;height:390px;object-fit:contain;object-position:center;background:#fff;padding:5px;border-bottom:1px solid var(--line)}
+.hero-map-card>span{display:block;padding:10px 12px 12px;min-height:76px}
+.hero-map-card>span strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:.9rem;line-height:1.22;margin-bottom:3px}
+.hero-map-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hero-slide{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);display:grid;place-items:center;cursor:pointer;font:1.45rem Georgia,serif}
+.hero-slide:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hero-slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:30px 0 5px}
+.section-head{margin-bottom:17px}
+
+.project-context{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.context-block{padding:18px 22px 18px 0}
+.context-block+.context-block{border-left:1px solid var(--line);padding-left:22px}
+.context-block p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.method{padding:18px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.method:last-child{border-right:0;margin-right:0}
+.method .n{display:block;color:var(--green);font-size:.63rem;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.method strong{display:block;font-family:"Source Serif 4",serif;font-size:.97rem;margin-bottom:5px}
+.method p{margin:0;color:var(--muted);font-size:.74rem}
+
+.findings{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.finding{border:1px solid var(--line);border-radius:15px;padding:16px}
+.finding strong{display:block;font-family:"Source Serif 4",serif;font-size:.96rem;margin:5px 0}
+.finding p{margin:0;color:var(--muted);font-size:.73rem}
+
+.strategy-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.strategy{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.strategy span{display:block;color:var(--green);font-size:.59rem;font-weight:700;letter-spacing:.08em;margin-bottom:5px}
+.strategy strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;margin-bottom:4px}
+.strategy p{margin:0;color:var(--muted);font-size:.69rem;line-height:1.42}
+
+.timeline{
+  border:1px solid var(--line);border-radius:17px;background:var(--soft);
+  display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;
+}
+.timeline div{padding:17px 18px}
+.timeline div+div{border-left:1px solid var(--line)}
+.timeline small{display:block;color:var(--green);font-size:.59rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.timeline strong{display:block;font-family:"Source Serif 4",serif;font-size:1.06rem;margin:3px 0}
+.timeline span{display:block;color:var(--muted);font-size:.72rem}
+
+.limitations{
+  margin-top:13px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--soft);
+  display:grid;grid-template-columns:140px 1fr;gap:17px;
+}
+.limitations strong{font-family:"Source Serif 4",serif}
+.limitations p{margin:0;color:var(--muted);font-size:.75rem}
+
+.outcome{border:1px solid var(--line);border-radius:17px;padding:19px;background:var(--soft);display:grid;grid-template-columns:180px 1fr;gap:22px}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.04rem}
+.outcome p{margin:0;color:var(--muted);font-size:.81rem}
+
+.back{margin:48px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:16px}
+
+/* Image/PDF modals */
+.image-modal,.pdf-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.pdf-modal{z-index:110;background:rgba(12,20,15,.78)}
+.image-modal.open,.pdf-modal.open{display:flex}
+.image-dialog,.pdf-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.pdf-dialog{width:min(1200px,96vw);height:90vh}
+.image-bar,.pdf-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title,.pdf-title{font-size:.84rem;font-weight:700}
+.image-close,.pdf-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.pdf-dialog iframe{width:100%;height:100%;border:0}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr)}
+  .hero-map-card img{height:340px}
+  .strategy-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .hero-map-card img{height:390px}
+  .method-grid,.findings{grid-template-columns:1fr 1fr}
+  .method:nth-child(2){border-right:0}
+  .method:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-map-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .hero-slide{width:30px;height:30px;font-size:1.3rem}
+  .hero-map-track{gap:0}
+  .hero-map-card{flex:0 0 100%;width:100%}
+  .hero-map-card img{height:auto;max-height:480px}
+  .hero-left-summary{grid-template-columns:1fr}
+  .hero-left-summary-item,.hero-left-summary-item:nth-child(2),.hero-left-summary-item:nth-child(3){grid-column:auto;padding:10px 0;border-left:0}
+  .hero-left-summary-item+.hero-left-summary-item{border-top:1px solid var(--line)}
+  .project-context,.method-grid,.findings,.strategy-grid,.timeline{grid-template-columns:1fr}
+  .context-block+.context-block{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .timeline div+div{border-left:0;border-top:1px solid var(--line)}
+  .limitations,.outcome{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div>
+    <div class="eyebrow">Academic Project · Landscape Planning Studio · BUET</div>
+
+    <h1>Resilient River Basin: Landscape Planning of the Jamuna River Basin</h1>
+
+    <p class="hero-copy">
+      An ecology-based landscape planning project for a selected part of the Brahmaputra-Jamuna River Basin,
+      integrating topography, hydrology, geology, biodiversity, infrastructure and settlement analysis into
+      a phased planning framework for environmental conservation and resilient local development.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary pdf-trigger" data-src="report.pdf" data-title="Project Report">View report</button>
+    </div>
+
+    <div class="hero-focus-line">
+      <strong>Objective</strong>
+      <span>
+        Analyze how existing development affects the river-basin ecology, identify key pressures on natural systems,
+        and guide future planning strategies that conserve the environment and biodiversity.
+      </span>
+    </div>
+
+    <div class="hero-left-summary">
+      <div class="hero-left-summary-item">
+        <small>Study area</small>
+        <strong>5 × 5 km · Pogaldigha Union · Sarishabari Upazila · Jamalpur</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Planning horizon</small>
+        <strong>2021-2050 · Short, middle and long-term phases</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Methods & tools</small>
+        <strong>Google Earth Pro · AutoCAD · Adobe Illustrator · Mapping · SWOT · Literature Review · Case Study · Iterative Strategy Development</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-map-panel">
+    <div class="hero-map-head">
+      <div>
+        <div class="eyebrow">Project outputs</div>
+        <strong>Landscape Analysis & Planning Strategies</strong>
+      </div>
+      <div class="hero-map-count" id="heroMapCount">1 / 7</div>
+    </div>
+
+    <div class="hero-map-slider">
+      <button class="hero-slide" id="heroPrev" type="button" aria-label="Previous outputs">‹</button>
+
+      <div class="hero-map-viewport">
+        <div class="hero-map-track" id="heroMapTrack">
+
+          <button class="hero-map-card image-expand" data-image="images/study-area-map.jpg" data-title="Selected Study Area">
+            <img src="images/study-area-map.jpg" alt="Selected study area along the Jamuna River Basin">
+            <span><strong>Selected Study Area</strong><small>A 25 km² river-basin site in Pogaldigha Union, Sarishabari Upazila, Jamalpur.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/topography-map.jpg" data-title="Topography">
+            <img src="images/topography-map.jpg" alt="Topographic map of the study area">
+            <span><strong>Topography</strong><small>Elevation analysis used to identify low-lying floodplain areas and higher ground for development.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/dry-wet-season-hydrology.jpg" data-title="Dry and Wet Season Hydrology">
+            <img src="images/dry-wet-season-hydrology.jpg" alt="Dry and wet season hydrology maps">
+            <span><strong>Seasonal Hydrology</strong><small>Dry- and wet-season comparison showing river overflow and floodplain inundation.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/flora-community-map.jpg" data-title="Flora Community">
+            <img src="images/flora-community-map.jpg" alt="Flora community distribution map">
+            <span><strong>Flora Community</strong><small>Distribution of floodplain, water-edge, homestead and agricultural vegetation communities.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/infrastructure-map.jpg" data-title="Infrastructure Network">
+            <img src="images/infrastructure-map.jpg" alt="Existing infrastructure map">
+            <span><strong>Infrastructure Network</strong><small>Road, railway and utility infrastructure examined in relation to the floodplain ecosystem.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/existing-settlement-map.jpg" data-title="Existing Human-Induced Settlement">
+            <img src="images/existing-settlement-map.jpg" alt="Existing settlement and land-use map">
+            <span><strong>Existing Settlement Pattern</strong><small>Human-induced development, facilities and settlement distribution across the site.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/three-phase-planning-framework.jpg" data-title="Three-Phase Planning Framework">
+            <img src="images/three-phase-planning-framework.jpg" alt="Three phase landscape planning scheme">
+            <span><strong>Three-Phase Planning Framework</strong><small>Short-, middle- and long-term implementation under five landscape-planning aspects.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/floodplain-conservation.jpg" data-title="Floodplain Conservation">
+            <img src="images/floodplain-conservation.jpg" alt="Floodplain conservation strategy maps">
+            <span><strong>Floodplain Conservation</strong><small>Removal of damaging infrastructure and gradual restoration of river-edge buffer areas.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/settlement-landuse-strategy.jpg" data-title="Settlement and Land-Use Strategy">
+            <img src="images/settlement-landuse-strategy.jpg" alt="Proposed settlement and land use strategy">
+            <span><strong>Settlement & Land Use</strong><small>Relocation from floodplain areas and transition toward clustered settlement and service provision.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/transportation-strategy.jpg" data-title="Transportation Strategy">
+            <img src="images/transportation-strategy.jpg" alt="Transportation strategy and boat station locations">
+            <span><strong>Transportation Strategy</strong><small>Alternative boat access, new settlement roads and relocation of transport infrastructure from the floodplain.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/ecology-preservation.jpg" data-title="Ecological Preservation">
+            <img src="images/ecology-preservation.jpg" alt="Ecological preservation phase maps">
+            <span><strong>Ecological Preservation</strong><small>Green buffers, peripheral green space, greenways and habitat protection developed through phases.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/renewable-energy-strategy.jpg" data-title="Renewable Energy Strategy">
+            <img src="images/renewable-energy-strategy.jpg" alt="Renewable energy proposal">
+            <span><strong>Renewable Energy</strong><small>Solar and biogas facilities proposed to gradually reduce dependence on non-renewable energy.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/agriculture-strategy.jpg" data-title="Agricultural Adaptation">
+            <img src="images/agriculture-strategy.jpg" alt="Agricultural strategy maps">
+            <span><strong>Agricultural Adaptation</strong><small>Crop rotation, polyculture, composting and flood-adaptive agriculture incorporated into the plan.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/planning-implementation-2025-2050.jpg" data-title="Planning Implementation 2025-2050">
+            <img src="images/planning-implementation-2025-2050.jpg" alt="Three phase planning implementation maps">
+            <span><strong>Implementation · 2025-2050</strong><small>Combined spatial implementation of the proposed strategies across the three planning phases.</small></span>
+          </button>
+
+        </div>
+      </div>
+
+      <button class="hero-slide" id="heroNext" type="button" aria-label="Next outputs">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Project context</div>
+    <h2>Planning a dynamic river landscape as an ecological system</h2>
+  </div>
+
+  <div class="project-context">
+    <div class="context-block">
+      <div class="eyebrow">Landscape setting</div>
+      <p>
+        The selected site is part of the Brahmaputra-Jamuna floodplain, where livelihoods, agriculture,
+        fisheries and settlement are closely linked with seasonal river processes. Normal flooding supports
+        the floodplain economy, while severe floods and bank erosion create substantial risk.
+      </p>
+    </div>
+
+    <div class="context-block">
+      <div class="eyebrow">Planning challenge</div>
+      <p>
+        Infrastructure on the floodplain, embankments, industrial pollution, dispersed settlement,
+        biodiversity loss and changing land use were treated as interconnected ecological and planning issues rather than isolated problems.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Methodology</div>
+    <h2>From landscape diagnosis to iterative strategy development</h2>
+  </div>
+
+  <div class="method-grid">
+    <div class="method">
+      <span class="n">01</span>
+      <strong>Site selection & mapping</strong>
+      <p>A 5 × 5 km site was selected and mapped for topography, geology, hydrology, biodiversity, infrastructure and settlement conditions.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">02</span>
+      <strong>SWOT & precedent review</strong>
+      <p>Site strengths and threats were examined alongside the Garden City concept and river-based planning precedents.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">03</span>
+      <strong>Comprehensive landscape study</strong>
+      <p>Natural systems and human interventions were analyzed together to identify ecological conflicts and development pressures.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">04</span>
+      <strong>Iterative planning strategies</strong>
+      <p>Planning proposals were repeatedly reviewed and refined before being organized into a three-phase implementation framework.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Key issues</div>
+    <h2>Pressures identified across the river-basin landscape</h2>
+  </div>
+
+  <div class="findings">
+    <article class="finding">
+      <div class="eyebrow">Floodplain</div>
+      <strong>Infrastructure disrupts natural processes</strong>
+      <p>Embankments, paved roads, railway and highway sections on the floodplain alter natural flow, siltation and ecosystem functions.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Pollution</div>
+      <strong>Industrial activity affects river ecology</strong>
+      <p>The fertilizer industry was identified as a source of environmental pressure, leading to proposals for ETP, discharge ponds and vegetated buffers.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Settlement</div>
+      <strong>Dispersed growth complicates services</strong>
+      <p>Scattered and unplanned linear settlements make community facilities and utilities more difficult and costly to provide.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Ecology</div>
+      <strong>Biodiversity and green space are under pressure</strong>
+      <p>Habitat loss, vegetation removal, overfishing and river interventions threaten flora, fish, dolphins, gharials and other fauna.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Planning strategy</div>
+    <h2>Five integrated aspects of the resilient river-basin plan</h2>
+  </div>
+
+  <div class="strategy-grid">
+    <article class="strategy">
+      <span>01 · Nature conservation</span>
+      <strong>Restore the floodplain</strong>
+      <p>Remove or relocate damaging infrastructure, exclude embankments, establish river-edge buffers and transform industry toward cleaner operation.</p>
+    </article>
+
+    <article class="strategy">
+      <span>02 · Land use</span>
+      <strong>Cluster future settlement</strong>
+      <p>Relocate development from sensitive floodplain areas, strengthen clustered settlement and provide a more efficient network of community facilities.</p>
+    </article>
+
+    <article class="strategy">
+      <span>03 · Transportation</span>
+      <strong>Adapt mobility to the river</strong>
+      <p>Expand access roads outside sensitive areas, use boats as an alternative mode and relocate highway/rail sections away from the floodplain over time.</p>
+    </article>
+
+    <article class="strategy">
+      <span>04 · Ecology & agriculture</span>
+      <strong>Protect habitat and productive land</strong>
+      <p>Create greenways and sanctuaries while promoting crop rotation, polyculture, composting and flood-tolerant agricultural practices.</p>
+    </article>
+
+    <article class="strategy">
+      <span>05 · Energy</span>
+      <strong>Transition toward renewables</strong>
+      <p>Introduce solar panels and biogas plants in phases, with the project targeting progressively higher renewable-energy coverage toward 2050.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Implementation</div>
+    <h2>A 30-year phased planning scheme</h2>
+  </div>
+
+  <div class="timeline">
+    <div>
+      <small>Short term</small>
+      <strong>2021-2025</strong>
+      <span>Begin floodplain restoration, introduce initial buffers, renewable energy, access improvements and early settlement interventions.</span>
+    </div>
+    <div>
+      <small>Middle term</small>
+      <strong>2026-2035</strong>
+      <span>Expand green networks, access infrastructure, renewable energy coverage, ecological restoration and community facilities.</span>
+    </div>
+    <div>
+      <small>Long term</small>
+      <strong>2036-2050</strong>
+      <span>Complete major relocation and restoration measures and consolidate the integrated landscape-planning framework.</span>
+    </div>
+  </div>
+
+  <div class="limitations">
+    <strong>Study limitations</strong>
+    <p>
+      The project relied primarily on secondary information and Google Earth Pro because a physical field survey
+      was not possible within the available time and cost. Image resolution limited identification of some site features,
+      some exact land uses were uncertain, and site-specific published information was limited.
+    </p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="outcome">
+    <strong>Project outcome</strong>
+    <p>
+      The project produced an ecology-based, three-phase landscape plan for the selected Jamuna River Basin site.
+      It links floodplain conservation, clustered settlement, adaptive transportation, biodiversity protection,
+      renewable energy and resilient agriculture within one long-term spatial framework.
+    </p>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the project portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#projects">← Back to Projects</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Academic Project · BUET</span>
+  <span>Landscape Planning · River Basin · Ecology · Resilience</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Project output</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-dialog">
+    <div class="pdf-bar">
+      <div class="pdf-title" id="pdfTitle">Project Report</div>
+      <button class="pdf-close" id="pdfClose">×</button>
+    </div>
+    <iframe id="pdfFrame" src="about:blank" title="Project report"></iframe>
+  </div>
+</div>
+
+<script>
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){return window.innerWidth<=720?1:2}
+
+function updateHeroMapSlider(){
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*2*(cardWidth+gap)}px)`;
+  }
+
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+
+heroPrev.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(heroMapPage>0){heroMapPage--;updateHeroMapSlider()}
+});
+
+heroNext.addEventListener("click",e=>{
+  e.stopPropagation();
+  const totalPages=Math.ceil(heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView());
+  if(heroMapPage<totalPages-1){heroMapPage++;updateHeroMapSlider()}
+});
+
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Project output";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const pdfTitle=document.getElementById("pdfTitle");
+const pdfClose=document.getElementById("pdfClose");
+
+document.querySelectorAll(".pdf-trigger").forEach(el=>{
+  el.addEventListener("click",()=>{
+    pdfFrame.src=el.dataset.src+"#view=FitH";
+    pdfTitle.textContent=el.dataset.title||"Project Report";
+    pdfModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closePdf(){
+  pdfModal.classList.remove("open");
+  pdfFrame.src="about:blank";
+  document.body.style.overflow="";
+}
+pdfClose.addEventListener("click",closePdf);
+pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(imageModal.classList.contains("open"))closeImage();
+    if(pdfModal.classList.contains("open"))closePdf();
+  }
+});
+</script>
+</body>
+</html>
