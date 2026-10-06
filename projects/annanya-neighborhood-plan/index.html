@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neighborhood Plan: Annanya Residential Area | Fariha Aktar</title>
+<meta name="description" content="Academic neighborhood planning project for Annanya Residential Area in Chittagong, Bangladesh, integrating residential blocks, education, commerce, recreation, community facilities and open space.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{color:var(--green);font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin-left:auto;margin-right:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr);
+  gap:22px;align-items:start;
+}
+.hero>div:first-child{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:29px;line-height:1.14;margin:8px 0 12px}
+h2{font-size:24px;line-height:1.2;margin:5px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:620px;font-size:.88rem;line-height:1.52}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.hero-focus-line{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:grid;grid-template-columns:72px 1fr;gap:10px}
+.hero-focus-line strong{color:var(--green);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem}
+.hero-focus-line span{color:var(--muted);font-size:.74rem;line-height:1.45}
+
+.hero-left-summary{margin-top:16px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:.82fr 1.18fr}
+.hero-left-summary-item{padding:12px 12px 12px 0;min-width:0}
+.hero-left-summary-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.hero-left-summary-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0}
+.hero-left-summary-item small{display:block;color:var(--green);font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.hero-left-summary-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+/* Site images only - 2 per slide */
+.hero-map-panel{width:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.hero-map-head{min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hero-map-head strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;margin-top:2px}
+.hero-map-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.hero-map-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px 10px 11px}
+.hero-map-viewport{width:100%;overflow:hidden}
+.hero-map-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.hero-map-card{flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;background:#fff;text-align:left;cursor:zoom-in}
+.hero-map-card img{width:100%;height:390px;object-fit:contain;object-position:center;background:#fff;padding:5px;border-bottom:1px solid var(--line)}
+.hero-map-card>span{display:block;padding:10px 12px 12px;min-height:76px}
+.hero-map-card>span strong{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:.9rem;line-height:1.22;margin-bottom:3px}
+.hero-map-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hero-slide{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);display:grid;place-items:center;cursor:pointer;font:1.45rem Georgia,serif}
+.hero-slide:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hero-slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:30px 0 5px}
+.section-head{margin-bottom:17px}
+.project-context{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.context-block{padding:18px 22px 18px 0}
+.context-block+.context-block{border-left:1px solid var(--line);padding-left:22px}
+.context-block p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.method{padding:18px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.method:last-child{border-right:0;margin-right:0}
+.method .n{display:block;color:var(--green);font-size:.63rem;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.method strong{display:block;font-family:"Source Serif 4",serif;font-size:.97rem;margin-bottom:5px}
+.method p{margin:0;color:var(--muted);font-size:.74rem}
+
+.program-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.program{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.program span{display:block;color:var(--green);font-size:.59rem;font-weight:700;letter-spacing:.08em;margin-bottom:5px}
+.program strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;margin-bottom:4px}
+.program p{margin:0;color:var(--muted);font-size:.69rem;line-height:1.42}
+
+.findings{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.finding{border:1px solid var(--line);border-radius:15px;padding:16px}
+.finding .metric{display:block;font-family:"Source Serif 4",serif;color:var(--green-dark);font-size:1.35rem;font-weight:700;margin:5px 0}
+.finding strong{display:block;font-family:"Source Serif 4",serif;font-size:.95rem;margin-bottom:4px}
+.finding p{margin:0;color:var(--muted);font-size:.72rem}
+
+.limitations{margin-top:13px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--soft);display:grid;grid-template-columns:140px 1fr;gap:17px}
+.limitations strong{font-family:"Source Serif 4",serif}
+.limitations p{margin:0;color:var(--muted);font-size:.75rem}
+
+.outcome{border:1px solid var(--line);border-radius:17px;padding:19px;background:var(--soft);display:grid;grid-template-columns:180px 1fr;gap:22px}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.04rem}
+.outcome p{margin:0;color:var(--muted);font-size:.81rem}
+
+.back{margin:48px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);font-size:.75rem;display:flex;justify-content:space-between;gap:16px}
+
+.image-modal,.pdf-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.pdf-modal{z-index:110;background:rgba(12,20,15,.78)}
+.image-modal.open,.pdf-modal.open{display:flex}
+.image-dialog,.pdf-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.pdf-dialog{width:min(1200px,96vw);height:90vh}
+.image-bar,.pdf-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title,.pdf-title{font-size:.84rem;font-weight:700}
+.image-close,.pdf-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.pdf-dialog iframe{width:100%;height:100%;border:0}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr)}
+  .hero-map-card img{height:340px}
+  .program-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .hero-map-card img{height:390px}
+  .method-grid,.findings{grid-template-columns:1fr 1fr}
+  .method:nth-child(2){border-right:0}
+  .method:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-map-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .hero-slide{width:30px;height:30px;font-size:1.3rem}
+  .hero-map-track{gap:0}
+  .hero-map-card{flex:0 0 100%;width:100%}
+  .hero-map-card img{height:auto;max-height:480px}
+  .hero-left-summary{grid-template-columns:1fr}
+  .hero-left-summary-item,.hero-left-summary-item:nth-child(2),.hero-left-summary-item:nth-child(3){grid-column:auto;padding:10px 0;border-left:0}
+  .hero-left-summary-item+.hero-left-summary-item{border-top:1px solid var(--line)}
+  .project-context,.method-grid,.findings,.program-grid{grid-template-columns:1fr}
+  .context-block+.context-block{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .limitations,.outcome{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div>
+    <div class="eyebrow">Academic Project · Neighborhood Planning · 2021</div>
+    <h1>Neighborhood Plan: Annanya Residential Area</h1>
+
+    <p class="hero-copy">
+      A neighborhood planning and design project for a 170-acre residential area in Chittagong,
+      Bangladesh, integrating housing, education, commerce, health, community services, recreation,
+      open space and a walkable street network into a complete residential neighborhood.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary pdf-trigger" data-src="report.pdf" data-title="Project Report">View report</button>
+    </div>
+
+    <div class="hero-focus-line">
+      <strong>Objective</strong>
+      <span>
+        Allocate required neighborhood facilities according to planning standards, explain their spatial placement,
+        and develop an accessible and livable final plan for Annanya Residential Area.
+      </span>
+    </div>
+
+    <div class="hero-left-summary">
+      <div class="hero-left-summary-item">
+        <small>Study area</small>
+        <strong>Annanya Residential Area · Chittagong · 170 acres</strong>
+      </div>
+      <div class="hero-left-summary-item">
+        <small>Planned population</small>
+        <strong>Approximately 60,000 residents</strong>
+      </div>
+      <div class="hero-left-summary-item">
+        <small>Design basis & tool</small>
+        <strong>Abashik Prokolper Bhumi Unnayan Bidhimala 2004 (amended 2015) · Neighborhood planning standards · AutoCAD</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-map-panel">
+    <div class="hero-map-head">
+      <div>
+        <div class="eyebrow">Site images only</div>
+        <strong>Neighborhood Design & Block Plans</strong>
+      </div>
+      <div class="hero-map-count" id="heroMapCount">1 / 5</div>
+    </div>
+
+    <div class="hero-map-slider">
+      <button class="hero-slide" id="heroPrev" type="button" aria-label="Previous site images">‹</button>
+      <div class="hero-map-viewport">
+        <div class="hero-map-track" id="heroMapTrack">
+
+          <button class="hero-map-card image-expand" data-image="images/study-area-map.jpg" data-title="Study Area">
+            <img src="images/study-area-map.jpg" alt="Location of Annanya Residential Area in Chittagong">
+            <span><strong>Study Area</strong><small>Location of Annanya Residential Area in Chittagong, Bangladesh.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/final-neighborhood-plan.jpg" data-title="Final Neighborhood Plan">
+            <img src="images/final-neighborhood-plan.jpg" alt="Final neighborhood plan of Annanya Residential Area">
+            <span><strong>Final Neighborhood Plan</strong><small>Integrated plan showing five blocks, roads, housing, facilities, open space and the neighborhood node.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/subdivision-pattern.jpg" data-title="Subdivision Patterns">
+            <img src="images/subdivision-pattern.jpg" alt="Subdivision patterns used in the neighborhood plan">
+            <span><strong>Subdivision Patterns</strong><small>Grid-iron, modified grid, cul-de-sac and other patterns used to organize residential blocks.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/street-system.jpg" data-title="Street System">
+            <img src="images/street-system.jpg" alt="Street system and bicycle lane plan">
+            <span><strong>Street System</strong><small>Major roads, access roads and bicycle lanes supporting internal connectivity and pedestrian movement.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/node-block-a.jpg" data-title="Neighborhood Node and Block A">
+            <img src="images/node-block-a.jpg" alt="Neighborhood node and Block A plan">
+            <span><strong>Node & Block A</strong><small>Concentration of major services at the node and facility layout within Block A.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/block-b.jpg" data-title="Block B">
+            <img src="images/block-b.jpg" alt="Block B site plan">
+            <span><strong>Block B</strong><small>Residential layout with education, religious, commercial, recreational and water features.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/block-c.jpg" data-title="Block C">
+            <img src="images/block-c.jpg" alt="Block C site plan">
+            <span><strong>Block C</strong><small>Residential block integrating community facilities, education, services and the civic edge.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/block-d.jpg" data-title="Block D">
+            <img src="images/block-d.jpg" alt="Block D site plan">
+            <span><strong>Block D</strong><small>Mixed residential block with park, education, commercial facilities and community services.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/block-e.jpg" data-title="Block E">
+            <img src="images/block-e.jpg" alt="Block E site plan">
+            <span><strong>Block E</strong><small>Residential block with open space, waterbody, old-age home, child facilities and local services.</small></span>
+          </button>
+
+        </div>
+      </div>
+      <button class="hero-slide" id="heroNext" type="button" aria-label="Next site images">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Project context</div>
+    <h2>Designing a complete and accessible residential neighborhood</h2>
+  </div>
+  <div class="project-context">
+    <div class="context-block">
+      <div class="eyebrow">Planning challenge</div>
+      <p>
+        The site is crossed by the Oxygen-Kuwaish Link Road and contains a north-south gas line.
+        The plan had to accommodate a high residential population while distributing essential facilities
+        so that daily needs remained accessible from each housing block.
+      </p>
+    </div>
+    <div class="context-block">
+      <div class="eyebrow">Design direction</div>
+      <p>
+        The neighborhood was structured around five blocks, a common node, a hierarchy of roads,
+        bicycle facilities, mixed plot sizes, public facilities and substantial green/open space.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Methodology</div>
+    <h2>From planning standards to spatial allocation</h2>
+  </div>
+  <div class="method-grid">
+    <div class="method">
+      <span class="n">01</span>
+      <strong>Review neighborhood principles</strong>
+      <p>Neighborhood-unit concepts and international precedents were reviewed to identify core design principles.</p>
+    </div>
+    <div class="method">
+      <span class="n">02</span>
+      <strong>Apply facility standards</strong>
+      <p>Population-based standards were used to estimate the required area and quantity of education, health, commercial and community facilities.</p>
+    </div>
+    <div class="method">
+      <span class="n">03</span>
+      <strong>Structure blocks & streets</strong>
+      <p>Residential subdivisions, access roads, major roads, bicycle lanes and block patterns were organized in AutoCAD.</p>
+    </div>
+    <div class="method">
+      <span class="n">04</span>
+      <strong>Allocate facilities</strong>
+      <p>Facilities were distributed among Blocks A-E and the neighborhood node according to accessibility, safety and compatibility.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Neighborhood program</div>
+    <h2>Facilities integrated into the plan</h2>
+  </div>
+  <div class="program-grid">
+    <article class="program"><span>01</span><strong>Residential</strong><p>3-, 5- and 7-katha plots with varied building heights and integrated housing types.</p></article>
+    <article class="program"><span>02</span><strong>Education</strong><p>Nursery and primary schools, high schools, colleges and madrasas distributed across the blocks.</p></article>
+    <article class="program"><span>03</span><strong>Commerce</strong><p>Local shops, super shops, kachabazar, shopping center, bank, ATMs and small service industries.</p></article>
+    <article class="program"><span>04</span><strong>Community & health</strong><p>Clinics, pharmacy, clubs, community center, day care, hostels, orphanages, gymnasiums and old-age home.</p></article>
+    <article class="program"><span>05</span><strong>Open space & recreation</strong><p>Parks, playing fields, courtyards, waterbodies, amusement space and green buffers.</p></article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Key design outcomes</div>
+    <h2>A block-based plan organized around accessibility and daily life</h2>
+  </div>
+  <div class="findings">
+    <article class="finding">
+      <div class="eyebrow">Population basis</div>
+      <span class="metric">60,000</span>
+      <strong>Residents planned for</strong>
+      <p>The facility program and neighborhood design were prepared for an approximately 60,000-person population.</p>
+    </article>
+    <article class="finding">
+      <div class="eyebrow">Residential structure</div>
+      <span class="metric">701 plots</span>
+      <strong>Three plot sizes</strong>
+      <p>The plan includes 276 three-katha, 261 five-katha and 164 seven-katha residential plots.</p>
+    </article>
+    <article class="finding">
+      <div class="eyebrow">Accessibility</div>
+      <span class="metric">5 blocks</span>
+      <strong>Distributed facilities</strong>
+      <p>Education, retail, community and recreation facilities were distributed across Blocks A-E to reduce unnecessary travel.</p>
+    </article>
+    <article class="finding">
+      <div class="eyebrow">Public realm</div>
+      <span class="metric">10 fields</span>
+      <strong>Open-space network</strong>
+      <p>The plan also includes two waterbodies, parks, courtyards, playing fields, green buffers and peripheral greenery.</p>
+    </article>
+  </div>
+
+  <div class="limitations">
+    <strong>Study limitations</strong>
+    <p>
+      The project relied mainly on secondary sources and did not include a reconnaissance survey of the site or its surroundings.
+      Some standards were unavailable in the Bangladesh context, leaving scope for future refinement using primary field data.
+    </p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="outcome">
+    <strong>Project outcome</strong>
+    <p>
+      The final plan organizes housing, education, commerce, health, community services, recreation and open space into a coordinated neighborhood structure.
+      The design emphasizes accessibility, walkability, safety, green space and a clear spatial identity for Annanya Residential Area.
+    </p>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the project portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#projects">← Back to Projects</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Academic Project · 2021</span>
+  <span>Neighborhood Planning · AutoCAD · Residential Design · Facility Planning</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Site image</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-dialog">
+    <div class="pdf-bar">
+      <div class="pdf-title" id="pdfTitle">Project Report</div>
+      <button class="pdf-close" id="pdfClose">×</button>
+    </div>
+    <iframe id="pdfFrame" src="about:blank" title="Project report"></iframe>
+  </div>
+</div>
+
+<script>
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){return window.innerWidth<=720?1:2}
+function updateHeroMapSlider(){
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*2*(cardWidth+gap)}px)`;
+  }
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+heroPrev.addEventListener("click",e=>{e.stopPropagation();if(heroMapPage>0){heroMapPage--;updateHeroMapSlider()}});
+heroNext.addEventListener("click",e=>{e.stopPropagation();const totalPages=Math.ceil(heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView());if(heroMapPage<totalPages-1){heroMapPage++;updateHeroMapSlider()}});
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+document.querySelectorAll(".image-expand").forEach(el=>{el.addEventListener("click",()=>{imageView.src=el.dataset.image;imageTitle.textContent=el.dataset.title||"Site image";imageModal.classList.add("open");document.body.style.overflow="hidden";});});
+function closeImage(){imageModal.classList.remove("open");imageView.src="";document.body.style.overflow=""}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const pdfTitle=document.getElementById("pdfTitle");
+const pdfClose=document.getElementById("pdfClose");
+document.querySelectorAll(".pdf-trigger").forEach(el=>{el.addEventListener("click",()=>{pdfFrame.src=el.dataset.src+"#view=FitH";pdfTitle.textContent=el.dataset.title||"Project Report";pdfModal.classList.add("open");document.body.style.overflow="hidden";});});
+function closePdf(){pdfModal.classList.remove("open");pdfFrame.src="about:blank";document.body.style.overflow=""}
+pdfClose.addEventListener("click",closePdf);
+pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(imageModal.classList.contains("open"))closeImage();if(pdfModal.classList.contains("open"))closePdf();}});
+</script>
+</body>
+</html>
