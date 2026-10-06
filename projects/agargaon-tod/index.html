@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transit-Oriented Development Potential Around Agargaon MRT Station | Fariha Aktar</title>
+<meta name="description" content="Academic urban planning project exploring Transit-Oriented Development potential around Agargaon MRT Station in Dhaka through land-use, socio-economic, transport and design analysis.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{
+  color:var(--green);font-size:.69rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.15em;
+}
+
+.nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;
+  border-radius:999px;border:1px solid var(--line-dark);background:#fff;
+  font-size:.82rem;font-weight:700;cursor:pointer;
+}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+/* Standard compact portfolio hero */
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin-left:auto;margin-right:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.76fr) minmax(660px,1.24fr);
+  gap:22px;align-items:start;
+}
+.hero>div:first-child{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:29px;line-height:1.14;margin:8px 0 12px}
+h2{font-size:24px;line-height:1.2;margin:5px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:620px;font-size:.88rem;line-height:1.52}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.hero-focus-line{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:72px 1fr;gap:10px;
+}
+.hero-focus-line strong{
+  color:var(--green);text-transform:uppercase;letter-spacing:.11em;font-size:.66rem;
+}
+.hero-focus-line span{color:var(--muted);font-size:.74rem;line-height:1.45}
+
+.hero-left-summary{
+  margin-top:16px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+  display:grid;grid-template-columns:.84fr 1.16fr;
+}
+.hero-left-summary-item{padding:12px 12px 12px 0;min-width:0}
+.hero-left-summary-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.hero-left-summary-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:12px 0}
+.hero-left-summary-item small{
+  display:block;color:var(--green);font-size:.57rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px;
+}
+.hero-left-summary-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+/* Top-right 2-image slider */
+.hero-map-panel{
+  width:100%;border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;background:#fff;box-shadow:var(--shadow);
+}
+.hero-map-head{
+  min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);
+  background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.hero-map-head strong{
+  display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.04rem;margin-top:2px;
+}
+.hero-map-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.hero-map-slider{
+  display:grid;grid-template-columns:34px minmax(0,1fr) 34px;
+  gap:8px;align-items:center;padding:10px 10px 11px;
+}
+.hero-map-viewport{width:100%;overflow:hidden}
+.hero-map-track{
+  display:flex;gap:14px;width:100%;
+  transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform;
+}
+.hero-map-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;
+  overflow:hidden;background:#fff;text-align:left;cursor:zoom-in;
+}
+.hero-map-card img{
+  width:100%;height:390px;object-fit:contain;object-position:center;
+  background:#fff;padding:5px;border-bottom:1px solid var(--line);
+}
+.hero-map-card>span{display:block;padding:10px 12px 12px;min-height:76px}
+.hero-map-card>span strong{
+  display:block;font-family:"Source Serif 4",Georgia,serif;
+  font-size:.9rem;line-height:1.22;margin-bottom:3px;
+}
+.hero-map-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.hero-slide{
+  width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);
+  background:#fff;color:var(--green-dark);display:grid;place-items:center;
+  cursor:pointer;font:1.45rem Georgia,serif;
+}
+.hero-slide:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.hero-slide:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:30px 0 5px}
+.section-head{margin-bottom:17px}
+
+.project-context{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+}
+.context-block{padding:18px 22px 18px 0}
+.context-block+.context-block{border-left:1px solid var(--line);padding-left:22px}
+.context-block p{margin:6px 0 0;color:var(--muted);font-size:.82rem}
+
+.method-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line-dark);
+}
+.method{padding:18px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.method:last-child{border-right:0;margin-right:0}
+.method .n{
+  display:block;color:var(--green);font-size:.63rem;font-weight:700;
+  letter-spacing:.1em;margin-bottom:6px;
+}
+.method strong{display:block;font-family:"Source Serif 4",serif;font-size:.97rem;margin-bottom:5px}
+.method p{margin:0;color:var(--muted);font-size:.74rem}
+
+.findings{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.finding{border:1px solid var(--line);border-radius:15px;padding:16px}
+.finding .metric{
+  display:block;font-family:"Source Serif 4",serif;color:var(--green-dark);
+  font-size:1.35rem;font-weight:700;margin:5px 0;
+}
+.finding strong{display:block;font-family:"Source Serif 4",serif;font-size:.95rem;margin-bottom:4px}
+.finding p{margin:0;color:var(--muted);font-size:.72rem}
+
+.strategy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.strategy{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.strategy span{
+  display:block;color:var(--green);font-size:.59rem;font-weight:700;
+  letter-spacing:.08em;margin-bottom:5px;
+}
+.strategy strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;margin-bottom:4px}
+.strategy p{margin:0;color:var(--muted);font-size:.69rem;line-height:1.42}
+
+.limitations{
+  margin-top:13px;padding:14px 16px;border:1px solid var(--line);
+  border-radius:14px;background:var(--soft);
+  display:grid;grid-template-columns:140px 1fr;gap:17px;
+}
+.limitations strong{font-family:"Source Serif 4",serif}
+.limitations p{margin:0;color:var(--muted);font-size:.75rem}
+
+.outcome{
+  border:1px solid var(--line);border-radius:17px;padding:19px;background:var(--soft);
+  display:grid;grid-template-columns:180px 1fr;gap:22px;
+}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.04rem}
+.outcome p{margin:0;color:var(--muted);font-size:.81rem}
+
+.back{
+  margin:48px auto 28px;padding-top:26px;border-top:1px solid var(--line-dark);
+  display:flex;justify-content:space-between;align-items:center;gap:18px;
+}
+footer{
+  border-top:1px solid var(--line);padding:18px 0 32px;color:var(--muted);
+  font-size:.75rem;display:flex;justify-content:space-between;gap:16px;
+}
+
+/* Modals */
+.image-modal,.pdf-modal{
+  position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);
+  display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px);
+}
+.pdf-modal{z-index:110;background:rgba(12,20,15,.78)}
+.image-modal.open,.pdf-modal.open{display:flex}
+.image-dialog,.pdf-dialog{
+  width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;
+  border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;
+}
+.pdf-dialog{width:min(1200px,96vw);height:90vh}
+.image-bar,.pdf-bar{
+  min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.image-title,.pdf-title{font-size:.84rem;font-weight:700}
+.image-close,.pdf-close{
+  width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);
+  cursor:pointer;font-size:1.2rem;
+}
+.image-stage{
+  display:flex;align-items:center;justify-content:center;
+  padding:12px;overflow:auto;background:#f7f8f7;
+}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+.pdf-dialog iframe{width:100%;height:100%;border:0}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.84fr) minmax(590px,1.16fr)}
+  .hero-map-card img{height:340px}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .hero-map-card img{height:390px}
+  .method-grid,.findings,.strategy-grid{grid-template-columns:1fr 1fr}
+  .method:nth-child(2){border-right:0}
+  .method:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .hero-map-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .hero-slide{width:30px;height:30px;font-size:1.3rem}
+  .hero-map-track{gap:0}
+  .hero-map-card{flex:0 0 100%;width:100%}
+  .hero-map-card img{height:auto;max-height:480px}
+  .hero-left-summary{grid-template-columns:1fr}
+  .hero-left-summary-item,
+  .hero-left-summary-item:nth-child(2),
+  .hero-left-summary-item:nth-child(3){
+    grid-column:auto;padding:10px 0;border-left:0;
+  }
+  .hero-left-summary-item+.hero-left-summary-item{border-top:1px solid var(--line)}
+  .project-context,.method-grid,.findings,.strategy-grid{grid-template-columns:1fr}
+  .context-block+.context-block{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .method{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .limitations,.outcome{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#publication">Publication</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div>
+    <div class="eyebrow">Academic Project · Transit-Oriented Development · 2022</div>
+
+    <h1>Transit-Oriented Development Potential Around Agargaon MRT Station</h1>
+
+    <p class="hero-copy">
+      A comprehensive urban-planning project exploring the development potential of the
+      one-kilometre influence area around Agargaon MRT Station, integrating existing land use,
+      socio-economic conditions, mobility needs and Transit-Oriented Development principles
+      into a proposed land-use and design framework.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary pdf-trigger" data-src="presentation.pdf" data-title="Project Presentation">View presentation</button>
+      <button class="btn pdf-trigger" data-src="report.pdf" data-title="Project Report">View report</button>
+    </div>
+
+    <div class="hero-focus-line">
+      <strong>Objective</strong>
+      <span>
+        Explore the existing land-use pattern and socio-economic context around Agargaon MRT Station,
+        then propose a land-use plan compatible with the station and the principles of compact,
+        walkable and transit-supportive development.
+      </span>
+    </div>
+
+    <div class="hero-left-summary">
+      <div class="hero-left-summary-item">
+        <small>Study area</small>
+        <strong>1 km radius · Agargaon MRT Station · Ward 28, DNCC · 776 acres</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Survey base</small>
+        <strong>147 residential respondents · 94 commercial respondents</strong>
+      </div>
+
+      <div class="hero-left-summary-item">
+        <small>Methods & tools</small>
+        <strong>Reconnaissance · Questionnaire Survey · Literature Review · Microsoft Excel · GIS · R · Land-Use Design</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="hero-map-panel">
+    <div class="hero-map-head">
+      <div>
+        <div class="eyebrow">Planning outputs</div>
+        <strong>Land-Use Analysis & TOD Design Proposals</strong>
+      </div>
+      <div class="hero-map-count" id="heroMapCount">1 / 9</div>
+    </div>
+
+    <div class="hero-map-slider">
+      <button class="hero-slide" id="heroPrev" type="button" aria-label="Previous outputs">‹</button>
+
+      <div class="hero-map-viewport">
+        <div class="hero-map-track" id="heroMapTrack">
+
+          <button class="hero-map-card image-expand" data-image="images/study-area-profile.jpg" data-title="Study Area Profile">
+            <img src="images/study-area-profile.jpg" alt="Study area profile of Agargaon MRT Station">
+            <span><strong>Study Area Profile</strong><small>MRT Line 6 context, 500 m and 1 km influence areas, and basic study-area indicators.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/existing-land-use.jpg" data-title="Existing Land Use">
+            <img src="images/existing-land-use.jpg" alt="Existing land-use map of Agargaon">
+            <span><strong>Existing Land Use</strong><small>Baseline land-use composition around Agargaon MRT Station before the TOD proposal.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/compact-development-500m.jpg" data-title="Compact Development Within 500 m">
+            <img src="images/compact-development-500m.jpg" alt="Existing and proposed land use within 500 metres of Agargaon MRT Station">
+            <span><strong>Compact Development · 500 m</strong><small>Existing-versus-proposed land use supporting higher density and compatible mixed uses near transit.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/zone-a-proposal.jpg" data-title="Zone A Land-Use Proposal">
+            <img src="images/zone-a-proposal.jpg" alt="Proposed land use of Zone A">
+            <span><strong>Zone A Proposal</strong><small>Detailed redevelopment concept integrating residential, mixed-use, community facilities and open space.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/zone-b-proposal.jpg" data-title="Zone B Land-Use Proposal">
+            <img src="images/zone-b-proposal.jpg" alt="Proposed land use of Zone B">
+            <span><strong>Zone B Proposal</strong><small>Transit-supportive redevelopment of a second priority zone within the Agargaon TOD area.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/zone-c-proposal.jpg" data-title="Zone C Land-Use Proposal">
+            <img src="images/zone-c-proposal.jpg" alt="Proposed land use of Zone C">
+            <span><strong>Zone C Proposal</strong><small>Block-based land-use restructuring with residential, mixed-use and local open-space components.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/bicycle-network.jpg" data-title="Proposed Bicycle Network">
+            <img src="images/bicycle-network.jpg" alt="Proposed bicycle network around Agargaon MRT Station">
+            <span><strong>Proposed Bicycle Network</strong><small>Non-motorized connections designed to improve access from surrounding neighborhoods to MRT.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/primary-road-bicycle-lane.jpg" data-title="Primary-Road Bicycle Lane">
+            <img src="images/primary-road-bicycle-lane.jpg" alt="Proposed bicycle lane section on Begum Rokeya Sharani">
+            <span><strong>Bicycle Lane · Primary Road</strong><small>Street-section proposal integrating a dedicated cycle facility on Begum Rokeya Sharani.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/bicycle-parking.jpg" data-title="Bicycle Parking">
+            <img src="images/bicycle-parking.jpg" alt="Proposed bicycle parking near IDB Building">
+            <span><strong>Bicycle Parking</strong><small>Proposed parking facility close to the station to strengthen first- and last-mile connectivity.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/existing-sidewalks.jpg" data-title="Existing Sidewalk Conditions">
+            <img src="images/existing-sidewalks.jpg" alt="Existing sidewalk conditions in Agargaon">
+            <span><strong>Existing Sidewalk Conditions</strong><small>Observed pedestrian-environment constraints including poor condition and encroachment.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/pedestrian-crossing.jpg" data-title="Pedestrian Crossing Proposal">
+            <img src="images/pedestrian-crossing.jpg" alt="Proposed at-grade pedestrian crossings">
+            <span><strong>Pedestrian Crossing</strong><small>At-grade crossing concept supporting safer, more direct pedestrian access to transit.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/affordable-housing.jpg" data-title="Affordable Housing Proposal">
+            <img src="images/affordable-housing.jpg" alt="Affordable housing proposal within the TOD precinct">
+            <span><strong>Affordable Housing</strong><small>Public-housing and development-incentive proposal intended to support an inclusive TOD.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/green-environment-strategy.jpg" data-title="Green Environment Strategy">
+            <img src="images/green-environment-strategy.jpg" alt="Relocation and green environment strategy">
+            <span><strong>Green Environment Strategy</strong><small>Land-use intervention connecting relocation decisions with expansion of accessible open space.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/city-park-proposal.jpg" data-title="Old Airport City Park Proposal">
+            <img src="images/city-park-proposal.jpg" alt="Old Airport city park proposal">
+            <span><strong>Old Airport City Park</strong><small>Proposed 100-acre park with walking, cycling, water, vegetation and recreation components.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/green-strip.jpg" data-title="Proposed Green Strip">
+            <img src="images/green-strip.jpg" alt="Proposed green strip in the TOD area">
+            <span><strong>Proposed Green Strip</strong><small>Landscape network intended to improve environmental quality and pedestrian experience.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/commercial-development.jpg" data-title="Commercial Development Potential">
+            <img src="images/commercial-development.jpg" alt="Commercial development potential around Agargaon MRT Station">
+            <span><strong>Commercial Development</strong><small>Commercial and mixed-use intensification responding to expected economic activity around MRT.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/informal-vending-sites.jpg" data-title="Informal Vending Sites">
+            <img src="images/informal-vending-sites.jpg" alt="Selected sites for informal business activities">
+            <span><strong>Informal Vending Sites</strong><small>Selected locations to accommodate informal economic activities without compromising pedestrian movement.</small></span>
+          </button>
+
+          <button class="hero-map-card image-expand" data-image="images/land-use-change.jpg" data-title="Land-Use Change After TOD Development">
+            <img src="images/land-use-change.jpg" alt="Existing and proposed land-use shares after TOD development">
+            <span><strong>Land-Use Change</strong><small>Comparison of existing and proposed land-use composition after implementation of the TOD framework.</small></span>
+          </button>
+
+        </div>
+      </div>
+
+      <button class="hero-slide" id="heroNext" type="button" aria-label="Next outputs">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Project context</div>
+    <h2>Planning for development around Dhaka's emerging MRT system</h2>
+  </div>
+
+  <div class="project-context">
+    <div class="context-block">
+      <div class="eyebrow">Existing condition</div>
+      <p>
+        The study area combines residential, institutional, educational and restricted land uses,
+        with extensive open land but limited publicly accessible parks. Existing sidewalks are weak,
+        while the area has strong regional accessibility and major public institutions.
+      </p>
+    </div>
+
+    <div class="context-block">
+      <div class="eyebrow">Planning direction</div>
+      <p>
+        The project framed Agargaon as a potential Transit-Oriented Development area where land use,
+        active transport, public space, housing and economic activity could be coordinated around MRT access.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Methodology</div>
+    <h2>From existing conditions to a transit-oriented land-use proposal</h2>
+  </div>
+
+  <div class="method-grid">
+    <div class="method">
+      <span class="n">01</span>
+      <strong>Context & precedent review</strong>
+      <p>Literature, international MRT/TOD cases and relevant Dhaka planning policies were reviewed to establish planning principles.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">02</span>
+      <strong>Field & questionnaire survey</strong>
+      <p>Reconnaissance and separate residential/commercial questionnaires documented local conditions, needs, travel behavior and expectations.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">03</span>
+      <strong>Spatial & socio-economic analysis</strong>
+      <p>Survey and land-use information were processed using Microsoft Excel, GIS and R to identify development potential and constraints.</p>
+    </div>
+
+    <div class="method">
+      <span class="n">04</span>
+      <strong>TOD design proposal</strong>
+      <p>Vision, objectives and strategic actions were translated into land-use, mobility, public-space, housing and economic design proposals.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Key findings</div>
+    <h2>Development potential identified around Agargaon MRT</h2>
+  </div>
+
+  <div class="findings">
+    <article class="finding">
+      <div class="eyebrow">Existing land use</div>
+      <span class="metric">46%</span>
+      <strong>Open-space share</strong>
+      <p>A large share of the area was classified as open space, but much of it was restricted rather than functioning as accessible neighborhood park space.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Redevelopment</div>
+      <span class="metric">78%</span>
+      <strong>Owners supported TOD redevelopment</strong>
+      <p>Most surveyed residential landowners wanted Agargaon to develop as a TOD, although direct willingness to contribute land or resources was much lower.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Open-space demand</div>
+      <span class="metric">98.48%</span>
+      <strong>Residents wanted more open space</strong>
+      <p>The project therefore treated public parks and accessible green space as a central component rather than leftover land.</p>
+    </article>
+
+    <article class="finding">
+      <div class="eyebrow">Economic potential</div>
+      <span class="metric">94%</span>
+      <strong>Commercial respondents expected expansion</strong>
+      <p>Commercial respondents showed strong interest in expanding activity after MRT operation, supporting mixed-use and commercial intensification near the station.</p>
+    </article>
+  </div>
+
+  <div class="limitations">
+    <strong>Study limitations</strong>
+    <p>
+      A substantial part of the study area was restricted and could not be surveyed; the sample was relatively small
+      and not fully random; time and travel constrained data collection; and detailed up-to-date information for some parts
+      of the study area was limited.
+    </p>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">TOD strategy</div>
+    <h2>Integrated land-use, mobility and public-realm proposals</h2>
+  </div>
+
+  <div class="strategy-grid">
+    <article class="strategy">
+      <span>01 · Compactness</span>
+      <strong>High-density & mixed land use</strong>
+      <p>Promote block-based residential redevelopment and compatible mixed uses, especially within the 500 m transit influence area.</p>
+    </article>
+
+    <article class="strategy">
+      <span>02 · Accessibility</span>
+      <strong>Walking & cycling network</strong>
+      <p>Add bicycle lanes, bicycle parking, rickshaw facilities, improved sidewalks and safer pedestrian crossings.</p>
+    </article>
+
+    <article class="strategy">
+      <span>03 · Inclusion</span>
+      <strong>Affordable housing</strong>
+      <p>Retain access for low- and middle-income households through public housing and development incentives near transit.</p>
+    </article>
+
+    <article class="strategy">
+      <span>04 · Environment</span>
+      <strong>Parks & green infrastructure</strong>
+      <p>Transform underused open land into accessible parks, neighborhood green spaces and connected green strips.</p>
+    </article>
+
+    <article class="strategy">
+      <span>05 · Economy</span>
+      <strong>Commercial hubs</strong>
+      <p>Concentrate shops, offices, services, restaurants and public spaces close to the MRT station to create a self-sufficient center.</p>
+    </article>
+
+    <article class="strategy">
+      <span>06 · Informality</span>
+      <strong>Designated vending space</strong>
+      <p>Accommodate informal businesses at selected locations while preserving sufficient customer and pedestrian movement space.</p>
+    </article>
+
+    <article class="strategy">
+      <span>07 · Public realm</span>
+      <strong>Vibrant station environment</strong>
+      <p>Use public spaces, night-time activity and pedestrian-oriented design to support social interaction and safety near the station.</p>
+    </article>
+
+    <article class="strategy">
+      <span>08 · Implementation</span>
+      <strong>Guided redevelopment</strong>
+      <p>Use TOD principles, zoning and future redevelopment schemes to guide expected land-use change rather than allowing unplanned intensification.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="outcome">
+    <strong>Project outcome</strong>
+    <p>
+      The project produced an integrated TOD framework for Agargaon that connects land-use restructuring,
+      housing, active transport, public space, environmental improvement and local economic activity.
+      It demonstrates how MRT investment can be used as a catalyst for coordinated urban redevelopment rather than transport infrastructure alone.
+    </p>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to the project portfolio</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#projects">← Back to Projects</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Academic Project · 2022</span>
+  <span>Transit-Oriented Development · Land-Use Planning · GIS · Urban Design</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Project output</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-dialog">
+    <div class="pdf-bar">
+      <div class="pdf-title" id="pdfTitle">Project document</div>
+      <button class="pdf-close" id="pdfClose">×</button>
+    </div>
+    <iframe id="pdfFrame" src="about:blank" title="Project document"></iframe>
+  </div>
+</div>
+
+<script>
+const heroMapTrack=document.getElementById("heroMapTrack");
+const heroPrev=document.getElementById("heroPrev");
+const heroNext=document.getElementById("heroNext");
+const heroMapCount=document.getElementById("heroMapCount");
+let heroMapPage=0;
+
+function heroMapsPerView(){return window.innerWidth<=720?1:2}
+
+function updateHeroMapSlider(){
+  const cards=[...heroMapTrack.querySelectorAll(".hero-map-card")];
+  const perView=heroMapsPerView();
+  const totalPages=Math.ceil(cards.length/perView);
+  heroMapPage=Math.max(0,Math.min(heroMapPage,totalPages-1));
+
+  if(perView===1){
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*100}%)`;
+  }else{
+    const viewport=heroMapTrack.parentElement.clientWidth;
+    const gap=14;
+    const cardWidth=(viewport-gap)/2;
+    heroMapTrack.style.transform=`translateX(-${heroMapPage*2*(cardWidth+gap)}px)`;
+  }
+
+  heroPrev.disabled=heroMapPage===0;
+  heroNext.disabled=heroMapPage>=totalPages-1;
+  heroMapCount.textContent=`${heroMapPage+1} / ${totalPages}`;
+}
+
+heroPrev.addEventListener("click",e=>{
+  e.stopPropagation();
+  if(heroMapPage>0){heroMapPage--;updateHeroMapSlider()}
+});
+
+heroNext.addEventListener("click",e=>{
+  e.stopPropagation();
+  const totalPages=Math.ceil(heroMapTrack.querySelectorAll(".hero-map-card").length/heroMapsPerView());
+  if(heroMapPage<totalPages-1){heroMapPage++;updateHeroMapSlider()}
+});
+
+window.addEventListener("resize",updateHeroMapSlider);
+window.addEventListener("load",updateHeroMapSlider);
+updateHeroMapSlider();
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Project output";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const pdfTitle=document.getElementById("pdfTitle");
+const pdfClose=document.getElementById("pdfClose");
+
+document.querySelectorAll(".pdf-trigger").forEach(el=>{
+  el.addEventListener("click",()=>{
+    pdfFrame.src=el.dataset.src+"#view=FitH";
+    pdfTitle.textContent=el.dataset.title||"Project document";
+    pdfModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closePdf(){
+  pdfModal.classList.remove("open");
+  pdfFrame.src="about:blank";
+  document.body.style.overflow="";
+}
+pdfClose.addEventListener("click",closePdf);
+pdfModal.addEventListener("click",e=>{if(e.target===pdfModal)closePdf()});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(imageModal.classList.contains("open"))closeImage();
+    if(pdfModal.classList.contains("open"))closePdf();
+  }
+});
+</script>
+</body>
+</html>
