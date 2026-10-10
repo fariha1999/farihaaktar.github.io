@@ -1,4 +1,4 @@
-# Waste Concern — Environmentalist (Short-Term Consultant)
+# Waste Concern — Environmentalist 
 
 GitHub structure
 
