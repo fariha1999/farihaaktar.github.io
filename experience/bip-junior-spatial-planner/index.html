@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Junior Spatial Planner — Bangladesh Institute of Planners | Fariha Aktar</title>
+<meta name="description" content="Professional experience supporting the Spatial Planning Framework for Bangladesh and stakeholder coordination under the Bangladesh Delta Plan 2100 project.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#17211b;--muted:#667068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{color:var(--green);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700;cursor:pointer}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+/* Hero */
+.hero{
+  width:min(1400px,calc(100% - 36px));
+  margin:auto;
+  padding:24px 0 14px;
+  display:grid;
+  grid-template-columns:minmax(0,.72fr) minmax(680px,1.28fr);
+  gap:22px;align-items:start;
+}
+.hero-copy-col{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:30px;line-height:1.13;margin:8px 0 11px}
+h2{font-size:24px;line-height:1.2;margin:4px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:640px;font-size:.86rem;line-height:1.5}
+
+.project-highlight{
+  margin:13px 0 12px;
+  padding:11px 13px;
+  border-left:3px solid var(--green);
+  background:var(--soft);
+  border-radius:0 10px 10px 0;
+}
+.project-highlight small{
+  display:block;color:var(--green);font-size:.58rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.11em;margin-bottom:2px;
+}
+.project-highlight strong{
+  display:block;font-family:"Source Serif 4",serif;
+  font-size:.92rem;line-height:1.35;
+}
+
+.role-strip{
+  margin-top:15px;
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  display:grid;grid-template-columns:.86fr 1.14fr;
+}
+.role-item{padding:11px 12px 11px 0;min-width:0}
+.role-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.role-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:11px 0}
+.role-item small{display:block;color:var(--green);font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.role-item strong{display:block;font-size:.68rem;line-height:1.38}
+
+/* Top gallery */
+.output-panel{width:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.output-head{min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.output-head strong{display:block;font-family:"Source Serif 4",serif;font-size:1.04rem;margin-top:2px}
+.output-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.output-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px}
+.output-viewport{width:100%;overflow:hidden}
+.output-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.output-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;
+  background:#fff;text-align:left;cursor:zoom-in;
+}
+.output-card img{width:100%;height:390px;object-fit:contain;object-position:center;background:#fff;padding:5px;border-bottom:1px solid var(--line)}
+.output-card>span{display:block;padding:10px 12px 12px;min-height:72px}
+.output-card>span strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;line-height:1.22;margin-bottom:3px}
+.output-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.slide-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);display:grid;place-items:center;cursor:pointer;font:1.45rem Georgia,serif}
+.slide-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.slide-btn:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:28px 0 4px}
+.section-head{margin-bottom:15px}
+
+.overview{
+  display:grid;grid-template-columns:1.1fr .9fr;
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+}
+.overview-block{padding:18px 22px 18px 0}
+.overview-block+.overview-block{border-left:1px solid var(--line);padding-left:22px}
+.overview-block strong{display:block;font-family:"Source Serif 4",serif;font-size:1.02rem;margin-top:3px}
+.overview-block p{margin:6px 0 0;color:var(--muted);font-size:.79rem}
+
+.contribution-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.contribution{padding:17px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.contribution:last-child{border-right:0;margin-right:0}
+.contribution .n{display:block;color:var(--green);font-size:.62rem;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.contribution strong{display:block;font-family:"Source Serif 4",serif;font-size:.95rem;margin-bottom:5px}
+.contribution p{margin:0;color:var(--muted);font-size:.72rem}
+
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.work-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+.work-card h3{font-size:1.08rem;margin:4px 0 8px}
+.work-card p{margin:0;color:var(--muted);font-size:.76rem}
+.work-card ul{margin:11px 0 0;padding-left:18px;color:var(--muted);font-size:.72rem}
+.work-card li+li{margin-top:4px}
+
+.cover-card{
+  display:grid;grid-template-columns:220px 1fr;gap:20px;
+  border:1px solid var(--line);border-radius:17px;padding:16px;background:var(--soft);
+}
+.cover-card img{width:100%;max-height:330px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px}
+.cover-card h3{font-size:1.06rem;margin:4px 0 8px}
+.cover-card p{margin:0;color:var(--muted);font-size:.77rem}
+
+.event-panel{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:#fff}
+.event-head{min-height:50px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.event-head strong{display:block;font-family:"Source Serif 4",serif;font-size:1rem;margin-top:2px}
+.event-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.event-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px}
+.event-viewport{overflow:hidden;width:100%}
+.event-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.event-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;background:#fff;text-align:left;cursor:zoom-in;
+}
+.event-card img{width:100%;height:330px;object-fit:cover;object-position:center;border-bottom:1px solid var(--line)}
+.event-card span{display:block;padding:10px 12px 12px;min-height:68px}
+.event-card strong{display:block;font-family:"Source Serif 4",serif;font-size:.88rem;margin-bottom:3px}
+.event-card small{display:block;color:var(--muted);font-size:.62rem;line-height:1.36}
+
+.skills{border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(3,1fr)}
+.skills>div{padding:13px 18px 13px 0}
+.skills>div+div{border-left:1px solid var(--line);padding-left:18px}
+.skills small{display:block;color:var(--green);font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.skills strong{display:block;font-size:.7rem;margin-top:3px;line-height:1.42}
+
+.outcome{border:1px solid var(--line);border-radius:17px;padding:18px;background:var(--soft);display:grid;grid-template-columns:170px 1fr;gap:20px}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.02rem}
+.outcome p{margin:0;color:var(--muted);font-size:.79rem}
+
+.back{margin:42px auto 26px;padding-top:24px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:17px 0 30px;color:var(--muted);font-size:.74rem;display:flex;justify-content:space-between;gap:16px}
+
+.image-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.image-modal.open{display:flex}
+.image-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.image-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title{font-size:.84rem;font-weight:700}
+.image-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+
+@media(max-width:1180px){
+  .hero{grid-template-columns:minmax(0,.82fr) minmax(600px,1.18fr)}
+  .output-card img{height:340px}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .output-card img{height:390px}
+  .contribution-grid{grid-template-columns:1fr 1fr}
+  .contribution:nth-child(2){border-right:0}
+  .contribution:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .output-slider,.event-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .slide-btn{width:30px;height:30px;font-size:1.3rem}
+  .output-track,.event-track{gap:0}
+  .output-card,.event-card{flex:0 0 100%;width:100%}
+  .output-card img{height:auto;max-height:480px}
+  .event-card img{height:auto;max-height:480px}
+  .role-strip,.overview,.work-grid,.skills{grid-template-columns:1fr}
+  .role-item,.role-item:nth-child(2),.role-item:nth-child(3){grid-column:auto;padding:10px 0;border-left:0}
+  .role-item+.role-item{border-top:1px solid var(--line)}
+  .overview-block+.overview-block,.skills>div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .contribution-grid{grid-template-columns:1fr}
+  .contribution{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .cover-card,.outcome{grid-template-columns:1fr}
+  .cover-card img{max-width:340px}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#experience">Experience</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="hero-copy-col">
+    <div class="eyebrow">Professional Experience · Spatial Planning · 2025–2026</div>
+
+    <h1>Junior Spatial Planner — Bangladesh Institute of Planners (BIP)</h1>
+
+    <div class="project-highlight">
+      <small>Project</small>
+      <strong>Strengthening Integrated Spatial Planning for Effective Implementation of Bangladesh Delta Plan 2100 (BDP 2100)</strong>
+    </div>
+
+    <p class="hero-copy">
+      Supported the development of the Spatial Planning Framework (SPF) for Bangladesh through
+      technical compilation and editing, stakeholder coordination, workshop organization,
+      meeting documentation, and integration of expert inputs across thematic planning areas.
+    </p>
+
+    <div class="role-strip">
+      <div class="role-item">
+        <small>Organization</small>
+        <strong>Bangladesh Institute of Planners (BIP)</strong>
+      </div>
+      <div class="role-item">
+        <small>Role</small>
+        <strong>Junior Spatial Planner · Six-month project assignment</strong>
+      </div>
+      <div class="role-item">
+        <small>Core focus</small>
+        <strong>Spatial Planning Framework · stakeholder coordination · workshop organization · meeting notes · technical compilation · editing · visual presentation</strong>
+      </div>
+    </div>
+  </div>
+
+  <aside class="output-panel">
+    <div class="output-head">
+      <div>
+        <div class="eyebrow">Selected professional activities</div>
+        <strong>SPF Development & Coordination</strong>
+      </div>
+      <div class="output-count" id="outputCount">1 / 2</div>
+    </div>
+
+    <div class="output-slider">
+      <button class="slide-btn" id="outputPrev" type="button" aria-label="Previous images">‹</button>
+      <div class="output-viewport">
+        <div class="output-track" id="outputTrack">
+
+          <button class="output-card image-expand" data-image="images/spf-cover-design.jpg" data-title="Spatial Planning Framework Cover Design">
+            <img src="images/spf-cover-design.jpg" alt="Spatial Planning Framework for Bangladesh cover design">
+            <span>
+              <strong>SPF Cover Design</strong>
+              <small>Prepared the visual cover concept for the Spatial Planning Framework for Bangladesh.</small>
+            </span>
+          </button>
+
+          <button class="output-card image-expand" data-image="images/spf-review-01.jpg" data-title="SPF Review and Coordination Meeting">
+            <img src="images/spf-review-01.jpg" alt="Spatial Planning Framework review and coordination meeting">
+            <span>
+              <strong>SPF Review Meeting</strong>
+              <small>Multi-institutional technical review and coordination of the national Spatial Planning Framework.</small>
+            </span>
+          </button>
+
+          <button class="output-card image-expand" data-image="images/stakeholder-workshop-02.jpg" data-title="Stakeholders Workshop">
+            <img src="images/stakeholder-workshop-02.jpg" alt="Stakeholders workshop on mainstreaming spatial planning">
+            <span>
+              <strong>Stakeholders Workshop</strong>
+              <small>Stakeholder engagement on mainstreaming spatial planning into Bangladesh's development planning process.</small>
+            </span>
+          </button>
+
+          <button class="output-card image-expand" data-image="images/stakeholder-workshop-03.jpg" data-title="Stakeholders Workshop">
+            <img src="images/stakeholder-workshop-03.jpg" alt="Stakeholders workshop participants">
+            <span>
+              <strong>Cross-Sector Consultation</strong>
+              <small>Coordination with planning, government and sector stakeholders to strengthen SPF alignment.</small>
+            </span>
+          </button>
+
+        </div>
+      </div>
+      <button class="slide-btn" id="outputNext" type="button" aria-label="Next images">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Role overview</div>
+    <h2>Supporting a national framework for integrated spatial planning</h2>
+  </div>
+
+  <div class="overview">
+    <div class="overview-block">
+      <div class="eyebrow">Spatial Planning Framework</div>
+      <strong>Technical compilation and editorial support</strong>
+      <p>
+        Contributed to the development of the SPF by compiling inputs from specialists,
+        reviewing and editing draft sections, improving consistency across chapters,
+        and supporting the integration of national, regional and local planning perspectives.
+      </p>
+    </div>
+
+    <div class="overview-block">
+      <div class="eyebrow">Coordination</div>
+      <strong>Stakeholder and project support</strong>
+      <p>
+        Supported project coordination through workshop organization, meeting documentation,
+        follow-up notes, and communication across the spatial-planning team and participating institutions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Core contributions</div>
+    <h2>What I contributed</h2>
+  </div>
+
+  <div class="contribution-grid">
+    <div class="contribution">
+      <span class="n">01</span>
+      <strong>SPF compilation & editing</strong>
+      <p>Compiled expert inputs and supported editing for clarity, consistency and cross-sectional alignment across the Spatial Planning Framework.</p>
+    </div>
+
+    <div class="contribution">
+      <span class="n">02</span>
+      <strong>Workshop organization</strong>
+      <p>Helped organize three stakeholder workshops, including coordination, logistics, participant communication and documentation.</p>
+    </div>
+
+    <div class="contribution">
+      <span class="n">03</span>
+      <strong>Meeting notes & documentation</strong>
+      <p>Prepared meeting notes, discussion summaries and documentation for technical review and stakeholder coordination sessions.</p>
+    </div>
+
+    <div class="contribution">
+      <span class="n">04</span>
+      <strong>Visual communication</strong>
+      <p>Prepared the SPF cover design and supported the presentation and organization of planning materials for professional review.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Spatial Planning Framework</div>
+    <h2>Contribution to the national SPF development process</h2>
+  </div>
+
+  <div class="cover-card">
+    <button class="image-expand" data-image="images/spf-cover-design.jpg" data-title="Spatial Planning Framework for Bangladesh Cover" style="appearance:none;border:0;padding:0;background:transparent;cursor:zoom-in">
+      <img src="images/spf-cover-design.jpg" alt="Spatial Planning Framework for Bangladesh cover">
+    </button>
+
+    <div>
+      <div class="eyebrow">Framework development</div>
+      <h3>From expert inputs to a coherent planning document</h3>
+      <p>
+        My work supported the organization and refinement of the SPF as a practical framework for
+        spatial planning in Bangladesh. I contributed to compilation and editing of draft material,
+        coordination of specialist inputs, and preparation of documentation used in the review process.
+        The framework discussions emphasized a three-tier planning approach—national, regional and local—
+        and cross-sector alignment across areas such as hydrology, climate change, biodiversity,
+        transport, legal issues and Adaptive Delta Management.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Stakeholder engagement</div>
+    <h2>Three workshops supporting mainstream spatial planning</h2>
+  </div>
+
+  <div class="work-grid">
+    <article class="work-card">
+      <div class="eyebrow">Workshop coordination</div>
+      <h3>Cross-sector stakeholder workshops</h3>
+      <p>
+        Helped organize and attend three stakeholder workshops designed to explore how spatial planning
+        could be mainstreamed into Bangladesh's national development planning process.
+      </p>
+      <ul>
+        <li>Private-sector organizations and professional bodies</li>
+        <li>Government ministries, departments and implementing agencies</li>
+        <li>Representatives from divisions of the Bangladesh Planning Commission</li>
+        <li>Workshop logistics, coordination, documentation and follow-up support</li>
+      </ul>
+    </article>
+
+    <article class="work-card">
+      <div class="eyebrow">Planning objective</div>
+      <h3>Linking spatial and development planning</h3>
+      <p>
+        The workshop process focused on improving coordination between spatial planning and economic
+        development decisions, with particular attention to climate resilience, land-use management,
+        infrastructure, settlement patterns and national development priorities under BDP 2100.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="event-panel">
+    <div class="event-head">
+      <div>
+        <div class="eyebrow">Workshop documentation</div>
+        <strong>Stakeholder Workshops</strong>
+      </div>
+      <div class="event-count" id="workshopCount">1 / 2</div>
+    </div>
+
+    <div class="event-slider">
+      <button class="slide-btn" id="workshopPrev" type="button">‹</button>
+      <div class="event-viewport">
+        <div class="event-track" id="workshopTrack">
+
+          <button class="event-card image-expand" data-image="images/stakeholder-workshop-01.jpg" data-title="Stakeholders Workshop">
+            <img src="images/stakeholder-workshop-01.jpg" alt="Stakeholders workshop discussion">
+            <span><strong>Stakeholder Discussion</strong><small>Cross-sector discussion on mainstreaming spatial planning into national development planning.</small></span>
+          </button>
+
+          <button class="event-card image-expand" data-image="images/stakeholder-workshop-02.jpg" data-title="Stakeholders Workshop">
+            <img src="images/stakeholder-workshop-02.jpg" alt="Stakeholders workshop panel">
+            <span><strong>Workshop Session</strong><small>Engagement with planning and sector representatives on national spatial-planning priorities.</small></span>
+          </button>
+
+          <button class="event-card image-expand" data-image="images/stakeholder-workshop-03.jpg" data-title="Stakeholders Workshop">
+            <img src="images/stakeholder-workshop-03.jpg" alt="Stakeholders workshop participants">
+            <span><strong>Multi-Stakeholder Participation</strong><small>Workshop participation across government, planning and professional institutions.</small></span>
+          </button>
+
+        </div>
+      </div>
+      <button class="slide-btn" id="workshopNext" type="button">›</button>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="eyebrow">Technical coordination</div>
+    <h2>SPF Review & Coordination Meeting · 6 March 2026</h2>
+  </div>
+
+  <div class="work-grid">
+    <article class="work-card">
+      <div class="eyebrow">Review meeting</div>
+      <h3>Multi-institutional technical coordination</h3>
+      <p>
+        Participated in the SPF review and coordination meeting at the BIP Conference Hall with representatives
+        from UDD, CEGIS, United International University, RedOrange and other planning, legal and research professionals.
+      </p>
+    </article>
+
+    <article class="work-card">
+      <div class="eyebrow">Discussion focus</div>
+      <h3>Structure, thematic integration and planning tiers</h3>
+      <p>
+        The meeting focused on refining the SPF structure, strengthening the national–regional–local planning approach,
+        and improving alignment across thematic chapters including hydrology, climate change, biodiversity, transport,
+        legal issues and Adaptive Delta Management.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="event-panel">
+    <div class="event-head">
+      <div>
+        <div class="eyebrow">Meeting documentation</div>
+        <strong>SPF Review & Coordination</strong>
+      </div>
+      <div class="event-count" id="meetingCount">1 / 2</div>
+    </div>
+
+    <div class="event-slider">
+      <button class="slide-btn" id="meetingPrev" type="button">‹</button>
+      <div class="event-viewport">
+        <div class="event-track" id="meetingTrack">
+
+          <button class="event-card image-expand" data-image="images/spf-review-01.jpg" data-title="SPF Review Meeting">
+            <img src="images/spf-review-01.jpg" alt="SPF review meeting">
+            <span><strong>Technical Review</strong><small>Discussion on SPF structure, planning tiers and thematic integration.</small></span>
+          </button>
+
+          <button class="event-card image-expand" data-image="images/spf-review-02.jpg" data-title="SPF Review Meeting">
+            <img src="images/spf-review-02.jpg" alt="SPF review meeting participants">
+            <span><strong>Expert Coordination</strong><small>Review by planning and technical professionals involved in SPF development.</small></span>
+          </button>
+
+          <button class="event-card image-expand" data-image="images/spf-review-03.jpg" data-title="SPF Review Meeting">
+            <img src="images/spf-review-03.jpg" alt="SPF coordination meeting">
+            <span><strong>Cross-Institutional Review</strong><small>Coordination among institutions contributing to the Spatial Planning Framework.</small></span>
+          </button>
+
+        </div>
+      </div>
+      <button class="slide-btn" id="meetingNext" type="button">›</button>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="skills">
+    <div>
+      <small>Spatial planning</small>
+      <strong>Spatial Planning Framework · BDP 2100 · national–regional–local planning · cross-sector integration</strong>
+    </div>
+    <div>
+      <small>Coordination</small>
+      <strong>Stakeholder Workshops · Technical Meetings · Institutional Coordination · Documentation</strong>
+    </div>
+    <div>
+      <small>Professional delivery</small>
+      <strong>Compilation · Editing · Meeting Notes · Workshop Documentation · Visual Communication</strong>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="outcome">
+    <strong>Professional outcome</strong>
+    <p>
+      This role strengthened my experience in national-scale spatial-planning processes by combining
+      technical document development with multi-institutional coordination. It gave me practical exposure
+      to how expert inputs, stakeholder consultation and policy-oriented planning are brought together
+      to develop a coherent Spatial Planning Framework for Bangladesh.
+    </p>
+  </div>
+</section>
+
+<section class="wrap back">
+  <div>
+    <div class="eyebrow">Continue exploring</div>
+    <h2>Return to Experience</h2>
+  </div>
+  <a class="btn primary" href="../../index.html#experience">← Back to Experience</a>
+</section>
+
+<footer class="wrap">
+  <span>Fariha Aktar · Bangladesh Institute of Planners</span>
+  <span>Spatial Planning · BDP 2100 · Stakeholder Coordination · SPF Development</span>
+</footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Professional activity</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+
+<script>
+function initTwoUpSlider(trackId,prevId,nextId,countId){
+  const track=document.getElementById(trackId);
+  const prev=document.getElementById(prevId);
+  const next=document.getElementById(nextId);
+  const count=document.getElementById(countId);
+  let page=0;
+
+  function perView(){return window.innerWidth<=720?1:2}
+
+  function update(){
+    const cards=[...track.children];
+    const pv=perView();
+    const total=Math.ceil(cards.length/pv);
+    page=Math.max(0,Math.min(page,total-1));
+
+    if(pv===1){
+      track.style.transform=`translateX(-${page*100}%)`;
+    }else{
+      const viewport=track.parentElement.clientWidth;
+      const gap=14;
+      const cardWidth=(viewport-gap)/2;
+      track.style.transform=`translateX(-${page*2*(cardWidth+gap)}px)`;
+    }
+
+    prev.disabled=page===0;
+    next.disabled=page>=total-1;
+    count.textContent=`${page+1} / ${total}`;
+  }
+
+  prev.addEventListener("click",e=>{e.stopPropagation();if(page>0){page--;update()}});
+  next.addEventListener("click",e=>{
+    e.stopPropagation();
+    const total=Math.ceil(track.children.length/perView());
+    if(page<total-1){page++;update()}
+  });
+
+  window.addEventListener("resize",update);
+  window.addEventListener("load",update);
+  update();
+}
+
+initTwoUpSlider("outputTrack","outputPrev","outputNext","outputCount");
+initTwoUpSlider("workshopTrack","workshopPrev","workshopNext","workshopCount");
+initTwoUpSlider("meetingTrack","meetingPrev","meetingNext","meetingCount");
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Professional activity";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&imageModal.classList.contains("open"))closeImage()});
+</script>
+</body>
+</html>
