@@ -27,6 +27,3 @@ experience/waste-concern-environmentalist/index.html
 Public Goalanda CAP:
 https://wasteconcern.org/wp-content/uploads/2026/09/23-Goalanda-Municipality.pdf
 
-Important:
-- The employment contract is intentionally NOT included in this GitHub package because it contains personal and contractual information.
-- Before publishing internal Waste Concern deliverables or field reports publicly, confirm that you have permission under your consultancy confidentiality terms.
