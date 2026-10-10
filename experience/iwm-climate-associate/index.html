@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Climate Associate — Institute of Water Modelling | Fariha Aktar</title>
+<meta name="description" content="Professional experience supporting national climate-finance research, coordination, workshops and policy documentation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17211b;--muted:#657068;--green:#2b654b;--green-dark:#1d4935;
+  --soft:#f6f8f6;--line:#dce3dd;--line-dark:#c6d0c8;
+  --shadow:0 14px 38px rgba(27,49,36,.07);--max:1400px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+.eyebrow{color:var(--green);font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.08rem}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-link{font-size:.82rem;font-weight:700;color:#536058}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-dark);background:#fff;font-size:.82rem;font-weight:700}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
+
+.hero{
+  width:min(var(--max),calc(100% - 36px));margin:auto;padding:24px 0 14px;
+  display:grid;grid-template-columns:minmax(0,.76fr) minmax(650px,1.24fr);
+  gap:22px;align-items:start
+}
+.hero-copy-col{min-width:0;padding-top:2px}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;letter-spacing:-.025em}
+h1{font-size:30px;line-height:1.13;margin:8px 0 11px}
+h2{font-size:24px;line-height:1.2;margin:4px 0 0}
+.hero-copy{margin:0;color:var(--muted);max-width:650px;font-size:.86rem;line-height:1.52}
+
+.project-highlight{margin:13px 0 12px;padding:11px 13px;border-left:3px solid var(--green);background:var(--soft);border-radius:0 10px 10px 0}
+.project-highlight small{display:block;color:var(--green);font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+.project-highlight strong{display:block;font-family:"Source Serif 4",serif;font-size:.94rem;line-height:1.35}
+
+.role-strip{margin-top:15px;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:.9fr 1.1fr}
+.role-item{padding:11px 12px 11px 0}
+.role-item:nth-child(2){border-left:1px solid var(--line);padding-left:12px}
+.role-item:nth-child(3){grid-column:1/-1;border-top:1px solid var(--line);padding:11px 0}
+.role-item small{display:block;color:var(--green);font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:3px}
+.role-item strong{display:block;font-size:.69rem;line-height:1.38}
+
+.visual-panel{width:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.visual-head{min-height:52px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--soft);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.visual-head strong{display:block;font-family:"Source Serif 4",serif;font-size:1.04rem;margin-top:2px}
+.visual-count{color:var(--muted);font-size:.72rem;font-weight:700}
+.visual-slider{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;gap:8px;align-items:center;padding:10px}
+.visual-viewport{overflow:hidden;width:100%}
+.visual-track{display:flex;gap:14px;width:100%;transition:transform .42s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.visual-card{
+  flex:0 0 calc((100% - 14px)/2);width:calc((100% - 14px)/2);min-width:0;
+  appearance:none;border:1px solid var(--line);border-radius:13px;padding:0;overflow:hidden;background:#fff;text-align:left;cursor:zoom-in
+}
+.visual-card img{width:100%;height:390px;object-fit:contain;object-position:center;background:#fff;padding:5px;border-bottom:1px solid var(--line)}
+.visual-card>span{display:block;padding:10px 12px 12px;min-height:70px}
+.visual-card>span strong{display:block;font-family:"Source Serif 4",serif;font-size:.9rem;line-height:1.22;margin-bottom:3px}
+.visual-card>span small{display:block;color:var(--muted);font-size:.63rem;line-height:1.35}
+.slide-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-dark);background:#fff;color:var(--green-dark);display:grid;place-items:center;cursor:pointer;font:1.45rem Georgia,serif}
+.slide-btn:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.slide-btn:disabled{opacity:.28;cursor:default;background:#fff;color:var(--muted)}
+
+.section{padding:28px 0 4px}
+.section-head{margin-bottom:15px}
+
+.overview{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.overview-block{padding:18px 22px 18px 0}
+.overview-block+.overview-block{border-left:1px solid var(--line);padding-left:22px}
+.overview-block strong{display:block;font-family:"Source Serif 4",serif;font-size:1rem;margin-top:3px}
+.overview-block p{margin:6px 0 0;color:var(--muted);font-size:.79rem}
+
+.contribution-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line-dark)}
+.contribution{padding:17px 18px 4px 0;margin-right:18px;border-right:1px solid var(--line)}
+.contribution:last-child{border-right:0;margin-right:0}
+.contribution .n{display:block;color:var(--green);font-size:.62rem;font-weight:700;letter-spacing:.1em;margin-bottom:6px}
+.contribution strong{display:block;font-family:"Source Serif 4",serif;font-size:.95rem;margin-bottom:5px}
+.contribution p{margin:0;color:var(--muted);font-size:.72rem}
+
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+.info-card h3{font-size:1.06rem;margin:4px 0 8px}
+.info-card p{margin:0;color:var(--muted);font-size:.76rem}
+.info-card ul{margin:11px 0 0;padding-left:18px;color:var(--muted);font-size:.72rem}
+.info-card li+li{margin-top:4px}
+
+.event-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.event{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.event strong{display:block;font-family:"Source Serif 4",serif;font-size:.91rem;margin-bottom:4px}
+.event p{margin:0;color:var(--muted);font-size:.69rem;line-height:1.42}
+
+.skills{border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(3,1fr)}
+.skills>div{padding:13px 18px 13px 0}
+.skills>div+div{border-left:1px solid var(--line);padding-left:18px}
+.skills small{display:block;color:var(--green);font-size:.57rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+.skills strong{display:block;font-size:.7rem;margin-top:3px;line-height:1.42}
+
+.outcome{border:1px solid var(--line);border-radius:17px;padding:18px;background:var(--soft);display:grid;grid-template-columns:170px 1fr;gap:20px}
+.outcome strong{font-family:"Source Serif 4",serif;font-size:1.02rem}
+.outcome p{margin:0;color:var(--muted);font-size:.79rem}
+
+.back{margin:42px auto 26px;padding-top:24px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;align-items:center;gap:18px}
+footer{border-top:1px solid var(--line);padding:17px 0 30px;color:var(--muted);font-size:.74rem;display:flex;justify-content:space-between;gap:16px}
+
+.image-modal{position:fixed;inset:0;z-index:100;background:rgba(12,20,15,.9);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.image-modal.open{display:flex}
+.image-dialog{width:min(1450px,97vw);height:min(95vh,1100px);background:#fff;border-radius:15px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.image-bar{min-height:50px;padding:7px 10px 7px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.image-title{font-size:.84rem;font-weight:700}
+.image-close{width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:1.2rem}
+.image-stage{display:flex;align-items:center;justify-content:center;padding:12px;overflow:auto;background:#f7f8f7}
+.image-stage img{max-width:100%;max-height:100%;object-fit:contain}
+
+@media(max-width:1120px){
+  .hero{grid-template-columns:minmax(0,.82fr) minmax(590px,1.18fr)}
+  .visual-card img{height:340px}
+  .event-list{grid-template-columns:1fr 1fr}
+}
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;width:min(100% - 24px,900px)}
+  .visual-card img{height:390px}
+  .contribution-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .wrap,.hero{width:calc(100% - 24px)}
+  .nav-link{display:none}
+  .role-strip,.overview,.card-grid,.skills,.event-list{grid-template-columns:1fr}
+  .role-item,.role-item:nth-child(2),.role-item:nth-child(3){grid-column:auto;padding:10px 0;border-left:0}
+  .role-item+.role-item{border-top:1px solid var(--line)}
+  .overview-block+.overview-block,.skills>div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .contribution-grid{grid-template-columns:1fr}
+  .contribution{border-right:0;border-bottom:1px solid var(--line);margin:0;padding:14px 0}
+  .visual-slider{grid-template-columns:32px minmax(0,1fr) 32px;gap:5px;padding:7px}
+  .slide-btn{width:30px;height:30px;font-size:1.3rem}
+  .visual-track{gap:0}
+  .visual-card{flex:0 0 100%;width:100%}
+  .visual-card img{height:auto;max-height:480px}
+  .outcome{grid-template-columns:1fr}
+  .back,footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../../index.html">Fariha Aktar</a>
+    <div class="nav-actions">
+      <a class="nav-link" href="../../index.html#research">Research</a>
+      <a class="nav-link" href="../../index.html#projects">Projects</a>
+      <a class="nav-link" href="../../index.html#experience">Experience</a>
+      <a class="btn" href="../../index.html">← Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="hero-copy-col">
+    <div class="eyebrow">Professional Experience · Climate Finance</div>
+    <h1>Climate Associate — Institute of Water Modelling (IWM)</h1>
+
+    <div class="project-highlight">
+      <small>Deputation</small>
+      <strong>International Climate Finance Cell (ICFC), Economic Relations Division, Ministry of Finance, Government of Bangladesh</strong>
+    </div>
+
+    <p class="hero-copy">
+      Supported national climate-finance coordination through research, workshop reporting,
+      official documentation, briefing materials, stakeholder communication and program logistics
+      across government, development partners and private-sector stakeholders.
+    </p>
+
+    <div class="role-strip">
+      <div class="role-item"><small>Organization</small><strong>Institute of Water Modelling (IWM)</strong></div>
+      <div class="role-item"><small>Role</small><strong>Climate Associate</strong></div>
+      <div class="role-item"><small>Focus</small><strong>Climate finance · policy research · national workshops · briefing notes · stakeholder coordination · program documentation</strong></div>
+    </div>
+  </div>
+
+  <aside class="visual-panel">
+    <div class="visual-head">
+      <div><div class="eyebrow">Selected professional activities</div><strong>National Climate Finance Engagements</strong></div>
+      <div class="visual-count" id="visualCount">1 / 7</div>
+    </div>
+    <div class="visual-slider">
+      <button class="slide-btn" id="visualPrev" type="button">‹</button>
+      <div class="visual-viewport">
+        <div class="visual-track" id="visualTrack">
+          
+          <button class="visual-card image-expand" data-image="images/global-shield-group.jpg" data-title="Global Shield Country Consultation">
+            <img src="images/global-shield-group.jpg" alt="Global Shield Country Consultation">
+            <span><strong>Global Shield Country Consultation</strong><small>National consultation supporting the Global Shield In-Country Process in Bangladesh.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/global-shield-stage.jpg" data-title="Global Shield Country Consultation">
+            <img src="images/global-shield-stage.jpg" alt="Global Shield Country Consultation">
+            <span><strong>Global Shield Country Consultation</strong><small>National consultation supporting the Global Shield In-Country Process in Bangladesh.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/global-shield-session.jpg" data-title="Global Shield Country Consultation">
+            <img src="images/global-shield-session.jpg" alt="Global Shield Country Consultation">
+            <span><strong>Global Shield Country Consultation</strong><small>National consultation supporting the Global Shield In-Country Process in Bangladesh.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/gcf-workshop-group.jpg" data-title="GCF Capacity Building Workshop">
+            <img src="images/gcf-workshop-group.jpg" alt="GCF Capacity Building Workshop">
+            <span><strong>GCF Capacity Building Workshop</strong><small>Capacity-building engagement focused on strengthening access to GCF resources.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/gcf-workshop-session.jpg" data-title="GCF Capacity Building Workshop">
+            <img src="images/gcf-workshop-session.jpg" alt="GCF Capacity Building Workshop">
+            <span><strong>GCF Capacity Building Workshop</strong><small>Capacity-building engagement focused on strengthening access to GCF resources.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/gcf-workshop-team.jpg" data-title="GCF Capacity Building Workshop">
+            <img src="images/gcf-workshop-team.jpg" alt="GCF Capacity Building Workshop">
+            <span><strong>GCF Capacity Building Workshop</strong><small>Capacity-building engagement focused on strengthening access to GCF resources.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/financial-analysis-group.jpg" data-title="Climate Finance Training">
+            <img src="images/financial-analysis-group.jpg" alt="Climate Finance Training">
+            <span><strong>Climate Finance Training</strong><small>Training on financial analysis and investment instruments for climate finance.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/financial-analysis-session.jpg" data-title="Climate Finance Training">
+            <img src="images/financial-analysis-session.jpg" alt="Climate Finance Training">
+            <span><strong>Climate Finance Training</strong><small>Training on financial analysis and investment instruments for climate finance.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/financial-analysis-screen.jpg" data-title="Climate Finance Training">
+            <img src="images/financial-analysis-screen.jpg" alt="Climate Finance Training">
+            <span><strong>Climate Finance Training</strong><small>Training on financial analysis and investment instruments for climate finance.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/climate-finance-landscape-slide.jpg" data-title="International Climate Finance Landscape">
+            <img src="images/climate-finance-landscape-slide.jpg" alt="International Climate Finance Landscape">
+            <span><strong>International Climate Finance Landscape</strong><small>Workshop on the international climate-finance landscape and its implications for Bangladesh.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/climate-finance-landscape-session-01.jpg" data-title="International Climate Finance Landscape">
+            <img src="images/climate-finance-landscape-session-01.jpg" alt="International Climate Finance Landscape">
+            <span><strong>International Climate Finance Landscape</strong><small>Workshop on the international climate-finance landscape and its implications for Bangladesh.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/climate-finance-landscape-session-02.jpg" data-title="International Climate Finance Landscape">
+            <img src="images/climate-finance-landscape-session-02.jpg" alt="International Climate Finance Landscape">
+            <span><strong>International Climate Finance Landscape</strong><small>Workshop on the international climate-finance landscape and its implications for Bangladesh.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/climate-finance-conference-session.jpg" data-title="Climate Finance Conference Consultation">
+            <img src="images/climate-finance-conference-session.jpg" alt="Climate Finance Conference Consultation">
+            <span><strong>Climate Finance Conference Consultation</strong><small>Consultation supporting international climate-finance coordination and conference preparation.</small></span>
+          </button>
+          <button class="visual-card image-expand" data-image="images/climate-finance-conference-group.jpg" data-title="Climate Finance Conference Consultation">
+            <img src="images/climate-finance-conference-group.jpg" alt="Climate Finance Conference Consultation">
+            <span><strong>Climate Finance Conference Consultation</strong><small>Consultation supporting international climate-finance coordination and conference preparation.</small></span>
+          </button>
+        </div>
+      </div>
+      <button class="slide-btn" id="visualNext" type="button">›</button>
+    </div>
+  </aside>
+</header>
+
+<section class="section wrap">
+  <div class="section-head"><div class="eyebrow">Core contributions</div><h2>Research, policy communication and national coordination</h2></div>
+  <div class="contribution-grid">
+    <div class="contribution"><span class="n">01</span><strong>Global Shield reporting</strong><p>Prepared the first country consultation workshop report for the Global Shield In-Country Process in Bangladesh.</p></div>
+    <div class="contribution"><span class="n">02</span><strong>National events</strong><p>Supported organization and coordination of national-level workshops, trainings and consultations.</p></div>
+    <div class="contribution"><span class="n">03</span><strong>Policy documentation</strong><p>Drafted concept notes, official documentation and high-level briefing notes for climate-finance engagements.</p></div>
+    <div class="contribution"><span class="n">04</span><strong>Climate-finance research</strong><p>Researched carbon markets, NDCs and global climate-finance frameworks and supported ICFC knowledge content.</p></div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head"><div class="eyebrow">Selected engagements</div><h2>National climate-finance programs supported</h2></div>
+  <div class="event-list">
+    <article class="event"><strong>Global Shield In-Country Process</strong><p>Country consultation on climate and disaster risk finance priorities, coordination mechanisms and protection gaps.</p></article>
+    <article class="event"><strong>GCF Access Capacity Building</strong><p>Government-focused workshop on GCF structure, concept notes, technical proposals and SME access to climate finance.</p></article>
+    <article class="event"><strong>International Climate Finance Landscape</strong><p>Workshop strengthening understanding of global climate-finance architecture and its relevance for Bangladesh.</p></article>
+    <article class="event"><strong>Financial Analysis & Investment Instruments</strong><p>Training focused on financial analysis and investment instruments for climate-finance decision-making.</p></article>
+    <article class="event"><strong>International Climate Finance Conference Consultation</strong><p>Consultation supporting coordination and preparation for a wider international climate-finance conference.</p></article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="overview">
+    <div class="overview-block"><div class="eyebrow">Stakeholder coordination</div><strong>Government, development partners and private sector</strong><p>Led communication and supported logistics across institutions participating in national climate-finance activities.</p></div>
+    <div class="overview-block"><div class="eyebrow">Recognition</div><strong>GCF access capacity-building workshop</strong><p>Placed second in a capacity-building workshop focused on strengthening access to the Green Climate Fund for SMEs in Bangladesh.</p></div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="skills">
+    <div><small>Climate finance</small><strong>GCF · Carbon Markets · NDCs · Global Shield</strong></div>
+    <div><small>Policy communication</small><strong>Concept Notes · Briefing Notes · Official Documentation · Workshop Reports</strong></div>
+    <div><small>Coordination</small><strong>Government Stakeholders · Development Partners · Private Sector · National Events</strong></div>
+  </div>
+</section>
+
+<section class="section wrap"><div class="outcome"><strong>Professional outcome</strong><p>Strengthened my ability to work at the intersection of climate-finance research, government coordination and policy communication within a national institutional setting.</p></div></section>
+
+<section class="wrap back"><div><div class="eyebrow">Continue exploring</div><h2>Return to Experience</h2></div><a class="btn primary" href="../../index.html#experience">← Back to Experience</a></section>
+<footer class="wrap"><span>Fariha Aktar · Institute of Water Modelling</span><span>Climate Finance · Policy Research · National Coordination</span></footer>
+</main>
+
+<div class="image-modal" id="imageModal">
+  <div class="image-dialog">
+    <div class="image-bar">
+      <div class="image-title" id="imageTitle">Professional activity</div>
+      <button class="image-close" id="imageClose">×</button>
+    </div>
+    <div class="image-stage"><img id="imageView" src="" alt=""></div>
+  </div>
+</div>
+<script>initSlider("visualTrack","visualPrev","visualNext","visualCount");
+
+function initSlider(trackId,prevId,nextId,countId){
+  const track=document.getElementById(trackId);
+  if(!track) return;
+  const prev=document.getElementById(prevId);
+  const next=document.getElementById(nextId);
+  const count=document.getElementById(countId);
+  let page=0;
+  function perView(){return window.innerWidth<=720?1:2}
+  function update(){
+    const cards=[...track.children];
+    const pv=perView();
+    const total=Math.ceil(cards.length/pv);
+    page=Math.max(0,Math.min(page,total-1));
+    if(pv===1){
+      track.style.transform=`translateX(-${page*100}%)`;
+    }else{
+      const viewport=track.parentElement.clientWidth;
+      const gap=14;
+      const cardWidth=(viewport-gap)/2;
+      track.style.transform=`translateX(-${page*2*(cardWidth+gap)}px)`;
+    }
+    prev.disabled=page===0;
+    next.disabled=page>=total-1;
+    count.textContent=`${page+1} / ${total}`;
+  }
+  prev.addEventListener("click",()=>{if(page>0){page--;update()}});
+  next.addEventListener("click",()=>{const total=Math.ceil(track.children.length/perView());if(page<total-1){page++;update()}});
+  window.addEventListener("resize",update);
+  window.addEventListener("load",update);
+  update();
+}
+
+const imageModal=document.getElementById("imageModal");
+const imageView=document.getElementById("imageView");
+const imageTitle=document.getElementById("imageTitle");
+const imageClose=document.getElementById("imageClose");
+
+document.querySelectorAll(".image-expand").forEach(el=>{
+  el.addEventListener("click",()=>{
+    imageView.src=el.dataset.image;
+    imageTitle.textContent=el.dataset.title||"Professional activity";
+    imageModal.classList.add("open");
+    document.body.style.overflow="hidden";
+  });
+});
+function closeImage(){
+  imageModal.classList.remove("open");
+  imageView.src="";
+  document.body.style.overflow="";
+}
+imageClose.addEventListener("click",closeImage);
+imageModal.addEventListener("click",e=>{if(e.target===imageModal)closeImage()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&imageModal.classList.contains("open"))closeImage()});
+</script>
+</body>
+</html>
